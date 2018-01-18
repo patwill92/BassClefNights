@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Bass Clef Nights website",
   "main": "server.js",
+  "engines": {
+    "node": "9.2.0"
+  },
   "scripts": {
     "start": "node build/bundle.js",
     "dev": "npm-run-all --parallel dev:*",
