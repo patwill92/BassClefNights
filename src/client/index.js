@@ -19,5 +19,9 @@ ReactDOM.hydrate(
             </ThemeProvider>
         </BrowserRouter>
     </Provider>,
-    document.querySelector('#root')
+    document.querySelector('#root'),
+    () => {
+        const jssStyles = document.getElementById('server-side-styles');
+        jssStyles.parentNode.removeChild(jssStyles);
+    }
 );

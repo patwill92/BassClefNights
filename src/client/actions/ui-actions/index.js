@@ -1,8 +1,8 @@
-import {TOGGLE_MOBILE_NAV} from "../types";
+import {TOGGLE_NAV} from "../types";
 
-export const toggleMobileNav = payload => {
+export const toggleNav = payload => {
     return {
-        type: TOGGLE_MOBILE_NAV,
+        type: TOGGLE_NAV,
         payload
     }
 };

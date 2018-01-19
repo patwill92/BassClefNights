@@ -1,3 +1,3 @@
 export {
-    toggleMobileNav
+    toggleNav
 } from './ui-actions'
