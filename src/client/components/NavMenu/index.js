@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import Transition from 'react-transition-group/Transition';
 
 import {toggleNav} from "../../actions";
+import ToggleNav from '../ToggleNav'
 
 const duration = 500;
 const defaultStyle = {
@@ -79,12 +80,7 @@ const NavMenu = props => {
                 }}>
                     {menu &&
                         <Fragment>
-                            <div className={classes.close}>
-                                <span onClick={() => props.toggleNav(!menu)} className={classes.menu}>
-                                    <span style={{display: 'block'}}>close</span>
-                                    <span id='underline' className={classes.underline}/>
-                                </span>
-                            </div>
+                            <ToggleNav text='close' color='#2a2a2a'/>
                             <h1>MENU</h1>
                         </Fragment>
                     }

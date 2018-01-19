@@ -18,7 +18,6 @@ const styles = theme => ({
         zIndex: 2
     },
     menu: {
-        color: '#e8e8e8',
         textTransform: 'uppercase',
         cursor: 'pointer',
         fontWeight: 300,
@@ -30,7 +29,6 @@ const styles = theme => ({
     },
     underline: {
         paddingTop: 3,
-        backgroundColor: '#e8e8e8',
         width: '90%',
         display: 'block',
         marginTop: 2,
@@ -40,13 +38,13 @@ const styles = theme => ({
     }
 });
 
-const Navbar = props => {
-    const {classes, menu} = props;
+const ToggleNav = props => {
+    const {classes, menu, text, color} = props;
     return (
         <div className={classes.root}>
             <span onClick={() => props.toggleNav(!menu)} className={classes.menu} >
-                <span style={{display: 'block'}}>menu</span>
-                <span id='underline' className={classes.underline}/>
+                <span style={{display: 'block', color}}>{text}</span>
+                <span id='underline' className={classes.underline} style={{backgroundColor: color}}/>
             </span>
         </div>
     )
@@ -58,4 +56,4 @@ const mapStateToProps = ({ui}) => {
     }
 };
 
-export default connect(mapStateToProps, {toggleNav})(injectSheet(styles)(Navbar))
+export default connect(mapStateToProps, {toggleNav})(injectSheet(styles)(ToggleNav))
