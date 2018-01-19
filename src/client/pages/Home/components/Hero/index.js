@@ -26,7 +26,7 @@ const styles = theme => ({
         height: 'inherit',
         padding: '90 10',
         '& *': {
-            color: '#e8e8e8',
+            color: '#fff',
             textAlign: 'center'
         }
     },
