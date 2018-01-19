@@ -16,7 +16,7 @@ const root = {
 const styles = theme => ({
     '@global': {
         '*': {
-            fontFamily: 'Roboto !important',
+            fontFamily: 'Roboto',
             boxSizing: 'border-box'
         },
         body: {

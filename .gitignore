@@ -6,3 +6,4 @@ node_modules
 .idea
 /build
 /public/bundle.js
+/public/bundle.js.map
