@@ -12,16 +12,18 @@ const styles = theme => ({
     },
     overlayImg: {
         height: 'inherit',
-        backgroundColor: 'rgba(0,0,0,0.4)'
+        backgroundColor: 'rgba(0,0,0,0.4)',
+        position: 'relative'
     },
     logo: {
         maxWidth: 130,
-        height: 'auto'
+        height: 'auto',
+        marginTop: 20
     },
     heroContainer: {
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
         height: 'inherit',
         padding: '90 10',
@@ -64,12 +66,44 @@ const styles = theme => ({
         padding: '0.5 0',
         width: '40%',
     },
+    heroBtn: {
+        backgroundColor: 'rgba(0,0,0,0)',
+        border: '1px solid #fff',
+        color: '#fff',
+        fontFamily: "'Montserrat', sans-serif",
+        letterSpacing: 1,
+        fontWeight: 300,
+        fontSize: '1.0rem',
+        textTransform: 'uppercase',
+        padding: '10px',
+        transition: 'background-color 500ms, color 500ms',
+        '&:hover': {
+            cursor: 'pointer',
+            color: '#000',
+            backgroundColor: '#fff'
+        }
+    },
+    socialContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'absolute',
+        justifyContent: 'space-between',
+        top: 30,
+        right: 10,
+        height: 70,
+        width: 70,
+        fontSize: 20,
+        textAlign: 'center'
+    },
     '@media (min-width: 500px) and (max-width: 810px)': {
         heroSubTitle: {
             fontSize: '1.8rem'
         },
         heroTitle: {
             fontSize: '3.8rem'
+        },
+        heroContainer: {
+            justifyContent: 'center',
         }
     },
     '@media (max-width: 499px)': {
@@ -89,6 +123,10 @@ const HomeHero = props => {
     return (
         <div className={classes.root}>
             <div className={classes.overlayImg}>
+                <div className={classes.socialContainer}>
+                    <a href='https://www.facebook.com'><Icon color='#e8e8e8' name='facebookF' hover/></a>
+                    <a href='https://www.twitter.com'><Icon color='#e8e8e8' name='twitter' hover/></a>
+                </div>
                 <div className={classes.heroContainer}>
                     <img className={classes.logo} src="images/bcn.png" alt=""/>
                     <div>
@@ -101,6 +139,7 @@ const HomeHero = props => {
                             <div className={classes.line}/>
                         </div>
                         <h4 className={classes.heroSubTitle}>reliving old miami through jazz</h4>
+                        <button className={classes.heroBtn}>Become a sponsor</button>
                     </div>
                 </div>
             </div>

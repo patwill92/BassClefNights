@@ -1,15 +1,15 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 import injectSheet from 'react-jss'
 import {connect} from 'react-redux'
-import Transition from 'react-transition-group/Transition';
+import {Transition} from 'react-transition-group';
 
 import {toggleNav} from "../../actions";
 import ToggleNav from '../ToggleNav'
 
-const duration = 500;
 const defaultStyle = {
-    transition: `opacity ${duration}ms ease-in-out`,
+    transition: `opacity 500ms ease-in-out`,
     opacity: 0,
+    zIndex: 0,
     display: 'flex',
     height: '100vh',
     width: '100%',
@@ -19,13 +19,16 @@ const defaultStyle = {
     flexDirection: 'column',
     top: 0,
     left: 0,
-    backgroundColor: '#fff',
-    zIndex: 1
+    backgroundColor: '#fff'
 };
 const transitionStyles = {
-    entering: {opacity: 0},
-    entered: {opacity: 1},
+    entering: {opacity: 0, zIndex: 0},
+    entered: {opacity: 1, zIndex: 2},
 };
+const titleStyle = {
+    transition: `opacity 2000ms ease-in-out`,
+    opacity: 0
+}
 
 const styles = theme => ({
     root: {
@@ -63,27 +66,27 @@ const styles = theme => ({
         marginLeft: 'auto',
         marginRight: 'auto',
         transition: 'width 0.2s'
+    },
+    start: {
+        transition: 'opacity 2000ms',
     }
 });
 
 const NavMenu = props => {
-    const {classes, menu} = props;
+    const {menu} = props;
+    console.log(menu);
     return (
-        <Transition in={menu} timeout={{
-            enter: 0,
-            exit: 500,
-        }}>
+        <Transition in={menu} timeout={0}>
             {(state) => (
                 <div style={{
                     ...defaultStyle,
                     ...transitionStyles[state]
                 }}>
-                    {menu &&
-                        <Fragment>
-                            <ToggleNav text='close' color='#2a2a2a'/>
-                            <h1>MENU</h1>
-                        </Fragment>
-                    }
+                    {menu && <ToggleNav text='close' color='#2a2a2a'/>}
+                    <h1 style={{
+                        ...titleStyle,
+                        ...transitionStyles[state]
+                    }}>MENU</h1>
                 </div>
             )}
         </Transition>

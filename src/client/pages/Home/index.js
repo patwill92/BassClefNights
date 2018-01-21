@@ -7,7 +7,8 @@ import Hero from './components/Hero'
 const styles = theme => ({
     root: {
         overflow: 'hidden',
-        zIndex: 0
+        zIndex: 1,
+        position: 'relative'
     },
     hero: {
         height: '100%',

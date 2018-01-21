@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import injectSheet from 'react-jss'
 
 const style = {
     height: '1em',
@@ -31,6 +32,14 @@ const looseStyle = {
     zIndex: 0
 }
 
+ const sheet = {
+    hover: {
+        '&:hover': {
+            cursor: 'pointer'
+        }
+    }
+ }
+
 const MyIcon = props => {
     let icon = require('./icons/index')[props.name];
     let {name, path, viewBox} = icon;
@@ -48,7 +57,7 @@ const MyIcon = props => {
         </span>
     );
     return props.loose ? <LooseIcon/> : (
-        <span id='svg-icon' style={props.style ? {...svgStyle, ...props.style} : svgStyle}>
+        <span className={props.hover && props.classes.hover} id='svg-icon' style={props.style ? {...svgStyle, ...props.style} : svgStyle}>
           <svg style={props.svgStyle ? {...style, ...props.svgStyle}: style} id={name} width={props.size ? width * (props.size / height) : width}
                height={props.size ? props.size : height} xmlns="http://www.w3.org/2000/svg" viewBox={viewBox}>
             <path style={{pointerEvents: 'none'}} fill={props.color ? props.color : '#333'} d={path}/>
@@ -62,7 +71,8 @@ MyIcon.propTypes = {
     name: PropTypes.string.isRequired,
     size: PropTypes.number,
     style: PropTypes.object,
-    color: PropTypes.string
+    color: PropTypes.string,
+    hover: PropTypes.bool
 };
 
-export default MyIcon
+export default injectSheet(sheet)(MyIcon)

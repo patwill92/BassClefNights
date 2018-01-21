@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import injectSheet from 'react-jss'
 import {connect} from 'react-redux'
 
 import {toggleNav} from "../../actions";
+import Icon from '../../components/Icon'
 
 const styles = theme => ({
     root: {
@@ -35,6 +36,11 @@ const styles = theme => ({
         marginLeft: 'auto',
         marginRight: 'auto',
         transition: 'width 0.2s'
+    },
+    iconContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        fontSize: '20px'
     }
 });
 
@@ -42,9 +48,10 @@ const ToggleNav = props => {
     const {classes, menu, text, color} = props;
     return (
         <div className={classes.root}>
-            <span onClick={() => props.toggleNav(!menu)} className={classes.menu} >
-                <span style={{display: 'block', color}}>{text}</span>
-                <span id='underline' className={classes.underline} style={{backgroundColor: color}}/>
+            <span onClick={() => props.toggleNav(!menu)}
+                  className={classes.menu}>
+                    <span style={{display: 'block', color}}>{text}</span>
+                    <span id='underline' className={classes.underline} style={{backgroundColor: color}}/>
             </span>
         </div>
     )
