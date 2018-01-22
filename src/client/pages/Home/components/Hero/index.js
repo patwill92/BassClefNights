@@ -6,13 +6,13 @@ import Icon from '../../../../components/Icon'
 const styles = theme => ({
     root: {
         height: '100%',
-        backgroundImage: 'url("https://i.ytimg.com/vi/PJKA6qcfQ7Q/maxresdefault.jpg")',
+        backgroundImage: 'url("images/home.jpg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center'
     },
     overlayImg: {
         height: 'inherit',
-        backgroundColor: 'rgba(0,0,0,0.4)',
+        backgroundColor: 'rgba(0,0,0,0.5)',
         position: 'relative'
     },
     logo: {
@@ -91,7 +91,7 @@ const styles = theme => ({
         top: 30,
         right: 10,
         height: 70,
-        width: 70,
+        width: 40,
         fontSize: 20,
         textAlign: 'center'
     },

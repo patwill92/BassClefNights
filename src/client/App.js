@@ -37,7 +37,7 @@ class App extends Component {
         const {classes, route, menu} = this.props;
         return (
             <Fragment>
-                <ToggleNav color='#e8e8e8' text='menu'/>
+                {!menu && <ToggleNav color='#e8e8e8' text='menu' onClick={() => this.props.toggleNav(!menu)}/>}
                 {renderRoutes(route.routes)}
                 <Menu />
             </Fragment>

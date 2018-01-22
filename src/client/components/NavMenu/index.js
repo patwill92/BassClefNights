@@ -1,97 +1,93 @@
 import React from 'react'
 import injectSheet from 'react-jss'
 import {connect} from 'react-redux'
-import {Transition} from 'react-transition-group';
 
 import {toggleNav} from "../../actions";
 import ToggleNav from '../ToggleNav'
 
-const defaultStyle = {
-    transition: `opacity 500ms ease-in-out`,
-    opacity: 0,
-    zIndex: 0,
-    display: 'flex',
+const animation = (name, property, from, to) => {
+    return {
+        [`@keyframes ${name}`]: {
+            from: `${property}: ${from}`,
+            to: `${property}: ${to}`
+        }
+    }
+};
+
+const drop = animation('drop', 'left', '-100vw', 0);
+const back = animation('dropBack', 'left', 0, '-100vw');
+const fade = animation('fade', 'opacity', 0, 1);
+const fadeOut = animation('fadeOut', 'opacity', 1, 0);
+const main = {
     height: '100vh',
     width: '100%',
+    opacity: 1,
+    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     position: 'fixed',
     flexDirection: 'column',
+    left: '-100vw',
     top: 0,
-    left: 0,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    animationFillMode: 'forwards',
+    zIndex: 2
 };
-const transitionStyles = {
-    entering: {opacity: 0, zIndex: 0},
-    entered: {opacity: 1, zIndex: 2},
-};
-const titleStyle = {
-    transition: `opacity 2000ms ease-in-out`,
-    opacity: 0
-}
 
 const styles = theme => ({
     root: {
-        height: 'inherit',
-        width: '100%'
+        ...main
     },
-    close: {
-        display: 'inline-flex',
-        height: '70px',
-        width: '70px',
+    in: {
+        ...main,
+        animation: 'drop 0.5s linear, fade 0.5s linear',
+    },
+    out: {
+        ...main,
+        top: 0,
+        left: '-100vw',
+        animation: 'dropBack 0.5s linear, fadeOut 0.5s linear',
+    },
+    overlay: {
+        width: '100%',
+        height: '100vh',
+        position: 'relative',
+        display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        position: 'fixed',
-        flexDirection: 'column',
-        top: 10,
-        left: 10
+        flexDirection: 'column'
     },
-    menu: {
-        color: '#2A2A2A',
-        textTransform: 'uppercase',
-        cursor: 'pointer',
-        fontWeight: 300,
-        '&:hover': {
-            '& #underline': {
-                width: '100%'
-            }
-        }
-    },
-    underline: {
-        paddingTop: 3,
-        backgroundColor: '#2A2A2A',
-        width: '90%',
-        display: 'block',
-        marginTop: 2,
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        transition: 'width 0.2s'
-    },
-    start: {
-        transition: 'opacity 2000ms',
-    }
+    ...drop,
+    ...fade,
+    ...back,
+    ...fadeOut
 });
 
-const NavMenu = props => {
-    const {menu} = props;
-    console.log(menu);
-    return (
-        <Transition in={menu} timeout={0}>
-            {(state) => (
-                <div style={{
-                    ...defaultStyle,
-                    ...transitionStyles[state]
-                }}>
-                    {menu && <ToggleNav text='close' color='#2a2a2a'/>}
-                    <h1 style={{
-                        ...titleStyle,
-                        ...transitionStyles[state]
-                    }}>MENU</h1>
+class NavMenu extends React.Component {
+    state = {
+        open: false
+    };
+
+    change = () => {
+        this.setState({open: true}, () => {
+            this.props.toggleNav(!this.props.menu)
+        });
+    };
+
+    render() {
+        const {menu, classes} = this.props;
+        const {open} = this.state;
+        let className = !menu && !open ? 'root' : menu ? 'in' : 'out';
+        return (
+            <div className={classes[className]}>
+                <div className={classes.overlay}>
+                    {menu && <ToggleNav text='close' color='#2a2a2a' onClick={this.change}/>}
+                    <h1>MENU</h1>
                 </div>
-            )}
-        </Transition>
-    )
-};
+            </div>
+        )
+    };
+}
 
 const mapStateToProps = ({ui}) => {
     return {
