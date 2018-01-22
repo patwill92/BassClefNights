@@ -1,7 +1,7 @@
 import React from 'react'
 import injectSheet from 'react-jss'
 
-import Panel1 from './components/Panel1'
+import Panel1 from './components/Lineup'
 import Hero from './components/Hero'
 
 const styles = theme => ({

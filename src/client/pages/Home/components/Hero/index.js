@@ -2,6 +2,7 @@ import React from 'react'
 import injectSheet from 'react-jss'
 
 import Icon from '../../../../components/Icon'
+import LineBreak from '../../../../components/LineBreak'
 
 const styles = theme => ({
     root: {
@@ -46,25 +47,6 @@ const styles = theme => ({
         fontSize: '1.5em',
         fontWeight: 300,
         marginTop: '20px'
-    },
-    lineContainer: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    lineCircle: {
-        position: 'relative',
-        minHeight: 30,
-        minWidth: 30,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    line: {
-        backgroundColor: '#fff',
-        padding: '0.5 0',
-        width: '40%',
     },
     heroBtn: {
         backgroundColor: 'rgba(0,0,0,0)',
@@ -131,13 +113,7 @@ const HomeHero = props => {
                     <img className={classes.logo} src="images/bcn.png" alt=""/>
                     <div>
                         <h1 className={classes.heroTitle}>bass cleff nights</h1>
-                        <div className={classes.lineContainer}>
-                            <div className={classes.line}/>
-                            <div className={classes.lineCircle}>
-                                <Icon name='circle' color='#fff' style={{bottom:2}}/>
-                            </div>
-                            <div className={classes.line}/>
-                        </div>
+                        <LineBreak icon='circle' color='#fff'/>
                         <h4 className={classes.heroSubTitle}>reliving old miami through jazz</h4>
                         <button className={classes.heroBtn}>Become a sponsor</button>
                     </div>

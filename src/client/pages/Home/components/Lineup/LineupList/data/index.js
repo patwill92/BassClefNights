@@ -1,0 +1,1 @@
+export default ['Larry Barilleau & The Latin Jazz Collective', 'Tony Pastrana & Latin Jazz Band', 'Tito Alvizuris & The Latin Jazz Trio', 'Patricia Mesa', 'Brazil’s Bossa Nova']
