@@ -69,7 +69,6 @@ const styles = theme => ({
         width: '100%',
         position: 'absolute',
         top: 0,
-        alignItems: 'center',
         backgroundColor: 'rgba(0,0,0,0.3)',
         zIndex: 3,
         '& *': {
@@ -80,6 +79,27 @@ const styles = theme => ({
             letterSpacing: 2,
             fontSize: '1.3em',
             width: '90%'
+        }
+    },
+    arrows: {
+        ...theme.flex.rowBetween,
+        width: '100%',
+        alignItems: 'flex-end',
+        '& div': {
+            fontSize: '18px',
+            flex: 0
+        }
+
+    },
+    circles: {
+        ...theme.flex.rowCenter,
+        width: '100%',
+        alignItems: 'flex-end',
+        '& div': {
+            ...theme.flex.rowCenter,
+            marginBottom: 20,
+            fontSize: '12px',
+            flex: 0
         }
     },
     ...fadeIn,
@@ -109,22 +129,27 @@ class Venue extends Component {
         }, 5000);
     };
 
-    clear = () => {
+    nextImg = () => {
         let {activeIndex} = this.state;
-        if (this.state.showActive) {
-            this.setState({showActive: !this.state.showActive}, () => {
-                clearInterval(start)
-            });
-        } else {
-            this.setState({showActive: !this.state.showActive}, () => {
-                this.setState({
-                    previousActiveIndex: JSON.stringify(activeIndex),
-                    activeIndex: activeIndex >= 3 ? 0 : activeIndex + 1
-                });
-                this.startShow();
-            });
-        }
-    };
+        this.setState({
+            showActive: false,
+            previousActiveIndex: JSON.stringify(activeIndex),
+            activeIndex: activeIndex >= 3 ? 0 : activeIndex + 1
+        }, () => {
+            clearInterval(start)
+        });
+    }
+
+    prevImg = () => {
+        let {activeIndex} = this.state;
+        this.setState({
+            showActive: false,
+            previousActiveIndex: JSON.stringify(activeIndex),
+            activeIndex: activeIndex <= 0 ? 3 : activeIndex - 1
+        }, () => {
+            clearInterval(start)
+        });
+    }
 
     render() {
         const {classes} = this.props;
@@ -161,13 +186,30 @@ class Venue extends Component {
                                 cursor: 'pointer'
                             }}
                                  className={classes.listItemImageBackground}
-                                 onClick={this.clear}
                                  key={img}>
-                                <div className={classes.overlayMobile}/>
                             </div>
                         )
                     })
                     }
+                    <div className={classes.overlayMobile}>
+                        <div className={classes.arrows}>
+                            <div onClick={this.prevImg} style={{flex: 0}}><Icon name='chevronLeft' color='rgba(255,255,255,0.7)' style={{cursor: 'pointer'}} /></div>
+                            <div onClick={this.nextImg} style={{flex: 0}}><Icon name='chevronRight' color='rgba(255,255,255,0.7)'
+                                                         style={{right: 11, cursor: 'pointer'}}/></div>
+                        </div>
+                        <div className={classes.circles}>
+                            <div>
+                                {list.map((img, i) => {
+                                    let active = activeIndex === i;
+                                    return (
+                                        <div key={img+i}>
+                                            <Icon name={active ? 'circleSolid' : 'circle'} color='rgba(255,255,255,0.7)' style={{margin: '0 20px'}}/>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
