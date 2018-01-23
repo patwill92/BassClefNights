@@ -6,7 +6,7 @@ import LineBreak from '../../../../components/LineBreak'
 
 const root = {
     overflow: 'hidden',
-    padding: '30 10',
+    padding: '100 10',
     textAlign: 'center',
     margin: '0 auto',
     maxWidth: 1350

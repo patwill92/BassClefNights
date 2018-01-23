@@ -3,6 +3,7 @@ import injectSheet from 'react-jss'
 
 import Lineup from './components/Lineup'
 import Hero from './components/Hero'
+import Venue from './components/Venue'
 
 const styles = theme => ({
     root: {
@@ -32,6 +33,7 @@ const Home = props => {
         <div className={classes.root}>
             <Hero/>
             <Lineup/>
+            <Venue/>
         </div>
     )
 };
