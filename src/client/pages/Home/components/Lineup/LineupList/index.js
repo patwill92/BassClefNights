@@ -3,6 +3,18 @@ import injectSheet from 'react-jss'
 
 import lineupList from "./data";
 
+const animation = (name, property, from, to) => {
+    return {
+        [`@keyframes ${name}`]: {
+            from: `${property}: ${from}`,
+            to: `${property}: ${to}`
+        }
+    }
+};
+
+const fadeIn = animation('fadeIn', 'opacity', 0, 1);
+const fadeOut = animation('fadeOut', 'opacity', 1, 0);
+
 const styles = theme => ({
     listContainer: {
         display: 'flex'
@@ -40,9 +52,19 @@ const styles = theme => ({
     },
     listItemImage: {
         flex: 1,
+        position: 'relative',
+    },
+    listItemImageBackground: {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        position: 'relative'
+        backgroundRepeat: 'no-repeat',
+        opacity: 0,
+        height: '100%',
+        width: '100%',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        animationFillMode: 'forwards'
     },
     listItemMobile: {
         fontWeight: 300,
@@ -74,6 +96,8 @@ const styles = theme => ({
             margin: 'auto'
         }
     },
+    ...fadeIn,
+    ...fadeOut,
     '@media (max-width: 942px)': {
         listContainer: {
             display: 'none'
@@ -93,12 +117,13 @@ const styles = theme => ({
 class LineupList extends Component {
     state = {
         activeIndex: 0,
-        activeImage: 'images/LaryBarilleau.jpg'
+        previousActiveIndex: ''
     };
 
     render() {
+        console.log(this.state);
         const {classes} = this.props;
-        const {activeIndex} = this.state;
+        const {activeIndex, previousActiveIndex} = this.state;
         return (
             <Fragment>
                 <div className={classes.listContainer}>
@@ -107,14 +132,33 @@ class LineupList extends Component {
                             let active = activeIndex === i;
                             return (
                                 <li style={{borderRight: active ? '1px solid #000' : '1px solid rgba(0,0,0,0.2)'}}
-                                    onClick={() => this.setState({activeIndex: i, activeImage: artist.image})}
+                                    onClick={() => this.setState({previousActiveIndex: JSON.stringify(activeIndex), activeIndex: i})}
                                     className={classes.listItem}
                                     key={artist.name}>{artist.name}</li>
                             )
                         })}
                     </ul>
-                    <div className={classes.listItemImage} style={{backgroundImage: `url("${this.state.activeImage}")`,}}>
-                        <div className={classes.overlayMobile}/>
+                    <div className={classes.listItemImage}>
+                        {lineupList.map((artist, i) => {
+                            let active = activeIndex === i;
+                            let previousActive = previousActiveIndex === JSON.stringify(i);
+                            let firstTime = !!previousActiveIndex;
+                            let animation = !firstTime ? activeIndex === i && {opacity: 1}
+                            : active ? {opacity: 1, animation: 'fadeIn 1s linear'}
+                            : previousActive ? {opacity: 0, animation: 'fadeOut 1s linear'} : '';
+                            return (
+                                <div style={{
+                                    backgroundImage: `url("${artist.image}")`,
+                                    ...animation
+                                }}
+                                     className={classes.listItemImageBackground}
+                                     key={artist.name}>
+                                    <div className={classes.overlayMobile}/>
+                                </div>
+                            )
+                        })
+
+                        }
                     </div>
                 </div>
                 <div className={classes.listContainerMobile}>
