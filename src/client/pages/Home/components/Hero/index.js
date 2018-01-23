@@ -3,6 +3,7 @@ import injectSheet from 'react-jss'
 
 import Icon from '../../../../components/Icon'
 import LineBreak from '../../../../components/LineBreak'
+import Button from '../../../../components/ClearButton'
 
 const styles = theme => ({
     root: {
@@ -17,7 +18,7 @@ const styles = theme => ({
         position: 'relative'
     },
     logo: {
-        maxWidth: 130,
+        maxWidth: 330,
         height: 'auto',
         marginTop: 20
     },
@@ -45,23 +46,6 @@ const styles = theme => ({
         fontSize: '1.5em',
         fontWeight: 300,
         marginTop: '20px'
-    },
-    heroBtn: {
-        backgroundColor: 'rgba(0,0,0,0)',
-        border: '1px solid #fff',
-        color: '#fff',
-        fontFamily: theme.font.secondary,
-        letterSpacing: 1,
-        fontWeight: 300,
-        fontSize: '1.0rem',
-        textTransform: 'uppercase',
-        padding: '10px',
-        transition: 'background-color 500ms, color 500ms',
-        '&:hover': {
-            cursor: 'pointer',
-            color: '#000',
-            backgroundColor: '#fff'
-        }
     },
     socialContainer: {
         ...theme.flex.colBetween,
@@ -106,12 +90,12 @@ const HomeHero = props => {
                     <a href='https://twitter.com/BClatinjazzfest'><Icon color='#e8e8e8' name='twitter' hover/></a>
                 </div>
                 <div className={classes.heroContainer}>
-                    <img className={classes.logo} src="images/bcn.png" alt=""/>
+                    <img className={classes.logo} src="images/logoWhite.png" alt=""/>
                     <div>
                         <h1 className={classes.heroTitle}>bass cleff nights</h1>
                         <LineBreak icon='circle' color='#fff'/>
                         <h4 className={classes.heroSubTitle}>reliving old miami through jazz</h4>
-                        <button className={classes.heroBtn}>Become a sponsor</button>
+                        <Button text='Become a sponsor'/>
                     </div>
                 </div>
             </div>

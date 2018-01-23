@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react'
 import injectSheet from 'react-jss'
 
 import lineupList from "./data";
+import Button from '../../../../../components/ClearButton'
 
 const animation = (name, property, from, to) => {
     return {
@@ -14,6 +15,7 @@ const animation = (name, property, from, to) => {
 
 const fadeIn = animation('fadeIn', 'opacity', 0, 1);
 const fadeOut = animation('fadeOut', 'opacity', 1, 0);
+const zoomIn = animation('zoom', 'transform', 'scale(1)', 'scale(1.5)');
 
 const styles = theme => ({
     listContainer: {
@@ -69,15 +71,17 @@ const styles = theme => ({
     listItemMobile: {
         fontWeight: 300,
         minWidth: 350,
+        maxWidth: 350,
         margin: '20 5px',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         minHeight: '275px',
+        maxHeight: '275px',
         position: 'relative'
     },
     overlayMobile: {
-        ...theme.flex.colCenter,
+        ...theme.flex.colEven,
         height: '100%',
         width: '100%',
         position: 'absolute',
@@ -92,12 +96,12 @@ const styles = theme => ({
             fontFamily: "'Montserrat', sans-serif",
             letterSpacing: 2,
             fontSize: '1.3em',
-            width: '90%',
-            margin: 'auto'
+            width: '90%'
         }
     },
     ...fadeIn,
     ...fadeOut,
+    ...zoomIn,
     '@media (max-width: 942px)': {
         listContainer: {
             display: 'none'
@@ -121,7 +125,6 @@ class LineupList extends Component {
     };
 
     render() {
-        console.log(this.state);
         const {classes} = this.props;
         const {activeIndex, previousActiveIndex} = this.state;
         return (
