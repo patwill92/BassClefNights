@@ -19,8 +19,7 @@ const styles = theme => ({
     },
     logo: {
         maxWidth: 330,
-        height: 'auto',
-        marginTop: 20
+        height: 'auto'
     },
     heroContainer: {
         ...theme.flex.colStart,
@@ -38,7 +37,8 @@ const styles = theme => ({
         letterSpacing: 3,
         fontSize: '5.0em',
         fontWeight: 100,
-        marginBottom: '20px'
+        marginBottom: '20px',
+        marginTop: 0
     },
     heroSubTitle: {
         fontFamily: theme.font.secondary,
@@ -76,7 +76,11 @@ const styles = theme => ({
         heroTitle: {
             fontSize: '2.0rem',
             marginBottom: '10px'
-        }
+        },
+        logo: {
+            maxWidth: 230,
+            marginBottom: '10px'
+        },
     }
 });
 
