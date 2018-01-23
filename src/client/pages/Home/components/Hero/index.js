@@ -94,7 +94,7 @@ const HomeHero = props => {
                     <a href='https://twitter.com/BClatinjazzfest'><Icon color='#e8e8e8' name='twitter' hover/></a>
                 </div>
                 <div className={classes.heroContainer}>
-                    <img className={classes.logo} src="images/logoWhite.png" alt=""/>
+                    <img className={classes.logo} src="images/test2.png" alt=""/>
                     <div>
                         <h1 className={classes.heroTitle}>bass cleff nights</h1>
                         <LineBreak icon='circle' color='#fff'/>
