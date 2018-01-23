@@ -6,7 +6,7 @@ import LineBreak from '../../../../components/LineBreak'
 
 const root = {
     overflow: 'hidden',
-    padding: '20 10',
+    padding: '30 10',
     textAlign: 'center',
     margin: '0 auto',
     maxWidth: 1350
@@ -19,12 +19,12 @@ const styles = theme => ({
     mobileRoot: {
         ...root,
         display: 'none',
-        padding: '20 0',
+        padding: '30 0',
     },
     title: {
         color: '#333',
         textAlign: 'center',
-        fontFamily: "'Cormorant Garamond', serif",
+        fontFamily: theme.font.primary,
         textTransform: 'uppercase',
         letterSpacing: 3,
         fontSize: '3.0em',

@@ -1,6 +1,66 @@
-export default  {
+export default {
+    font: {
+        primary: "'Cormorant Garamond', serif",
+        secondary: "'Montserrat', sans-serif"
+    },
     palette: {
         primary: '#2c1cff'
+    },
+    flex: {
+        colCenter: {
+            display: 'flex',
+            justifyContent: 'center',
+            flexDirection: 'column'
+        },
+        colBetween: {
+            display: 'flex',
+            justifyContent: 'space-between',
+            flexDirection: 'column'
+        },
+        colAround: {
+            display: 'flex',
+            justifyContent: 'space-around',
+            flexDirection: 'column'
+        },
+        colEven: {
+            display: 'flex',
+            justifyContent: 'space-evenly',
+            flexDirection: 'column'
+        },
+        colStart: {
+            display: 'flex',
+            justifyContent: 'flex-start',
+            flexDirection: 'column'
+        },
+        colEnd: {
+            display: 'flex',
+            justifyContent: 'flex-end',
+            flexDirection: 'column'
+        },
+        rowCenter: {
+            display: 'flex',
+            justifyContent: 'center'
+        },
+        rowBetween: {
+            display: 'flex',
+            justifyContent: 'space-between'
+        },
+        rowAround: {
+            display: 'flex',
+            justifyContent: 'space-around'
+        },
+        rowEven: {
+            display: 'flex',
+            justifyContent: 'space-evenly'
+        },
+        rowStart: {
+            display: 'flex',
+            justifyContent: 'flex-start'
+        },
+        rowEnd: {
+            display: 'flex',
+            justifyContent: 'flex-end'
+        }
     },
     shadows: [
         "none",

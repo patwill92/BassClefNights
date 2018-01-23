@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React, {Component, Fragment} from 'react'
 import injectSheet from 'react-jss'
 
 import lineupList from "./data";
@@ -17,11 +17,11 @@ const styles = theme => ({
         padding: 0
     },
     listMobile: {
+        ...theme.flex.rowEven,
         listStyleType: 'none',
-        display: 'flex',
         flexWrap: 'wrap',
-        justifyContent: 'space-around',
-        padding: 0
+        padding: 0,
+        margin: 0
     },
     listItem: {
         padding: '20',
@@ -29,34 +29,37 @@ const styles = theme => ({
         left: 21,
         textAlign: 'right',
         cursor: 'pointer',
-        fontFamily: "'Montserrat', sans-serif",
+        fontFamily: theme.font.secondary,
         letterSpacing: 2,
         fontSize: '1.3em',
         fontWeight: 300,
         borderRight: '1px solid rgba(0,0,0,0.2)',
         '&:hover': {
-            borderRight: '1px solid #000'
+            borderRight: '1px solid #000 !important'
         }
+    },
+    listItemImage: {
+        flex: 1,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        position: 'relative'
     },
     listItemMobile: {
         fontWeight: 300,
-        // maxWidth: 375,
         minWidth: 350,
         margin: '20 5px',
-        backgroundImage: 'url("images/home.jpg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
         minHeight: '275px',
         position: 'relative'
     },
     overlayMobile: {
+        ...theme.flex.colCenter,
         height: '100%',
         width: '100%',
         position: 'absolute',
         top: 0,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'rgba(0,0,0,0.3)',
         zIndex: 3,
@@ -87,39 +90,51 @@ const styles = theme => ({
     }
 });
 
-const LineupList = props => {
-    const {classes} = props;
-    return (
-        <Fragment>
-            <div className={classes.listContainer}>
-                <ul className={classes.list} style={{paddingRight: 20, marginRight: 20}}>
-                    {lineupList.map(artist => {
-                        return (
-                            <li className={classes.listItem} key={artist}>{artist}</li>
-                        )
-                    })}
-                </ul>
-                <div style={{
-                    flex: 1, backgroundImage: 'url("images/home.jpg")', backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                }}>
+class LineupList extends Component {
+    state = {
+        activeIndex: 0,
+        activeImage: 'images/LaryBarilleau.jpg'
+    };
+
+    render() {
+        const {classes} = this.props;
+        const {activeIndex} = this.state;
+        return (
+            <Fragment>
+                <div className={classes.listContainer}>
+                    <ul className={classes.list} style={{paddingRight: 20, marginRight: 20}}>
+                        {lineupList.map((artist, i) => {
+                            let active = activeIndex === i;
+                            return (
+                                <li style={{borderRight: active ? '1px solid #000' : '1px solid rgba(0,0,0,0.2)'}}
+                                    onClick={() => this.setState({activeIndex: i, activeImage: artist.image})}
+                                    className={classes.listItem}
+                                    key={artist.name}>{artist.name}</li>
+                            )
+                        })}
+                    </ul>
+                    <div className={classes.listItemImage} style={{backgroundImage: `url("${this.state.activeImage}")`,}}>
+                        <div className={classes.overlayMobile}/>
+                    </div>
                 </div>
-            </div>
-            <div className={classes.listContainerMobile}>
-                <ul className={classes.listMobile}>
-                    {lineupList.map(artist => {
-                        return (
-                            <li className={classes.listItemMobile} key={artist}>
-                                <div className={classes.overlayMobile}>
-                                    <div>{artist}</div>
-                                </div>
-                            </li>
-                        )
-                    })}
-                </ul>
-            </div>
-        </Fragment>
-    )
-};
+                <div className={classes.listContainerMobile}>
+                    <ul className={classes.listMobile}>
+                        {lineupList.map(artist => {
+                            return (
+                                <li style={{backgroundImage: `url("${artist.image}")`,}}
+                                    className={classes.listItemMobile}
+                                    key={artist.name}>
+                                    <div className={classes.overlayMobile}>
+                                        <div>{artist.name}</div>
+                                    </div>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </div>
+            </Fragment>
+        )
+    };
+}
 
 export default injectSheet(styles)(LineupList)

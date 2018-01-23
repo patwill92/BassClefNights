@@ -1,7 +1,7 @@
 import React from 'react'
 import injectSheet from 'react-jss'
 
-import Panel1 from './components/Lineup'
+import Lineup from './components/Lineup'
 import Hero from './components/Hero'
 
 const styles = theme => ({
@@ -31,7 +31,7 @@ const Home = props => {
     return (
         <div className={classes.root}>
             <Hero/>
-            <Panel1/>
+            <Lineup/>
         </div>
     )
 };

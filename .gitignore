@@ -4,6 +4,7 @@
 .LSOverride
 node_modules
 .idea
+test.html
 /build
 /public/bundle.js
 /public/bundle.js.map

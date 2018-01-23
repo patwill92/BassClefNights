@@ -22,9 +22,7 @@ const styles = theme => ({
         marginTop: 20
     },
     heroContainer: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
+        ...theme.flex.colStart,
         alignItems: 'center',
         height: 'inherit',
         padding: '90 10',
@@ -34,7 +32,7 @@ const styles = theme => ({
         }
     },
     heroTitle: {
-        fontFamily: "'Cormorant Garamond', serif",
+        fontFamily: theme.font.primary,
         textTransform: 'uppercase',
         letterSpacing: 3,
         fontSize: '5.0em',
@@ -42,7 +40,7 @@ const styles = theme => ({
         marginBottom: '20px'
     },
     heroSubTitle: {
-        fontFamily: "'Montserrat', sans-serif",
+        fontFamily: theme.font.secondary,
         letterSpacing: 2,
         fontSize: '1.5em',
         fontWeight: 300,
@@ -52,7 +50,7 @@ const styles = theme => ({
         backgroundColor: 'rgba(0,0,0,0)',
         border: '1px solid #fff',
         color: '#fff',
-        fontFamily: "'Montserrat', sans-serif",
+        fontFamily: theme.font.secondary,
         letterSpacing: 1,
         fontWeight: 300,
         fontSize: '1.0rem',
@@ -66,10 +64,8 @@ const styles = theme => ({
         }
     },
     socialContainer: {
-        display: 'flex',
-        flexDirection: 'column',
+        ...theme.flex.colBetween,
         position: 'absolute',
-        justifyContent: 'space-between',
         top: 30,
         right: 10,
         height: 70,
@@ -107,7 +103,7 @@ const HomeHero = props => {
             <div className={classes.overlayImg}>
                 <div className={classes.socialContainer}>
                     <a href='https://www.facebook.com'><Icon color='#e8e8e8' name='facebookF' hover/></a>
-                    <a href='https://www.twitter.com'><Icon color='#e8e8e8' name='twitter' hover/></a>
+                    <a href='https://twitter.com/BClatinjazzfest'><Icon color='#e8e8e8' name='twitter' hover/></a>
                 </div>
                 <div className={classes.heroContainer}>
                     <img className={classes.logo} src="images/bcn.png" alt=""/>
