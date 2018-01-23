@@ -20,7 +20,8 @@ const styles = theme => ({
             boxSizing: 'border-box'
         },
         body: {
-            ...root
+            ...root,
+            backgroundColor: '#f5f5f5'
         },
         html: {
             ...root
@@ -39,7 +40,7 @@ class App extends Component {
             <Fragment>
                 {!menu && <ToggleNav color='#e8e8e8' text='menu' onClick={() => this.props.toggleNav(!menu)}/>}
                 {renderRoutes(route.routes)}
-                <Menu />
+                <Menu/>
             </Fragment>
         )
     }

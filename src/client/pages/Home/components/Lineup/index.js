@@ -1,15 +1,25 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import injectSheet from 'react-jss'
 
 import LineupList from './LineupList'
 import LineBreak from '../../../../components/LineBreak'
 
+const root = {
+    overflow: 'hidden',
+    padding: '20 10',
+    textAlign: 'center',
+    margin: '0 auto',
+    maxWidth: 1350
+};
+
 const styles = theme => ({
     root: {
-        overflow: 'hidden',
-        backgroundColor: '#f5f5f5',
-        padding: '20 10',
-        textAlign: 'center'
+        ...root
+    },
+    mobileRoot: {
+        ...root,
+        display: 'none',
+        padding: '20 0',
     },
     title: {
         color: '#333',
@@ -33,6 +43,9 @@ const styles = theme => ({
     '@media (max-width: 942px)': {
         root: {
             display: 'none'
+        },
+        mobileRoot: {
+            display: 'block'
         }
     }
 });
@@ -40,13 +53,22 @@ const styles = theme => ({
 const Lineup = props => {
     const {classes} = props;
     return (
-        <div className={classes.root}>
-            <div className={classes.titleContainer}>
-                <h1 className={classes.title}>The Lineup</h1>
-                <LineBreak icon='squareRegular' color='#333' />
+        <Fragment>
+            <div className={classes.root}>
+                <div className={classes.titleContainer}>
+                    <h1 className={classes.title}>The Lineup</h1>
+                    <LineBreak icon='squareRegular' color='#333'/>
+                </div>
+                <LineupList/>
             </div>
-            <LineupList/>
-        </div>
+            <div className={classes.mobileRoot}>
+                <div className={classes.titleContainer}>
+                    <h1 className={classes.title}>The Lineup</h1>
+                    <LineBreak icon='squareRegular' color='#333'/>
+                </div>
+                <LineupList/>
+            </div>
+        </Fragment>
     )
 };
 
