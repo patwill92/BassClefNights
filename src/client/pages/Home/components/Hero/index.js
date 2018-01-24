@@ -18,14 +18,14 @@ const styles = theme => ({
         position: 'relative'
     },
     logo: {
-        maxWidth: 330,
+        width: 330,
         height: 'auto'
     },
     heroContainer: {
-        ...theme.flex.colStart,
+        ...theme.flex.colCenter,
         alignItems: 'center',
         height: 'inherit',
-        padding: '90 10',
+        padding: '0 10',
         '& *': {
             color: '#fff',
             textAlign: 'center'
@@ -80,6 +80,18 @@ const styles = theme => ({
         logo: {
             maxWidth: 230,
             marginBottom: '10px'
+        },
+    },
+    '@media (max-height: 640px)': {
+        logo: {
+            width: 230,
+            height: 'auto'
+        },
+    },
+    '@media (max-height: 515px)': {
+        logo: {
+            width: 170,
+            height: 'auto'
         },
     }
 });
