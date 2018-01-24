@@ -112,17 +112,24 @@ const styles = theme => ({
     ...fadeIn,
     ...fadeOut,
     '@media (max-width: 942px)': {
+        venueInfo: {
+            paddingTop: '0px',
+        },
         venueImages: {
             display: 'none',
         },
         venueImages2: {
             display: 'block',
-            minHeight: 330
+            minHeight: 330,
+            marginTop: 20
+        },
+        root: {
+            paddingTop: 0
         }
     },
     '@media (max-width: 500px)': {
         venueInfo: {
-            padding: '30px 0px',
+            padding: '0px'
         }
     }
 });
