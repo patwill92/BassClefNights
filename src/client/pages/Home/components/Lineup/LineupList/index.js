@@ -71,17 +71,15 @@ const styles = theme => ({
     listItemMobile: {
         fontWeight: 300,
         minWidth: 350,
-        maxWidth: 350,
         margin: '20 5px',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         minHeight: '275px',
-        maxHeight: '275px',
         position: 'relative'
     },
     overlayMobile: {
-        ...theme.flex.colEven,
+        ...theme.flex.colCenter,
         height: '100%',
         width: '100%',
         position: 'absolute',
@@ -113,7 +111,7 @@ const styles = theme => ({
     '@media (max-width: 500px)': {
         listItemMobile: {
             margin: '20px 0',
-            width: '100%'
+            minWidth: '100%'
         }
     }
 });

@@ -63,6 +63,13 @@ const styles = theme => ({
         marginLeft: 'auto',
         marginRight: 0
     },
+    venueImages2: {
+        display: 'none',
+        position: 'relative',
+        width: '100%',
+        marginLeft: 'auto',
+        marginRight: 0
+    },
     overlayMobile: {
         ...theme.flex.colEven,
         height: '100%',
@@ -103,7 +110,21 @@ const styles = theme => ({
         }
     },
     ...fadeIn,
-    ...fadeOut
+    ...fadeOut,
+    '@media (max-width: 942px)': {
+        venueImages: {
+            display: 'none',
+        },
+        venueImages2: {
+            display: 'block',
+            minHeight: 330
+        }
+    },
+    '@media (max-width: 500px)': {
+        venueInfo: {
+            padding: '30px 0px',
+        }
+    }
 });
 
 let start;
@@ -160,6 +181,46 @@ class Venue extends Component {
             <div className={classes.root}>
                 <div className={classes.venueInfo}>
                     <div style={{flex: 0}}><TitleContainer text='The venue' color='#333'/></div>
+                    <div className={classes.venueImages2}>
+                        {list.map((img, i) => {
+                            let active = activeIndex === i;
+                            let previousActive = previousActiveIndex === JSON.stringify(i);
+                            let firstTime = !!previousActiveIndex;
+                            let animation = !firstTime ? activeIndex === i && {opacity: 1}
+                                : active ? {opacity: 1, animation: 'fadeIn 2s linear'}
+                                    : previousActive ? {opacity: 0, animation: 'fadeOut 2s linear'} : '';
+                            return (
+                                <div style={{
+                                    backgroundImage: `url("images/${img}.jpg")`,
+                                    ...animation,
+                                    cursor: 'pointer'
+                                }}
+                                     className={classes.listItemImageBackground}
+                                     key={img}>
+                                </div>
+                            )
+                        })
+                        }
+                        <div className={classes.overlayMobile}>
+                            <div className={classes.arrows}>
+                                <div onClick={this.prevImg} style={{flex: 0}}><Icon name='chevronLeft' color='rgba(255,255,255,0.7)' style={{cursor: 'pointer'}} /></div>
+                                <div onClick={this.nextImg} style={{flex: 0}}><Icon name='chevronRight' color='rgba(255,255,255,0.7)'
+                                                                                    style={{right: 11, cursor: 'pointer'}}/></div>
+                            </div>
+                            <div className={classes.circles}>
+                                <div>
+                                    {list.map((img, i) => {
+                                        let active = activeIndex === i;
+                                        return (
+                                            <div key={img+i}>
+                                                <Icon name={active ? 'circleSolid' : 'circle'} color='rgba(255,255,255,0.7)' style={{margin: '0 20px'}}/>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <p className={classes.textInfo}>Allow yourself to experience an evening in Old Miami at Vizcaya
                         Museum and Gardens in beautiful
                         Miami, Florida. Bass Clef Nights will provide you with an evening
