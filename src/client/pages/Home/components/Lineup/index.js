@@ -6,10 +6,10 @@ import LineBreak from '../../../../components/LineBreak'
 
 const root = {
     overflow: 'hidden',
-    padding: '100 10',
+    padding: '30 0',
     textAlign: 'center',
-    margin: '0 auto',
-    maxWidth: 1350
+    // margin: '0 auto',
+    // maxWidth: 1350
 };
 
 const styles = theme => ({
@@ -34,7 +34,7 @@ const styles = theme => ({
     },
     titleContainer: {
         '& div': {
-            fontSize: '8px'
+            fontSize: '18px'
         },
         textAlign: 'center',
         display: 'inline-block',
@@ -57,14 +57,14 @@ const Lineup = props => {
             <div className={classes.root}>
                 <div className={classes.titleContainer}>
                     <h1 className={classes.title}>The Lineup</h1>
-                    <LineBreak icon='squareRegular' color='#333'/>
+                    <LineBreak icon='musicSax' color='#333' rotateY={180}/>
                 </div>
                 <LineupList/>
             </div>
             <div className={classes.mobileRoot}>
                 <div className={classes.titleContainer}>
                     <h1 className={classes.title}>The Lineup</h1>
-                    <LineBreak icon='squareRegular' color='#333'/>
+                    <LineBreak icon='musicSax' color='#333' rotateY={180}/>
                 </div>
                 <LineupList/>
             </div>

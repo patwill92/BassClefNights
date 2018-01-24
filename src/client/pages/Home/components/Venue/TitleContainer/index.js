@@ -6,7 +6,7 @@ import LineBreak from '../../../../../components/LineBreak'
 const styles = theme => ({
     root: {
         '& div': {
-            fontSize: '8px'
+            fontSize: '18px'
         },
         textAlign: 'center',
         display: 'inline-block',
@@ -29,7 +29,7 @@ const TitleContainer = props => {
     return (
         <div className={classes.root}>
             <h1 className={classes.title} style={{color}}>{text}</h1>
-            <LineBreak icon='squareRegular' color={color}/>
+            <LineBreak icon='musicSax' color='#333' rotateY={180}/>
         </div>
     )
 };

@@ -2,7 +2,7 @@
   "name": "bassclefnights",
   "version": "1.0.0",
   "description": "Bass Clef Nights website",
-  "main": "server.js",
+  "main": "build/bundle.js",
   "engines": {
     "node": "9.2.0"
   },

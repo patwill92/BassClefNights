@@ -25,12 +25,16 @@ const styles = theme => ({
 });
 
 const LineBreak = props => {
-    const {classes, icon, color} = props;
+    const {classes, icon, color, rotateZ, rotateY, rotateX} = props;
     return (
         <div className={classes.lineContainer}>
             <div className={classes.line} style={{backgroundColor: color}}/>
             <div className={classes.lineCircle}>
-                <Icon name={icon} color={color} style={{bottom:2}}/>
+                <Icon name={icon} color={color} style={{
+                    bottom: 2,
+                    right: rotateZ && -3,
+                    transform: `rotate3d(${rotateX ? 1 : 0},${rotateY ? 1 : 0},${rotateZ ? 1 : 0}, ${rotateX || rotateY || rotateZ}deg)`
+                }}/>
             </div>
             <div className={classes.line} style={{backgroundColor: color}}/>
         </div>

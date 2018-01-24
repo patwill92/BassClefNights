@@ -97,7 +97,7 @@ const HomeHero = props => {
                     <img className={classes.logo} src="images/logoWhite.png" alt=""/>
                     <div>
                         <h1 className={classes.heroTitle}>bass cleff nights</h1>
-                        <LineBreak icon='circle' color='#fff'/>
+                        <LineBreak icon='musicNote' color='#fff' rotateZ={10}/>
                         <h4 className={classes.heroSubTitle}>reliving old miami through jazz</h4>
                         <Button text='Become a sponsor'/>
                     </div>

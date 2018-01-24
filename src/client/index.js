@@ -6,7 +6,7 @@ import {renderRoutes} from 'react-router-config'
 import {ThemeProvider} from 'react-jss'
 
 import {clientStore as createClientStore} from '../helpers/store'
-import routes from './routes'
+import routes from './Routes'
 import theme from '../styles/theme'
 
 const store = createClientStore(window.INITIAL_STATE);

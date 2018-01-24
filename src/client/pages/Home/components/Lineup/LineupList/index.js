@@ -19,16 +19,30 @@ const zoomIn = animation('zoom', 'transform', 'scale(1)', 'scale(1.5)');
 
 const styles = theme => ({
     listContainer: {
-        display: 'flex'
+        display: 'flex',
+        justifyContent: 'flex-end',
+        position: 'relative',
+        alignItems: 'center',
+        maxWidth: '90%',
+        margin: 'auto'
     },
     listContainerMobile: {
         display: 'none'
     },
     list: {
         listStyleType: 'none',
-        flex: 1,
         margin: 0,
-        padding: 0
+        padding: 0,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        position: 'absolute',
+        right: '50%',
+        width: '50%',
+        height: 450,
+        backgroundColor: '#fff',
+        zIndex: 4,
+        boxShadow: theme.shadows[10]
     },
     listMobile: {
         ...theme.flex.rowEven,
@@ -39,6 +53,8 @@ const styles = theme => ({
     },
     listItem: {
         padding: '20',
+        paddingRight: 30,
+        paddingLeft: 0,
         position: 'relative',
         left: 21,
         textAlign: 'right',
@@ -53,8 +69,10 @@ const styles = theme => ({
         }
     },
     listItemImage: {
-        flex: 1,
         position: 'relative',
+        minHeight: 500,
+        width: '60%',
+        minWidth: '600px'
     },
     listItemImageBackground: {
         backgroundSize: 'cover',
@@ -128,11 +146,11 @@ class LineupList extends Component {
         return (
             <Fragment>
                 <div className={classes.listContainer}>
-                    <ul className={classes.list} style={{paddingRight: 20, marginRight: 20}}>
+                    <ul className={classes.list} style={{paddingRight: 40}}>
                         {lineupList.map((artist, i) => {
                             let active = activeIndex === i;
                             return (
-                                <li style={{borderRight: active ? '1px solid #000' : '1px solid rgba(0,0,0,0.2)'}}
+                                <li style={{borderRight: active ? '1px solid #000' : '1px solid rgba(0,0,0,0.2)', marginRight: 20}}
                                     onClick={() => this.setState({previousActiveIndex: JSON.stringify(activeIndex), activeIndex: i})}
                                     className={classes.listItem}
                                     key={artist.name}>{artist.name}</li>
