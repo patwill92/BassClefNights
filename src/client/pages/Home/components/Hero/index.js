@@ -118,7 +118,7 @@ const styles = theme => ({
             height: 'auto'
         },
     },
-    '@media (max-height: 640px)': {
+    '@media (max-height: 620px)': {
         logo: {
             width: 120,
             height: 'auto'
@@ -161,7 +161,7 @@ const HomeHero = props => {
                 <div className={classes.heroContainer}>
                     <img className={classes.logo} src="images/logoWhite.png" alt=""/>
                     <div className={classes.innerContainer}>
-                        <h1 className={classes.heroTitle}>bass cleff nights</h1>
+                        <h1 className={classes.heroTitle}>bass clef nights</h1>
                         <LineBreak icon='musicNote' color='#fff' rotateZ={4}/>
                         <h4 className={classes.heroSubTitle}>reliving old miami through jazz</h4>
                         <Button text='Become a sponsor'/>
