@@ -2,7 +2,6 @@ import React, {Component, Fragment} from 'react'
 import injectSheet from 'react-jss'
 
 import lineupList from "./data";
-import Button from '../../../../../components/ClearButton'
 
 const animation = (name, property, from, to) => {
     return {
@@ -141,6 +140,23 @@ class LineupList extends Component {
         previousActiveIndex: ''
     };
 
+    startShow = setInterval(() => {
+        let {activeIndex} = this.state;
+        this.setState({
+            previousActiveIndex: JSON.stringify(activeIndex),
+            activeIndex: activeIndex >= lineupList.length - 1 ? 0 : activeIndex + 1
+        })
+    }, 4000);
+
+    nextArtist = (i) => {
+        clearInterval(this.startShow);
+        let {activeIndex} = this.state;
+        this.setState({
+            previousActiveIndex: JSON.stringify(activeIndex),
+            activeIndex: i
+        })
+    };
+
     render() {
         const {classes} = this.props;
         const {activeIndex, previousActiveIndex} = this.state;
@@ -151,12 +167,21 @@ class LineupList extends Component {
                         {lineupList.map((artist, i) => {
                             let active = activeIndex === i;
                             return (
-                                <li style={{borderRight: active ? '1px solid #000' : '1px solid rgba(0,0,0,0.2)', marginRight: 20}}
-                                    onClick={() => this.setState({previousActiveIndex: JSON.stringify(activeIndex), activeIndex: i})}
+                                <li style={{
+                                    borderRight: active ? '1px solid #000' : '1px solid rgba(0,0,0,0.2)',
+                                    marginRight: 20
+                                }}
+                                    onClick={() => this.nextArtist(i)}
                                     className={classes.listItem}
                                     key={artist.name}>
                                     {active && <img src="images/logoFilled.png" alt=""
-                                                    style={{maxWidth: 20, height: 20, bottom: -2, position: 'relative', marginRight: 10}}/>}
+                                                    style={{
+                                                        maxWidth: 20,
+                                                        height: 20,
+                                                        bottom: -2,
+                                                        position: 'relative',
+                                                        marginRight: 10
+                                                    }}/>}
                                     {artist.name}
                                 </li>
                             )
@@ -168,8 +193,8 @@ class LineupList extends Component {
                             let previousActive = previousActiveIndex === JSON.stringify(i);
                             let firstTime = !!previousActiveIndex;
                             let animation = !firstTime ? activeIndex === i && {opacity: 1}
-                            : active ? {opacity: 1, animation: 'fadeIn 1s linear'}
-                            : previousActive ? {opacity: 0, animation: 'fadeOut 1s linear'} : '';
+                                : active ? {opacity: 1, animation: 'fadeIn 1s linear'}
+                                    : previousActive ? {opacity: 0, animation: 'fadeOut 1s linear'} : '';
                             return (
                                 <div style={{
                                     backgroundImage: `url("${artist.image}")`,
@@ -189,7 +214,10 @@ class LineupList extends Component {
                     <ul className={classes.listMobile}>
                         {lineupList.map((artist, i) => {
                             return (
-                                <li style={{backgroundImage: `url("${artist.image}")`, marginBottom: i === lineupList.length - 1 && 0}}
+                                <li style={{
+                                    backgroundImage: `url("${artist.image}")`,
+                                    marginBottom: i === lineupList.length - 1 && 0
+                                }}
                                     className={classes.listItemMobile}
                                     key={artist.name}>
                                     <div className={classes.overlayMobile}>

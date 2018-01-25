@@ -78,7 +78,6 @@ const styles = theme => ({
     }
 });
 
-let start;
 @injectSheet(styles)
 export default class VenueSlides extends Component {
     state = {
