@@ -5,12 +5,26 @@ import Icon from '../../../../components/Icon'
 import LineBreak from '../../../../components/LineBreak'
 import Button from '../../../../components/ClearButton'
 
+const animation = (name) => {
+    return {
+        [`@keyframes ${name}`]: {
+            '0%, 20%, 50%, 80%, 100%': `transform: translateY(0)`,
+            '40%': `transform: translateY(-40px)`,
+            '60%': `transform: translateY(-20px)`
+        }
+    }
+};
+
+const bounce = animation('bounce');
+
 const styles = theme => ({
     root: {
         height: '100%',
         backgroundImage: 'url("images/home.jpg")',
         backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        backgroundPosition: 'center',
+        position: 'relative',
+        textAlign: 'center'
     },
     overlayImg: {
         height: 'inherit',
@@ -57,6 +71,20 @@ const styles = theme => ({
         fontSize: 20,
         textAlign: 'center'
     },
+    innerContainer: {
+        '& div': {
+            fontSize: 25
+        }
+    },
+    bounce: {
+        animation: 'bounce 2s infinite',
+        fontSize: 20,
+        position: 'absolute',
+        bottom: 13,
+        textAlign: 'center',
+        display: 'inline-block'
+    },
+    ...bounce,
     '@media (min-width: 500px) and (max-width: 810px)': {
         heroSubTitle: {
             fontSize: '1.8rem'
@@ -107,13 +135,16 @@ const HomeHero = props => {
                 </div>
                 <div className={classes.heroContainer}>
                     <img className={classes.logo} src="images/logoWhite.png" alt=""/>
-                    <div>
+                    <div className={classes.innerContainer}>
                         <h1 className={classes.heroTitle}>bass cleff nights</h1>
-                        <LineBreak icon='musicNote' color='#fff' rotateZ={10}/>
+                        <LineBreak icon='musicNote' color='#fff' rotateZ={4}/>
                         <h4 className={classes.heroSubTitle}>reliving old miami through jazz</h4>
                         <Button text='Become a sponsor'/>
                     </div>
                 </div>
+            </div>
+            <div className={classes.bounce}>
+                <Icon name='chevronDoubleDown' color='#fff' style={{left: -12}}/>
             </div>
         </div>
     )
