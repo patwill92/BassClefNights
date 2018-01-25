@@ -1,5 +1,5 @@
 import React from 'react';
-import {renderToNodeStream} from 'react-dom/server'
+import {renderToString} from 'react-dom/server'
 import {StaticRouter} from 'react-router-dom'
 import {Provider} from 'react-redux'
 import {renderRoutes} from 'react-router-config'
@@ -11,7 +11,7 @@ import theme from '../styles/theme'
 export default (req, store, context, routes) => {
     const sheets = new SheetsRegistry();
     let initStore = store.getState();
-    const content = renderToNodeStream(
+    const content = renderToString(
         <Provider store={store}>
             <StaticRouter location={req.url} context={context}>
                 <JssProvider registry={sheets}>
