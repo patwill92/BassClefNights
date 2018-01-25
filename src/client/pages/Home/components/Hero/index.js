@@ -118,7 +118,7 @@ const styles = theme => ({
             height: 'auto'
         },
     },
-    '@media (max-height: 620px)': {
+    '@media (max-height: 550px)': {
         logo: {
             width: 120,
             height: 'auto'
