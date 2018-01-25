@@ -23,7 +23,7 @@ const styles = theme => ({
         justifyContent: 'flex-end',
         position: 'relative',
         alignItems: 'center',
-        maxWidth: '90%',
+        maxWidth: '100%',
         margin: 'auto'
     },
     listContainerMobile: {

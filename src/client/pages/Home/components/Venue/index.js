@@ -13,11 +13,11 @@ const styles = theme => ({
         '& #venueSlides': {
             flex: 1,
             height: 500,
-            left: 20,
+            left: 0,
             position: 'relative'
         },
-        width: '100%',
-        padding: '60px 15px',
+        maxWidth: '100%',
+        padding: '60px 5%',
         backgroundColor: '#fff',
         boxShadow: theme.shadows[3]
     },

@@ -34,7 +34,7 @@ const styles = theme => ({
         order: props => props.type === 'desktop' && 1,
         maxWidth: props => props.type === 'desktop' && '90%',
         width: props => props.type === 'mobile' && '100%',
-        marginLeft: 'auto',
+        marginLeft: 0,
         marginRight: 0,
         boxShadow: theme.shadows[10]
     },
@@ -72,7 +72,8 @@ const styles = theme => ({
         venueImages: {
             display: props => props.type === 'mobile' ? 'block' : 'none',
             minHeight: 330,
-            marginTop: 20
+            marginTop: 20,
+            boxShadow: theme.shadows[3]
         }
     }
 });

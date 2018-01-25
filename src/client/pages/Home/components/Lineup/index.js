@@ -7,7 +7,9 @@ import LineBreak from '../../../../components/LineBreak'
 const root = {
     overflow: 'hidden',
     padding: '30 0',
-    textAlign: 'center'
+    textAlign: 'center',
+    maxWidth: '90%',
+    margin: 'auto'
 };
 
 const styles = theme => ({
