@@ -61,6 +61,7 @@ const styles = theme => ({
             '& #outer': {
                 display: 'none'
             },
+            maxWidth: '100%'
         },
         titleContainer: {
             margin: 0
