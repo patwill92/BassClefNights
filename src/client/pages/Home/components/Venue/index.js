@@ -8,22 +8,26 @@ import VenueSlides from './VenueSlides'
 const styles = theme => ({
     root: {
         ...theme.flex.rowEven,
-        width: '100%',
         textAlign: 'center',
-        '& $venueInfo, & #venueSlides': {
-            flex: 1
+        alignItems: 'center',
+        '& #venueSlides': {
+            flex: 1,
+            height: 500,
+            left: 20,
+            position: 'relative'
         },
-        padding: '50 0',
-        minHeight: '600px',
-        backgroundColor: '#fff'
+        width: '100%',
+        padding: '60px 15px',
+        backgroundColor: '#fff',
+        boxShadow: theme.shadows[3]
     },
     venueInfo: {
-        padding: '30px 10px',
-        height: 'inherit',
         order: 2,
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        flex: 1,
+        marginRight: 0
     },
     textInfo: {
         fontFamily: theme.font.secondary,
@@ -37,16 +41,28 @@ const styles = theme => ({
         textDecoration: 'none'
     },
     '@media (max-width: 942px)': {
-        venueInfo: {
-            paddingTop: '0px',
-        },
         root: {
-            paddingTop: 0
+            '& #venueSlides': {
+                left: 0,
+                position: 'relative',
+                top: -20
+            },
+            padding: '30px 15px',
         }
     },
     '@media (max-width: 500px)': {
         venueInfo: {
             padding: '0px'
+        },
+        root: {
+            padding: '0 0',
+            '& #venueSlides': {
+                top: -10,
+                height: 350
+            }
+        },
+        venueInfoInner: {
+            paddingBottom: 20
         }
     }
 });
@@ -60,8 +76,8 @@ class Venue extends Component {
         return (
             <div className={classes.root}>
                 <div className={classes.venueInfo}>
-                    <div>
-                        <TitleContainer text='The venue' color='#333'/>
+                    <div className={classes.venueInfoInner}>
+                        <TitleContainer text='The venue' color='#222'/>
                         <VenueSlides type='mobile' />
                         <p className={classes.textInfo}>Allow yourself to experience an evening in Old Miami at Vizcaya
                             Museum and Gardens in beautiful
@@ -70,8 +86,9 @@ class Venue extends Component {
                             full bar and bottle service, cigar lounge, and
                             several areas to enjoy the musical history
                             which defines this magical place.</p>
+                        <p><img src="images/logoFilled.png" alt="" style={{maxWidth: 25, height: 'auto'}}/></p>
                         <a href={directions} className={classes.textInfo}
-                           style={{fontSize: '0.9rem', cursor: 'pointer'}}><Icon color='#333' name='mapPin'/> 3251 S Miami
+                           style={{fontSize: '0.9rem', cursor: 'pointer'}}><Icon color='#2962FF' name='mapPin'/> 3251 S Miami
                             Ave, Miami, FL 33129</a>
                     </div>
                 </div>

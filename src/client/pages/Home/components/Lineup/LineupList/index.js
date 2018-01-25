@@ -128,7 +128,8 @@ const styles = theme => ({
     },
     '@media (max-width: 500px)': {
         listItemMobile: {
-            margin: '20px 0',
+            margin: '0',
+            marginBottom: 3,
             minWidth: '100%'
         }
     }
@@ -153,7 +154,11 @@ class LineupList extends Component {
                                 <li style={{borderRight: active ? '1px solid #000' : '1px solid rgba(0,0,0,0.2)', marginRight: 20}}
                                     onClick={() => this.setState({previousActiveIndex: JSON.stringify(activeIndex), activeIndex: i})}
                                     className={classes.listItem}
-                                    key={artist.name}>{artist.name}</li>
+                                    key={artist.name}>
+                                    {active && <img src="images/logoFilled.png" alt=""
+                                                    style={{maxWidth: 20, height: 20, bottom: -2, position: 'relative', marginRight: 10}}/>}
+                                    {artist.name}
+                                </li>
                             )
                         })}
                     </ul>
@@ -182,9 +187,9 @@ class LineupList extends Component {
                 </div>
                 <div className={classes.listContainerMobile}>
                     <ul className={classes.listMobile}>
-                        {lineupList.map(artist => {
+                        {lineupList.map((artist, i) => {
                             return (
-                                <li style={{backgroundImage: `url("${artist.image}")`,}}
+                                <li style={{backgroundImage: `url("${artist.image}")`, marginBottom: i === lineupList.length - 1 && 0}}
                                     className={classes.listItemMobile}
                                     key={artist.name}>
                                     <div className={classes.overlayMobile}>
