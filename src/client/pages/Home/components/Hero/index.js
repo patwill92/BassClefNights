@@ -5,17 +5,18 @@ import Icon from '../../../../components/Icon'
 import LineBreak from '../../../../components/LineBreak'
 import Button from '../../../../components/ClearButton'
 
-const animation = (name) => {
+const animation = (name, one, two) => {
     return {
         [`@keyframes ${name}`]: {
             '0%, 20%, 50%, 80%, 100%': `transform: translateY(0)`,
-            '40%': `transform: translateY(-40px)`,
-            '60%': `transform: translateY(-20px)`
+            '40%': `transform: translateY(-${one}px)`,
+            '60%': `transform: translateY(-${two}px)`
         }
     }
 };
 
-const bounce = animation('bounce');
+const bounce = animation('bounce', 15, 30);
+const bounceLow = animation('bounceLow', 10, 20);
 
 const styles = theme => ({
     root: {
@@ -80,11 +81,12 @@ const styles = theme => ({
         animation: 'bounce 2s infinite',
         fontSize: 20,
         position: 'absolute',
-        bottom: 13,
+        bottom: 6,
         textAlign: 'center',
         display: 'inline-block'
     },
     ...bounce,
+    ...bounceLow,
     '@media (min-width: 500px) and (max-width: 810px)': {
         heroSubTitle: {
             fontSize: '1.8rem'
@@ -106,20 +108,37 @@ const styles = theme => ({
             marginBottom: '10px'
         },
         logo: {
-            maxWidth: 230,
+            maxWidth: 170,
             marginBottom: '10px'
         },
     },
-    '@media (max-height: 640px)': {
+    '@media (max-height: 667px)': {
         logo: {
-            width: 230,
+            width: 120,
             height: 'auto'
         },
-    },
-    '@media (max-height: 515px)': {
-        logo: {
-            width: 170,
-            height: 'auto'
+        heroSubTitle: {
+            fontSize: '1.0rem',
+            margin: '5 0',
+            marginBottom: 15
+        },
+        heroTitle: {
+            fontSize: '2.1rem',
+            marginBottom: 5
+        },
+        heroContainer: {
+            '& button': {
+                fontSize: '0.5rem'
+            },
+            paddingBottom: 20
+        },
+        bounce: {
+            animation: 'bounceLow 2s infinite',
+            fontSize: 15,
+            position: 'absolute',
+            bottom: 3,
+            textAlign: 'center',
+            display: 'inline-block'
         },
     }
 });
