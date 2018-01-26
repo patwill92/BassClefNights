@@ -14,7 +14,10 @@ const styles = theme => ({
             flex: 1
         },
         backgroundColor: 'rgba(0,0,0,0.9)',
-        padding: '30 0'
+        padding: '30 0',
+        boxShadow: theme.shadows[2],
+        position: 'relative',
+        zIndex: 2
     }
 })
 

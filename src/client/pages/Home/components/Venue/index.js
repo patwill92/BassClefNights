@@ -18,8 +18,7 @@ const styles = theme => ({
         },
         maxWidth: '100%',
         padding: '60px 5%',
-        backgroundColor: '#fff',
-        boxShadow: theme.shadows[3]
+        backgroundColor: '#fff'
     },
     venueInfo: {
         order: 2,
