@@ -3,8 +3,8 @@ import injectSheet from 'react-jss'
 import {renderRoutes} from 'react-router-config'
 import {connect} from 'react-redux'
 
-import ToggleNav from './components/ToggleNav'
-import Menu from './components/NavMenu'
+import ToggleNav from './pages/components/ToggleNav'
+import Menu from './pages/components/NavMenu'
 import {toggleNav} from "./actions";
 
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import injectSheet from 'react-jss'
 
-import Icon from '../../../../components/Icon'
-import LineBreak from '../../../../components/LineBreak'
-import Button from '../../../../components/ClearButton'
+import Icon from '../../../components/Icon'
+import LineBreak from '../../../components/LineBreak'
+import Button from '../../../components/ClearButton'
 
 const animation = (name, one, two) => {
     return {

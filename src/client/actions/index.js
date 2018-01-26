@@ -1,3 +1,4 @@
 export {
-    toggleNav
+    toggleNav,
+    startCountDown
 } from './ui-actions'

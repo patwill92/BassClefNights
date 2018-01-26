@@ -1,4 +1,4 @@
-import {TOGGLE_NAV} from "../types";
+import {TOGGLE_NAV, START_COUNTDOWN} from "../types";
 
 export const toggleNav = payload => {
     return {
@@ -6,3 +6,11 @@ export const toggleNav = payload => {
         payload
     }
 };
+
+export const startCountDown = payload => {
+    return {
+        type: START_COUNTDOWN,
+        payload
+    }
+};
+

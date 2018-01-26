@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import injectSheet from 'react-jss';
 
-import TitleContainer from './TitleContainer'
-import Icon from '../../../../components/Icon'
+import TitleContainer from '../../../components/TitleContainer'
+import Icon from '../../../components/Icon'
 import VenueSlides from './VenueSlides'
 
 const styles = theme => ({
@@ -67,8 +67,6 @@ const styles = theme => ({
     }
 });
 
-let start;
-
 class Venue extends Component {
     render() {
         const {classes} = this.props;
@@ -77,7 +75,7 @@ class Venue extends Component {
             <div className={classes.root}>
                 <div className={classes.venueInfo}>
                     <div className={classes.venueInfoInner}>
-                        <TitleContainer text='The venue' color='#222'/>
+                        <TitleContainer text='The venue' color='#222' icon='martini'/>
                         <VenueSlides type='mobile' />
                         <p className={classes.textInfo}>Allow yourself to experience an evening in Old Miami at Vizcaya
                             Museum and Gardens in beautiful

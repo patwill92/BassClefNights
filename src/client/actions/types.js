@@ -1,1 +1,2 @@
 export const TOGGLE_NAV = 'TOGGLE_NAV';
+export const START_COUNTDOWN = 'START_COUNTDOWN';

@@ -2,8 +2,8 @@ import React from 'react'
 import injectSheet from 'react-jss'
 import {connect} from 'react-redux'
 
-import {toggleNav} from "../../actions";
-import ToggleNav from '../ToggleNav'
+import {toggleNav} from "../../../actions/index";
+import ToggleNav from '../ToggleNav/index'
 
 const animation = (name, property, from, to) => {
     return {

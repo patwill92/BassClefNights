@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import injectSheet from 'react-jss'
 
-import LineBreak from '../../../../../components/LineBreak'
+import LineBreak from '../LineBreak/index'
 
 const styles = theme => ({
     root: {
@@ -31,7 +31,7 @@ const styles = theme => ({
         marginBottom: 20
     },
     mobileRoot: {
-      display: 'none'
+        display: 'none'
     },
     '@media (max-width: 500px)': {
         titleContainer: {
@@ -47,14 +47,15 @@ const styles = theme => ({
 });
 
 const TitleContainer = props => {
-    const {classes, text, color} = props;
+    const {classes, text, color, icon, y, x, z} = props;
     return (
         <Fragment>
             <div className={classes.root}>
                 <h1 className={classes.title} style={{color}}>{text}</h1>
-                <LineBreak icon='martini' color='#333'/>
+                <LineBreak icon={icon} color='#222' rotateY={y && y} rotateX={x && x} rotateZ={z && z}/>
             </div>
-            <div className={classes.mobileRoot} style={{margin: '4px 8px 9px 4px', padding: 4, border: '1px solid #222', maxHeight: 100}}>
+            <div className={classes.mobileRoot}
+                 style={{margin: '4px 8px 9px 4px', padding: 4, border: '1px solid #222', maxHeight: 100}}>
                 <div style={{
                     border: '1px solid #222',
                     position: 'relative',
@@ -64,8 +65,8 @@ const TitleContainer = props => {
                     minWidth: 'calc(100% + 9px)'
                 }}>
                     <div className={classes.titleContainer} style={{marginRight: 8}}>
-                        <h1 className={classes.title}>The Venue</h1>
-                        <LineBreak icon='martini' color='#333'/>
+                        <h1 className={classes.title}>{text}</h1>
+                        <LineBreak icon={icon} color='#222' rotateY={y && y} rotateX={x && x} rotateZ={z && z}/>
                     </div>
                 </div>
             </div>

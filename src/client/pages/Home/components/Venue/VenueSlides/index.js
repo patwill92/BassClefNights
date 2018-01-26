@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import injectSheet from 'react-jss';
 
-import Icon from '../../../../../components/Icon'
+import Icon from '../../../../components/Icon'
 
 const animation = (name, property, from, to) => {
     return {
@@ -107,7 +107,6 @@ export default class VenueSlides extends Component {
         const {classes} = this.props;
         const {activeIndex, previousActiveIndex} = this.state;
         let list = ['venue1', 'venue2', 'venue3', 'venue4'];
-        const directions = 'https://www.google.com/maps/dir/\'\'/Vizcaya+Museum+and+Gardens/@25.7443699,-80.280515,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x88d9b65d4fea9813:0xf860ad840edd24e1!2m2!1d-80.2104747!2d25.7443866';
         return (
             <div id='venueSlides' className={classes.venueImages}>
                 {list.map((img, i) => {
