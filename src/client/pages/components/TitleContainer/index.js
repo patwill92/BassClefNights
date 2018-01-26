@@ -34,8 +34,13 @@ const styles = theme => ({
         display: 'none'
     },
     '@media (max-width: 500px)': {
+        '@global': {
+          body: {
+              backgroundImage: theme.backgrounds.pianoPatternTransparent
+          }
+        },
         titleContainer: {
-            margin: 0
+            margin: 0,
         },
         mobileRoot: {
             display: 'block'
