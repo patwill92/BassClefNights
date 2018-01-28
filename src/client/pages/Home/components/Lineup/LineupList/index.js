@@ -228,7 +228,8 @@ class LineupList extends Component {
                         {lineupList.map((artist, i) => {
                             return (
                                 <li style={{
-                                    backgroundImage: `url("${artist.image}")`
+                                    backgroundImage: `url("${artist.image}")`,
+                                    marginBottom: i === lineupList.length - 1 && 0
                                 }}
                                     className={classes.listItemMobile}
                                     key={artist.name}>

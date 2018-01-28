@@ -40,8 +40,8 @@ class Home extends Component {
             <div className={classes.root}>
                 <Hero/>
                 <Lineup/>
-                <Countdown/>
                 <Venue/>
+                <Countdown/>
             </div>
         )
     };
