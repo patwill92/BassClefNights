@@ -20,6 +20,8 @@ const getDate = () => {
     };
 }
 
+console.log(getDate());
+
 export const serverStore = () => createStore(reducers, {ui: {nav: false, countdown: {...getDate()}}});
 
 export const clientStore = (initialState) => process.env.NODE_ENV === 'production' ?

@@ -52,6 +52,7 @@ const sheet = theme => ({
             margin: '5 10'
         },
         circleOverlay: {
+            border: '1px solid rgba(255,255,255,0.4)',
             maxWidth: 97.25,
             minWidth: 97.25,
             height: 97.25,
