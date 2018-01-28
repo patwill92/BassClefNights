@@ -98,6 +98,7 @@ class Countdown extends Component {
                     <svg viewBox="0 0 36 36">
                         <path className={classes.circlePath2}
                               strokeWidth="1"
+                              strokeDasharray={`${this.props.percent}, 100`}
                               d={path}
                               fill="none"
                               stroke="#444"/>
@@ -106,6 +107,7 @@ class Countdown extends Component {
                     <svg viewBox="0 0 36 36">
                         <path className={classes.circlePath}
                               strokeWidth="1"
+                              strokeDasharray={`${this.props.percent}, 100`}
                               d={path}
                               fill="none"
                               stroke="#444"/>
