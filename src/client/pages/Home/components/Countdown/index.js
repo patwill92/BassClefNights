@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import injectSheet from 'react-jss'
-import moment from 'moment'
+import moment from 'moment-timezone'
 
 import {startCountDown} from "../../../../actions";
 import Circle from './Circle'
@@ -89,8 +89,8 @@ export default class extends Component {
     };
 
     componentDidMount = () => {
-        let eventDate = moment(this.state.date);
-        let currentTime = moment();
+        let eventDate = moment(this.state.date).tz("America/New_York");
+        let currentTime = moment.tz("America/New_York");
         let duration = moment.duration((eventDate - currentTime));
         this.startTimer(duration);
         let interval = 1000;

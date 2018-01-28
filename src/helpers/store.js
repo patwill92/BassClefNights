@@ -2,11 +2,11 @@ import {createStore, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 import reducers from '../client/reducers'
-import moment from "moment";
+import moment from "moment-timezone";
 
 const getDate = () => {
-    let eventDate = moment("2018-11-15");
-    let currentTime = Date.now();
+    let eventDate = moment("2018-11-15").tz("America/New_York");
+    let currentTime = moment.tz("America/New_York");
     let duration = moment.duration((eventDate - currentTime));
     return {
         totalDays: Math.floor(duration.asDays()) * 24 * 60 * 60,
