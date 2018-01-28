@@ -32,7 +32,7 @@ const styles = theme => ({
     countdownTitle: {
         fontSize: 27,
         textTransform: 'uppercase',
-        fontWeight: 300,
+        fontWeight: 400,
         fontFamily: "'Montserrat', sans-serif",
         color: '#fff',
         textAlign: 'center',
@@ -54,7 +54,7 @@ const styles = theme => ({
             backgroundImage: 'url("images/countdown.jpeg")',
         },
         countdownTitle: {
-            fontSize: 17,
+            fontSize: 22,
             padding: '20 0'
         }
     }

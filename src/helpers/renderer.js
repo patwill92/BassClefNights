@@ -31,7 +31,7 @@ export default (req, store, context, routes) => {
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="shortcut icon" href="images/logoIcon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"/>
-        <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,400|Montserrat:100,300" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,400|Montserrat:100,300,400" rel="stylesheet">
         <style type="text/css" id="server-side-styles">
           ${sheets.toString()}
         </style>
