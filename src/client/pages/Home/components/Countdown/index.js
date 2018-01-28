@@ -145,22 +145,22 @@ export default class extends Component {
                     <Circle unit={'Days'}
                             loaded={this.state.loaded}
                             text={countdown.days < 10 ? twoDigit(countdown.days) : countdown.days}
-                            percent={fillCircle(countdown.totalDays, 60 * 60 * 24 * 365)}
+                            percent={this.state.loaded && fillCircle(countdown.totalDays, 60 * 60 * 24 * 365)}
                             timer={countdown.totalDays}/>
                     <Circle unit={'hours'}
                             loaded={this.state.loaded}
                             text={countdown.hours < 10 ? twoDigit(countdown.hours) : countdown.hours}
-                            percent={fillCircle(countdown.totalHours, 60 * 60 * 24)}
+                            percent={this.state.loaded && fillCircle(countdown.totalHours, 60 * 60 * 24)}
                             timer={countdown.totalHours}/>
                     <Circle unit={'minutes'}
                             loaded={this.state.loaded}
                             text={twoDigit(countdown.minutes)}
-                            percent={fillCircle(countdown.totalMinutes, 60 * 60)}
+                            percent={this.state.loaded && fillCircle(countdown.totalMinutes, 60 * 60)}
                             timer={countdown.totalMinutes}/>
                     <Circle unit={'seconds'}
                             loaded={this.state.loaded}
                             text={twoDigit(countdown.seconds)}
-                            percent={fillCircle(countdown.totalSeconds, 60)}
+                            percent={this.state.loaded && fillCircle(countdown.totalSeconds, 60)}
                             timer={countdown.totalSeconds}/>
                 </div>
             </div>

@@ -95,7 +95,7 @@ class Countdown extends Component {
                 }
             }
         }).attach();
-        this.setState({circlePath: sheet.classes.circlePath, circlePath2: sheet.classes.circlePath2})
+        sheet && this.setState({circlePath: sheet.classes.circlePath, circlePath2: sheet.classes.circlePath2})
     };
 
     render() {
