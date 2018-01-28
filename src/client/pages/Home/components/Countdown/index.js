@@ -16,7 +16,7 @@ const styles = theme => ({
     },
     circleContainer: {
         ...theme.flex.rowEven,
-        flexFlow: 'row wrap',
+        flexWrap: 'wrap',
         paddingBottom: 15,
         position: 'relative',
         zIndex: 1
