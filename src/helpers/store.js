@@ -6,7 +6,7 @@ import moment from "moment-timezone";
 
 const getDate = () => {
     let eventDate = moment("2018-11-15").tz("America/New_York");
-    let currentTime = moment.tz("America/New_York");
+    let currentTime = moment().tz("America/New_York");
     let duration = moment.duration((eventDate - currentTime));
     return {
         totalDays: Math.floor(duration.asDays()) * 24 * 60 * 60,
