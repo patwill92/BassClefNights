@@ -144,7 +144,7 @@ export default class extends Component {
                             percent={fillCircle(countdown.totalDays, 60 * 60 * 24 * 365)}
                             timer={countdown.totalDays}/>
                     <Circle unit={'hours'}
-                            text={twoDigit(countdown.hours)}
+                            text={countdown.hours < 10 ? twoDigit(countdown.hours) : countdown.hours}
                             percent={fillCircle(countdown.totalHours, 60 * 60 * 24)}
                             timer={countdown.totalHours}/>
                     <Circle unit={'minutes'}

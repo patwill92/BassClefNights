@@ -29,15 +29,13 @@ const sheet = theme => ({
         stroke: '#ffffff',
         fill: 'none',
         strokeWidth: 0.5,
-        strokeLinecap: 'round',
-        animation: props => `progress${props.unit} ${props.timer}s linear infinite`
+        strokeLinecap: 'round'
     },
     circlePath2: {
         stroke: '#ffffff',
         fill: 'none',
         strokeWidth: 0.5,
-        strokeLinecap: 'round',
-        animation: props => `progress2${props.unit} 60s linear infinite`
+        strokeLinecap: 'round'
     },
     unit: {
         fontSize: 14,
@@ -69,6 +67,12 @@ const sheet = theme => ({
 class Countdown extends Component {
     componentDidMount = () => {
         const sheet = jss.createStyleSheet({
+            circlePath: {
+                animation: `progress${this.props.unit} ${this.props.timer}s linear infinite`
+            },
+            circlePath2: {
+                animation: `progress2${this.props.unit} 60s linear infinite`
+            },
             [`@keyframes progress${this.props.unit}`]: {
                 from: {
                     strokeDasharray: `${this.props.percent} 100`
@@ -119,6 +123,6 @@ class Countdown extends Component {
             </div>
         )
     }
-};
+}
 
 export default injectSheet(sheet)(Countdown)

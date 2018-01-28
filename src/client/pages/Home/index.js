@@ -52,6 +52,7 @@ const loadData = () => {
     let eventDate = moment("2018-11-15");
     let currentTime = moment();
     let duration = moment.duration((eventDate - currentTime));
+
     let initialCountdown = {
         totalDays: Math.floor(duration.asDays()) * 24 * 60 * 60,
         totalHours: duration.hours() * 60 * 60,
@@ -62,6 +63,7 @@ const loadData = () => {
         minutes: duration.minutes(),
         seconds: duration.seconds()
     };
+    console.log(initialCountdown);
     return [
         {
             data: initialCountdown,
