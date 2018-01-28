@@ -19,12 +19,13 @@ app.get('*', (req, res) => {
     const promises = matchRoutes(routes, req.url).map(({route}) => {
         return route.loadData ? route.loadData() : null
     }).filter(promise => promise);
-
     Promise.all(promises).then((promise) => {
         if(promise[0]) {
-            promise.forEach(({data, func}) => {
-                req.dispatchData = data;
-                store.dispatch(func(req))
+            promise.forEach((promise) => {
+                promise.forEach(({data, func}) => {
+                    req.dispatchData = data;
+                    store.dispatch(func(req))
+                })
             })
         }
         const content = renderer(req, store, {}, routes);

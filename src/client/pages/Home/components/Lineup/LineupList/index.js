@@ -44,9 +44,7 @@ const styles = theme => ({
         boxShadow: theme.shadows[10]
     },
     listMobile: {
-        ...theme.flex.rowEven,
         listStyleType: 'none',
-        flexWrap: 'wrap',
         padding: 0,
         margin: 0
     },
@@ -87,12 +85,9 @@ const styles = theme => ({
     },
     listItemMobile: {
         fontWeight: 300,
-        minWidth: 350,
-        margin: '20 5px',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        minHeight: '275px',
         position: 'relative'
     },
     overlayMobile: {
@@ -125,11 +120,29 @@ const styles = theme => ({
             display: 'block'
         }
     },
+    '@media (min-width: 501px) and (max-width: 941px)': {
+        listContainer: {
+            display: 'none'
+        },
+        listMobile: {
+            display: 'flex',
+            flexFlow: 'row wrap',
+            flexBasis: '50%',
+            ...theme.flex.rowBetween
+        },
+        listItemMobile: {
+            minHeight: 'calc(100vw*0.49 - 30px)',
+            maxWidth: '50%',
+            minWidth: '49.5%',
+            margin: '0.5% 0',
+        }
+    },
     '@media (max-width: 500px)': {
         listItemMobile: {
             margin: '0',
             marginBottom: 3,
-            minWidth: '100%'
+            minWidth: '100%',
+            minHeight: 275
         }
     }
 });
@@ -215,8 +228,7 @@ class LineupList extends Component {
                         {lineupList.map((artist, i) => {
                             return (
                                 <li style={{
-                                    backgroundImage: `url("${artist.image}")`,
-                                    marginBottom: i === lineupList.length - 1 && 0
+                                    backgroundImage: `url("${artist.image}")`
                                 }}
                                     className={classes.listItemMobile}
                                     key={artist.name}>

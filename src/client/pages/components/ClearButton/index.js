@@ -1,6 +1,8 @@
 import React from 'react'
 import injectSheet from 'react-jss'
 
+import Icon from '../Icon'
+
 const styles = theme => ({
     heroBtn: {
         backgroundColor: 'rgba(0,0,0,0)',
@@ -21,6 +23,6 @@ const styles = theme => ({
     }
 });
 
-const ClearButton = ({classes, text, style}) => <button className={classes.heroBtn} style={style && {...style}}>{text}</button>;
+const ClearButton = ({classes, text, style, icon, iconColor}) => <button className={classes.heroBtn} style={style && {...style}}>{icon && <Icon name={icon} color={iconColor} style={{marginRight: 10}}/>}{text}</button>;
 
 export default injectSheet(styles)(ClearButton)

@@ -6,7 +6,8 @@ const sheet = theme => ({
         maxWidth: 200,
         minWidth: 200,
         margin: '20 10',
-        position: 'relative'
+        position: 'relative',
+        zIndex: 3
     },
     circleOverlay: {
         position: 'absolute',
@@ -37,6 +38,30 @@ const sheet = theme => ({
         strokeWidth: 0.5,
         strokeLinecap: 'round',
         animation: props => `progress2${props.unit} 60s linear infinite`
+    },
+    unit: {
+        fontSize: 14,
+        textTransform: 'uppercase',
+        fontWeight: 300,
+        fontFamily: "'Montserrat', sans-serif"
+    },
+    '@media(max-width: 500px)': {
+        circle: {
+            maxWidth: 110,
+            minWidth: 110,
+            margin: '5 10'
+        },
+        circleOverlay: {
+            maxWidth: 97.25,
+            minWidth: 97.25,
+            height: 97.25,
+            top: `${(110 - 97.25) / 2}`,
+            left: `${(110 - 97.25) / 2}`,
+            fontSize: 20,
+        },
+        unit: {
+            fontSize: 12
+        }
     }
 });
 
@@ -88,13 +113,7 @@ class Countdown extends Component {
                 }
                 <div className={classes.circleOverlay}>
                     <span>{text}</span>
-                    <span
-                        style={{
-                            fontSize: 14,
-                            textTransform: 'uppercase',
-                            fontWeight: 300,
-                            fontFamily: "'Montserrat', sans-serif"
-                        }}>{this.props.unit}</span>
+                    <span className={classes.unit}>{this.props.unit}</span>
                 </div>
             </div>
         )

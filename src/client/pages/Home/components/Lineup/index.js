@@ -16,6 +16,12 @@ const styles = theme => ({
     root: {
         ...root
     },
+    '@media (max-width: 942px)': {
+       root: {
+           padding: '30px 15px',
+           maxWidth: '100%',
+       }
+    },
     '@media (max-width: 500px)': {
        root: {
            maxWidth: '100%',

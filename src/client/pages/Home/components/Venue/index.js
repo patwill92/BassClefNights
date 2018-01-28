@@ -67,6 +67,9 @@ const styles = theme => ({
 });
 
 class Venue extends Component {
+    static testFunc = () => {
+        console.log('Venue');
+    }
     render() {
         const {classes} = this.props;
         let directions = 'https://www.google.com/maps/dir/?api=1&destination=3251+S+Miami+Ave+Miami+FL+33129&travelmode=driving';
