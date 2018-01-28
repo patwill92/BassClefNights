@@ -30,14 +30,12 @@ const sheet = theme => ({
         fill: 'none',
         strokeWidth: 0.5,
         strokeLinecap: 'round',
-        animation: props => `progress${props.unit} ${props.timer}s linear infinite`
     },
     circlePath2: {
         stroke: '#ffffff',
         fill: 'none',
         strokeWidth: 0.5,
         strokeLinecap: 'round',
-        animation: props => `progress2${props.unit} 60s linear infinite`
     },
     unit: {
         fontSize: 14,
@@ -68,8 +66,18 @@ const sheet = theme => ({
 
 
 class Countdown extends Component {
+    state = {
+        circlePath: '',
+        circlePath2: ''
+    };
     componentDidMount = () => {
         const sheet = jss.createStyleSheet({
+            circlePath: {
+                animation: `progress${this.props.unit} ${this.props.timer}s linear infinite`
+            },
+            circlePath2: {
+                animation: `progress2${this.props.unit} 60s linear infinite`
+            },
             [`@keyframes progress${this.props.unit}`]: {
                 from: {
                     strokeDasharray: `${this.props.percent} 100`
@@ -86,18 +94,19 @@ class Countdown extends Component {
                     strokeDasharray: `0 100`
                 }
             }
-        }).attach()
+        }).attach();
+        this.setState({circlePath: sheet.classes.circlePath, circlePath2: sheet.classes.circlePath2})
     };
 
     render() {
         let {props} = this;
-        let {classes, text} = this.props;
+        let {classes, text, loaded} = this.props;
         let path = "M18 2.0845a 15.9155 15.9155 0 0 1 0 31.831a 15.9155 15.9155 0 0 1 0 -31.831";
         return (
             <div className={classes.circle}>
                 {props.percent === 100 ?
                     <svg viewBox="0 0 36 36">
-                        <path className={classes.circlePath2}
+                        <path className={classes.circlePath2 + ' ' + this.state.circlePath2}
                               strokeWidth="1"
                               d={path}
                               fill="none"
@@ -105,9 +114,9 @@ class Countdown extends Component {
                     </svg>
                     :
                     <svg viewBox="0 0 36 36">
-                        <path className={classes.circlePath}
+                        <path className={classes.circlePath + ' ' + this.state.circlePath}
                               strokeWidth="1"
-                              strokeDasharray={`${this.props.percent}, 100`}
+                              strokeDasharray={loaded ? `${this.props.percent}, 100`: undefined}
                               d={path}
                               fill="none"
                               stroke="#444"/>

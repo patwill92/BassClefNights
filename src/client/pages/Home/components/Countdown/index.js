@@ -135,49 +135,34 @@ export default class extends Component {
                         <div style={{display: 'inline-block'}}
                              onMouseOut={() => this.setState({iconColor: '#fff'})}
                              onMouseOver={() => this.setState({iconColor: '#000'})}>
-                            <Button style={{fontSize: 13}} text={'tickets'} icon={'ticketAlt'} iconColor={this.state.iconColor}/>
+                            <Button style={{fontSize: 13}} text={'tickets'} icon={'ticketAlt'}
+                                    iconColor={this.state.iconColor}/>
                         </div>
                     </div>
                 </div>
                 <div className={classes.overlay}/>
-                {   !this.state.loaded ?
-                    <div className={classes.circleContainer}>
-                        <Circle unit={'Days'}
-                                text={countdown.days < 10 ? twoDigit(countdown.days) : countdown.days}
-                                percent={fillCircle(countdown.totalDays, 60 * 60 * 24 * 365)}
-                                timer={countdown.totalDays}/>
-                        <Circle unit={'hours'}
-                                text={countdown.hours < 10 ? twoDigit(countdown.hours) : countdown.hours}
-                                percent={fillCircle(countdown.totalHours, 60 * 60 * 24)}
-                                timer={countdown.totalHours}/>
-                        <Circle unit={'minutes'}
-                                text={twoDigit(countdown.minutes)}
-                                percent={fillCircle(countdown.totalMinutes, 60 * 60)}
-                                timer={countdown.totalMinutes}/>
-                        <Circle unit={'seconds'}
-                                text={twoDigit(countdown.seconds)}
-                                percent={fillCircle(countdown.totalSeconds, 60)}
-                                timer={countdown.totalSeconds}/>
-                    </div> :
-                    <div id='new' className={classes.circleContainer}>
-                        <Circle unit={'Days'}
-                                text={countdown.days < 10 ? twoDigit(countdown.days) : countdown.days}
-                                percent={fillCircle(countdown.totalDays, 60 * 60 * 24 * 365)}
-                                timer={countdown.totalDays}/>
-                        <Circle unit={'hours'}
-                                text={countdown.hours < 10 ? twoDigit(countdown.hours) : countdown.hours}
-                                percent={fillCircle(countdown.totalHours, 60 * 60 * 24)}
-                                timer={countdown.totalHours}/>
-                        <Circle unit={'minutes'}
-                                text={twoDigit(countdown.minutes)}
-                                percent={fillCircle(countdown.totalMinutes, 60 * 60)}
-                                timer={countdown.totalMinutes}/>
-                        <Circle unit={'seconds'}
-                                text={twoDigit(countdown.seconds)}
-                                percent={fillCircle(countdown.totalSeconds, 60)}
-                                timer={countdown.totalSeconds}/>
-                    </div>
-                }
+                <div className={classes.circleContainer}>
+                    <Circle unit={'Days'}
+                            loaded={this.state.loaded}
+                            text={countdown.days < 10 ? twoDigit(countdown.days) : countdown.days}
+                            percent={fillCircle(countdown.totalDays, 60 * 60 * 24 * 365)}
+                            timer={countdown.totalDays}/>
+                    <Circle unit={'hours'}
+                            loaded={this.state.loaded}
+                            text={countdown.hours < 10 ? twoDigit(countdown.hours) : countdown.hours}
+                            percent={fillCircle(countdown.totalHours, 60 * 60 * 24)}
+                            timer={countdown.totalHours}/>
+                    <Circle unit={'minutes'}
+                            loaded={this.state.loaded}
+                            text={twoDigit(countdown.minutes)}
+                            percent={fillCircle(countdown.totalMinutes, 60 * 60)}
+                            timer={countdown.totalMinutes}/>
+                    <Circle unit={'seconds'}
+                            loaded={this.state.loaded}
+                            text={twoDigit(countdown.seconds)}
+                            percent={fillCircle(countdown.totalSeconds, 60)}
+                            timer={countdown.totalSeconds}/>
+                </div>
             </div>
         )
     }
