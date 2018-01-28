@@ -8,9 +8,16 @@ export const toggleNav = payload => {
 };
 
 export const startCountDown = payload => {
-    return {
-        type: START_COUNTDOWN,
-        payload
+    if(payload.dispatchData) {
+        return {
+            type: START_COUNTDOWN,
+            payload: payload.dispatchData
+        }
+    } else {
+        return {
+            type: START_COUNTDOWN,
+            payload
+        }
     }
 };
 

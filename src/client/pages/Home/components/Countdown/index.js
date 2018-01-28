@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import injectSheet from 'react-jss'
-import moment from 'moment-timezone'
+import moment from 'moment'
 
 import {startCountDown} from "../../../../actions";
 import Circle from './Circle'
@@ -70,9 +70,8 @@ const mapStateToProps = ({ui}) => {
 @injectSheet(styles)
 export default class extends Component {
     state = {
-        date: "2018-11-15",
-        iconColor: '#fff',
-        loaded: false
+        date: [2018, 1,15],
+        iconColor: '#fff'
     };
 
     fillCircle = (num, total) => {
@@ -90,9 +89,8 @@ export default class extends Component {
     };
 
     componentDidMount = () => {
-        this.setState({loaded: true});
-        let eventDate = moment(this.state.date).tz("America/New_York");
-        let currentTime = moment().tz("America/New_York");
+        let eventDate = new Date(Date.UTC(2018, 10, 15));
+        let currentTime = Date.now();
         let duration = moment.duration((eventDate - currentTime));
         this.startTimer(duration);
         let interval = 1000;
@@ -143,24 +141,20 @@ export default class extends Component {
                 <div className={classes.overlay}/>
                 <div className={classes.circleContainer}>
                     <Circle unit={'Days'}
-                            loaded={this.state.loaded}
                             text={countdown.days < 10 ? twoDigit(countdown.days) : countdown.days}
-                            percent={this.state.loaded && fillCircle(countdown.totalDays, 60 * 60 * 24 * 365)}
+                            percent={fillCircle(countdown.totalDays, 60 * 60 * 24 * 365)}
                             timer={countdown.totalDays}/>
                     <Circle unit={'hours'}
-                            loaded={this.state.loaded}
                             text={countdown.hours < 10 ? twoDigit(countdown.hours) : countdown.hours}
-                            percent={this.state.loaded && fillCircle(countdown.totalHours, 60 * 60 * 24)}
+                            percent={fillCircle(countdown.totalHours, 60 * 60 * 24)}
                             timer={countdown.totalHours}/>
                     <Circle unit={'minutes'}
-                            loaded={this.state.loaded}
                             text={twoDigit(countdown.minutes)}
-                            percent={this.state.loaded && fillCircle(countdown.totalMinutes, 60 * 60)}
+                            percent={fillCircle(countdown.totalMinutes, 60 * 60)}
                             timer={countdown.totalMinutes}/>
                     <Circle unit={'seconds'}
-                            loaded={this.state.loaded}
                             text={twoDigit(countdown.seconds)}
-                            percent={this.state.loaded && fillCircle(countdown.totalSeconds, 60)}
+                            percent={fillCircle(countdown.totalSeconds, 60)}
                             timer={countdown.totalSeconds}/>
                 </div>
             </div>

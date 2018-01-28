@@ -48,30 +48,31 @@ class Home extends Component {
 
 }
 
-// const loadData = () => {
-//     let eventDate = moment("2018-11-15");
-//     let currentTime = moment();
-//     let duration = moment.duration((eventDate - currentTime));
-//     let initialCountdown = {
-//         totalDays: Math.floor(duration.asDays()) * 24 * 60 * 60,
-//         totalHours: duration.hours() * 60 * 60,
-//         totalMinutes: duration.minutes() * 60,
-//         totalSeconds: duration.seconds(),
-//         days: Math.floor(duration.asDays()),
-//         hours: duration.hours(),
-//         minutes: duration.minutes(),
-//         seconds: duration.seconds()
-//     };
-//     console.log(initialCountdown);
-//     return [
-//         {
-//             data: initialCountdown,
-//             func: startCountDown
-//         }
-//     ]
-//
-// };
+const loadData = () => {
+    let eventDate = new Date(Date.UTC(2018, 10, 15));
+    let currentTime = Date.now();
+    let duration = moment.duration((eventDate - currentTime));
+    let initialCountdown = {
+        totalDays: Math.floor(duration.asDays()) * 24 * 60 * 60,
+        totalHours: duration.hours() * 60 * 60,
+        totalMinutes: duration.minutes() * 60,
+        totalSeconds: duration.seconds(),
+        days: Math.floor(duration.asDays()),
+        hours: duration.hours(),
+        minutes: duration.minutes(),
+        seconds: duration.seconds()
+    };
+    console.log(initialCountdown);
+    return [
+        {
+            data: initialCountdown,
+            func: startCountDown
+        }
+    ]
+
+};
 
 export default {
-    component: Home
+    component: Home,
+    loadData
 }

@@ -100,7 +100,7 @@ class Countdown extends Component {
 
     render() {
         let {props} = this;
-        let {classes, text, loaded} = this.props;
+        let {classes, text} = this.props;
         let path = "M18 2.0845a 15.9155 15.9155 0 0 1 0 31.831a 15.9155 15.9155 0 0 1 0 -31.831";
         return (
             <div className={classes.circle}>
@@ -116,7 +116,7 @@ class Countdown extends Component {
                     <svg viewBox="0 0 36 36">
                         <path className={classes.circlePath + ' ' + this.state.circlePath}
                               strokeWidth="1"
-                              strokeDasharray={loaded ? `${this.props.percent}, 100`: undefined}
+                              strokeDasharray={`${this.props.percent}, 100`}
                               d={path}
                               fill="none"
                               stroke="#444"/>
