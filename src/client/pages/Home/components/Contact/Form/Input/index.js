@@ -25,7 +25,18 @@ const styles = theme => ({
         fontSize: 20
     },
     email: {
-        extend: 'text'
+        backgroundColor: 'rgba(0,0,0,0)',
+        border: 'none',
+        color: '#e8e8e8',
+        '&:focus': {
+            border: 'none',
+            outline: 'none',
+            '& $overlay': {
+                top: -40
+            }
+        },
+        lineHeight: '20px',
+        fontSize: 20
     },
     overlay: {
         position: 'absolute',
@@ -35,13 +46,21 @@ const styles = theme => ({
         transition: 'top 0.5s, left 0.5s, font-size 0.5s'
     },
     overlayBlur: {
-        extend: 'overlay',
+        position: 'absolute',
+        width: '100%',
+        zIndex: 1,
+        textAlign: 'left',
+        transition: 'top 0.5s, left 0.5s, font-size 0.5s',
         top: 0,
         left: 5,
         fontSize: 20
     },
     overlayFocus: {
-        extend: 'overlay',
+        position: 'absolute',
+        width: '100%',
+        zIndex: 1,
+        textAlign: 'left',
+        transition: 'top 0.5s, left 0.5s, font-size 0.5s',
         top: -20,
         left: 0,
         fontSize: 15
@@ -69,11 +88,15 @@ const styles = theme => ({
         transition: 'width 0.5s'
     },
     extendedRight: {
-        extend: 'borderOverlayRight',
+        marginRight: 'auto',
+        marginLeft: 0,
+        transition: 'width 0.5s',
         width: '50%'
     },
     extendedLeft: {
-        extend: 'borderOverlayLeft',
+        marginRight: 0,
+        marginLeft: 'auto',
+        transition: 'width 0.5s',
         width: '50%'
     }
 });
