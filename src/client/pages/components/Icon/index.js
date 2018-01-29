@@ -32,15 +32,19 @@ const looseStyle = {
     zIndex: 0
 }
 
- const sheet = {
-    hover: {
-        '&:hover': {
-            cursor: 'pointer'
-        }
-    }
- }
+ const sheet = theme => ({
+     hover: {
+         '&:hover': {
+             cursor: 'pointer'
+         }
+     },
+     path: {
+         fill: props => props.color ? props.color : '#333'
+     }
+ });
 
 const MyIcon = props => {
+    const {classes} = props;
     let icon = require('./icons/index')[props.name];
     let {name, path, viewBox} = icon;
     let size = viewBox.split(' ');
@@ -52,7 +56,7 @@ const MyIcon = props => {
         <span id='svg-icon' style={{...looseStyle, height, width}}>
           <svg id={name} width={width} style={looseSvgStyle}
                height={height} xmlns="http://www.w3.org/2000/svg" viewBox={viewBox}>
-            <path style={{pointerEvents: 'none'}} fill={props.color ? props.color : '#333'} d={path}/>
+            <path className={classes.path} style={{pointerEvents: 'none'}}  d={path}/>
           </svg>
         </span>
     );

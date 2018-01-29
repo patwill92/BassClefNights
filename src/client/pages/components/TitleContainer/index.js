@@ -34,11 +34,6 @@ const styles = theme => ({
         display: 'none'
     },
     '@media (max-width: 500px)': {
-        '@global': {
-          body: {
-              backgroundImage: theme.backgrounds.pianoPatternTransparent
-          }
-        },
         titleContainer: {
             margin: 0,
         },
@@ -52,17 +47,17 @@ const styles = theme => ({
 });
 
 const TitleContainer = props => {
-    const {classes, text, color, icon, y, x, z} = props;
+    const {classes, text, color, icon, y, x, z, inverse} = props;
     return (
         <Fragment>
             <div className={classes.root}>
                 <h1 className={classes.title} style={{color}}>{text}</h1>
-                <LineBreak icon={icon} color='#222' rotateY={y && y} rotateX={x && x} rotateZ={z && z}/>
+                <LineBreak icon={icon} color={color} rotateY={y && y} rotateX={x && x} rotateZ={z && z}/>
             </div>
             <div className={classes.mobileRoot}
-                 style={{margin: '4px 8px 9px 4px', padding: 4, border: '1px solid #222', maxHeight: 100}}>
+                 style={{margin: '4px 8px 9px 4px', padding: 4, border: `1px solid ${inverse}`, maxHeight: 100}}>
                 <div style={{
-                    border: '1px solid #222',
+                    border: `1px solid ${inverse}`,
                     position: 'relative',
                     top: '0',
                     left: 0,
@@ -70,8 +65,8 @@ const TitleContainer = props => {
                     minWidth: 'calc(100% + 9px)'
                 }}>
                     <div className={classes.titleContainer} style={{marginRight: 8}}>
-                        <h1 className={classes.title}>{text}</h1>
-                        <LineBreak icon={icon} color='#222' rotateY={y && y} rotateX={x && x} rotateZ={z && z}/>
+                        <h1 className={classes.title} style={{color: inverse}}>{text}</h1>
+                        <LineBreak icon={icon} color={inverse} rotateY={y && y} rotateX={x && x} rotateZ={z && z} inverse={inverse && inverse}/>
                     </div>
                 </div>
             </div>

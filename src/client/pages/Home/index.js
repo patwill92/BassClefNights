@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 import Lineup from './components/Lineup'
 import Hero from './components/Hero'
 import Venue from './components/Venue'
-import Countdown from './components/Countdown'
+import Contact from './components/Contact'
 import {startCountDown} from "../../actions";
 
 const styles = theme => ({
@@ -41,7 +41,7 @@ class Home extends Component {
                 <Hero/>
                 <Lineup/>
                 <Venue/>
-                <Countdown/>
+                <Contact/>
             </div>
         )
     };

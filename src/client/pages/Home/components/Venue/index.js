@@ -18,7 +18,8 @@ const styles = theme => ({
         },
         maxWidth: '100%',
         padding: '60px 5%',
-        backgroundColor: '#fff'
+        backgroundImage: 'url("images/triangles.png")',
+        backgroundColor: 'rgba(7,7,7,0.9)'
     },
     venueInfo: {
         order: 2,
@@ -36,8 +37,14 @@ const styles = theme => ({
         fontWeight: 300,
         margin: '20px auto',
         maxWidth: '85%',
-        color: '#333',
-        textDecoration: 'none'
+        textDecoration: 'none',
+        color: '#e8e8e8'
+
+    },
+    logo: {
+        backgroundImage:"url('images/logoWhiteFilled.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
     },
     '@media (max-width: 942px)': {
         root: {
@@ -55,6 +62,7 @@ const styles = theme => ({
         },
         root: {
             padding: '0 0',
+            backgroundColor: '#fff',
             '& #venueSlides': {
                 top: -10,
                 height: 350
@@ -62,6 +70,17 @@ const styles = theme => ({
         },
         venueInfoInner: {
             paddingBottom: 20
+        },
+        textInfo: {
+            color: '#222',
+            '& path': {
+                fill: '#222 !important'
+            }
+        },
+        logo: {
+            backgroundImage:"url('images/logoFilled.png')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
         }
     }
 });
@@ -73,11 +92,12 @@ class Venue extends Component {
     render() {
         const {classes} = this.props;
         let directions = 'https://www.google.com/maps/dir/?api=1&destination=3251+S+Miami+Ave+Miami+FL+33129&travelmode=driving';
+        let color = '#e8e8e8';
         return (
             <div className={classes.root}>
                 <div className={classes.venueInfo}>
                     <div className={classes.venueInfoInner}>
-                        <TitleContainer text='The venue' color='#222' icon='martini'/>
+                        <TitleContainer text='The venue' color={color} icon='martini' inverse={'#222'}/>
                         <VenueSlides type='mobile' />
                         <p className={classes.textInfo}>Allow yourself to experience an evening in Old Miami at Vizcaya
                             Museum and Gardens in beautiful
@@ -86,9 +106,9 @@ class Venue extends Component {
                             full bar and bottle service, cigar lounge, and
                             several areas to enjoy the musical history
                             which defines this magical place.</p>
-                        <p><img src="images/logoFilled.png" alt="" style={{maxWidth: 25, height: 'auto'}}/></p>
+                        <p><span className={classes.logo} style={{height: 25, width: 25, display: 'inline-block'}} /></p>
                         <a href={directions} className={classes.textInfo}
-                           style={{fontSize: '0.9rem', cursor: 'pointer'}}><Icon color='#2962FF' name='mapPin'/> 3251 S Miami
+                           style={{fontSize: '0.9rem', cursor: 'pointer'}}><Icon color={color} name='mapPin'/> 3251 S Miami
                             Ave, Miami, FL 33129</a>
                     </div>
                 </div>

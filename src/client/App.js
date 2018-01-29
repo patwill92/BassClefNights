@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 
 import ToggleNav from './pages/components/ToggleNav'
 import Menu from './pages/components/NavMenu'
+import Footer from './pages/components/Footer'
 import {toggleNav} from "./actions";
 
 
@@ -23,7 +24,10 @@ const styles = theme => ({
         body: {
             ...root,
             backgroundColor: '#fff',
-            backgroundImage: theme.backgrounds.pianoPattern
+            backgroundImage: 'url("images/home.jpg")',
+            backgroundAttachment: 'fixed',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
         },
         html: {
             ...root
@@ -43,6 +47,7 @@ class App extends Component {
                 {!menu && <ToggleNav color='#e8e8e8' text='menu' onClick={() => this.props.toggleNav(!menu)}/>}
                 {renderRoutes(route.routes)}
                 <Menu/>
+                <Footer/>
             </Fragment>
         )
     }

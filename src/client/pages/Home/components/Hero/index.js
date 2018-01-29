@@ -21,7 +21,7 @@ const bounceLow = animation('bounceLow', 10, 20);
 const styles = theme => ({
     root: {
         height: '100%',
-        backgroundImage: 'url("images/home.jpg")',
+        // backgroundImage: 'url("images/home.jpg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         position: 'relative',

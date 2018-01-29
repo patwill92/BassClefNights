@@ -3,27 +3,23 @@ import {connect} from 'react-redux'
 import injectSheet from 'react-jss'
 import moment from 'moment'
 
-import {startCountDown} from "../../../../actions";
-import Circle from './Circle'
-import Button from '../../../components/ClearButton'
+import {startCountDown} from "../../../../actions/index";
+import Circle from './Circle/index'
+import Button from '../../ClearButton/index'
 
 const styles = theme => ({
     root: {
-        position: 'relative',
-        backgroundImage: 'url("images/countdownDesktop.jpeg")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        position: 'relative'
     },
     circleContainer: {
         ...theme.flex.rowEven,
         flexWrap: 'wrap',
-        paddingBottom: 15,
         position: 'relative',
         zIndex: 1
     },
     overlay: {
         position: 'absolute',
-        backgroundColor: 'rgba(0,0,0,0.4)',
+        backgroundColor: 'rgba(0,0,0,0.0)',
         minWidth: '100%',
         minHeight: '100%',
         top: 0,
@@ -39,7 +35,8 @@ const styles = theme => ({
         position: 'relative',
         zIndex: 3,
         margin: 0,
-        padding: '20 0',
+        paddingTop: 0,
+        paddingBottom: 20,
         letterSpacing: '1px'
     },
     image: {
@@ -50,12 +47,8 @@ const styles = theme => ({
         marginTop: 10
     },
     '@media(max-width: 500px)': {
-        root: {
-            backgroundImage: 'url("images/countdown.jpeg")',
-        },
         countdownTitle: {
-            fontSize: 22,
-            padding: '20 0'
+            fontSize: 22
         }
     }
 });
@@ -130,7 +123,7 @@ export default class extends Component {
                 </div>
                 <div style={{textAlign: 'center'}}>
                     <div className={classes.countdownTitle} style={{padding: 0}}>
-                        <div style={{display: 'inline-block'}}
+                        <div style={{display: 'inline-block', marginBottom: 10}}
                              onMouseOut={() => this.setState({iconColor: '#fff'})}
                              onMouseOver={() => this.setState({iconColor: '#000'})}>
                             <Button style={{fontSize: 13}} text={'tickets'} icon={'ticketAlt'}
