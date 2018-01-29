@@ -37,7 +37,7 @@ const Contact = props => {
     return (
         <Fragment>
             <div className={classes.root}>
-                <TitleContainer text='questions?' color={'#fff'} icon='musicSax' y={180} inverse='#fff'/>
+                <TitleContainer text='questions?' color={'#fff'} icon='musicSax' y={180}/>
                 <Form/>
             </div>
         </Fragment>
