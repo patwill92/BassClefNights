@@ -53,15 +53,7 @@ const styles = theme => ({
     }
 });
 
-const mapStateToProps = ({ui}) => {
-    return {
-        countdown: ui.countdown
-    }
-};
-
-@connect(mapStateToProps, {startCountDown})
-@injectSheet(styles)
-export default class extends Component {
+class Countdown extends Component {
     state = {
         date: [2018, 1,15],
         iconColor: '#fff'
@@ -154,3 +146,11 @@ export default class extends Component {
         )
     }
 }
+
+const mapStateToProps = ({ui}) => {
+    return {
+        countdown: ui.countdown
+    }
+};
+
+export default connect(mapStateToProps, {startCountDown})(injectSheet(styles)(Countdown))
