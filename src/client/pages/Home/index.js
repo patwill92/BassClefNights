@@ -31,8 +31,6 @@ const styles = theme => ({
     }
 });
 
-@connect(null, {startCountDown})
-@injectSheet(styles)
 class Home extends Component {
     render() {
         const {classes} = this.props;
@@ -73,6 +71,6 @@ const loadData = () => {
 };
 
 export default {
-    component: Home,
+    component: connect(null, {startCountDown})(injectSheet(styles)(Home)),
     loadData
 }

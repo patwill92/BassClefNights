@@ -47,7 +47,7 @@ const styles = theme => ({
 });
 
 const TitleContainer = props => {
-    const {classes, text, color, icon, y, x, z, inverse} = props;
+    const {classes, text, color, icon, y, x, z} = props;
     return (
         <Fragment>
             <div className={classes.root}>
@@ -55,9 +55,9 @@ const TitleContainer = props => {
                 <LineBreak icon={icon} color={color} rotateY={y && y} rotateX={x && x} rotateZ={z && z}/>
             </div>
             <div className={classes.mobileRoot}
-                 style={{margin: '4px 8px 9px 4px', padding: 4, border: `1px solid ${inverse}`, maxHeight: 100}}>
+                 style={{margin: '4px 8px 9px 4px', padding: 4, border: `1px solid ${color}`, maxHeight: 100}}>
                 <div style={{
-                    border: `1px solid ${inverse}`,
+                    border: `1px solid ${color}`,
                     position: 'relative',
                     top: '0',
                     left: 0,
@@ -65,8 +65,8 @@ const TitleContainer = props => {
                     minWidth: 'calc(100% + 9px)'
                 }}>
                     <div className={classes.titleContainer} style={{marginRight: 8}}>
-                        <h1 className={classes.title} style={{color: inverse}}>{text}</h1>
-                        <LineBreak icon={icon} color={inverse} rotateY={y && y} rotateX={x && x} rotateZ={z && z} inverse={inverse && inverse}/>
+                        <h1 className={classes.title} style={{color}}>{text}</h1>
+                        <LineBreak icon={icon} color={color} rotateY={y && y} rotateX={x && x} rotateZ={z && z}/>
                     </div>
                 </div>
             </div>

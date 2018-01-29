@@ -131,11 +131,11 @@ export default class VenueSlides extends Component {
                 <div className={classes.overlayMobile}>
                     <div className={classes.arrows}>
                         <div onClick={ () => this.nextImg(0)} style={{flex: 0}}><Icon name='chevronLeft'
-                                                                            color='rgba(255,255,255,0.7)'
-                                                                            style={{cursor: 'pointer'}}/></div>
+                                                                                      color='rgba(255,255,255,0.7)'
+                                                                                      style={{cursor: 'pointer'}}/></div>
                         <div onClick={() => this.nextImg(1)} style={{flex: 0}}><Icon name='chevronRight'
-                                                                            color='rgba(255,255,255,0.7)'
-                                                                            style={{right: 11, cursor: 'pointer'}}/>
+                                                                                     color='rgba(255,255,255,0.7)'
+                                                                                     style={{right: 11, cursor: 'pointer'}}/>
                         </div>
                     </div>
                     <div className={classes.circles}>

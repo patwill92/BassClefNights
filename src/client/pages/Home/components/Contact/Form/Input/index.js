@@ -1,17 +1,6 @@
 import React, {Component} from 'react'
 import injectSheet from 'react-jss'
 
-const animation = (name, property, from, to) => {
-    return {
-        [`@keyframes ${name}`]: {
-            from: `${property}: ${from}`,
-            to: `${property}: ${to}`
-        }
-    }
-};
-
-const fadeIn = animation('fadeIn', 'width', '0%', '50%');
-
 const styles = theme => ({
     root: {
         display: 'inline-block',
@@ -86,8 +75,7 @@ const styles = theme => ({
     extendedLeft: {
         extend: 'borderOverlayLeft',
         width: '50%'
-    },
-    ...fadeIn
+    }
 });
 
 @injectSheet(styles)
