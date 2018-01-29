@@ -39,7 +39,7 @@ class Home extends Component {
                 <Hero/>
                 <Lineup/>
                 <Venue/>
-                {/*<Contact/>*/}
+                <Contact/>
             </div>
         )
     };

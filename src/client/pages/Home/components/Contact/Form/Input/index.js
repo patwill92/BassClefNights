@@ -78,8 +78,7 @@ const styles = theme => ({
     }
 });
 
-@injectSheet(styles)
-export default class extends Component {
+class Input extends Component {
     state = {
         focus: false,
         overlayClass: 'overlayBlur',
@@ -116,7 +115,6 @@ export default class extends Component {
 
     render() {
         const {classes, type, placeholder, name, onChange, value} = this.props;
-        console.log(this.state);
         return (
             <div className={classes.root}>
                 <input onFocus={this.onFocus}
@@ -136,3 +134,5 @@ export default class extends Component {
         )
     }
 }
+
+export default injectSheet(styles)(Input)

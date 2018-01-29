@@ -32,16 +32,18 @@ const styles = theme => ({
     }
 });
 
-const Contact = props => {
-    const {classes} = props;
-    return (
-        <Fragment>
-            <div className={classes.root}>
-                <TitleContainer text='questions?' color={'#fff'} icon='musicSax' y={180}/>
-                <Form/>
-            </div>
-        </Fragment>
-    )
-};
+class Contact extends React.Component {
+    render(){
+        const {classes} = this.props;
+        return (
+            <Fragment>
+                <div className={classes.root}>
+                    <TitleContainer text='questions?' color={'#fff'} icon='musicSax' y={180}/>
+                    <Form/>
+                </div>
+            </Fragment>
+        )
+    };
+}
 
 export default injectSheet(styles)(Contact)

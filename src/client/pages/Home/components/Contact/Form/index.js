@@ -9,8 +9,8 @@ const styles = theme => ({
     }
 })
 
-@injectSheet(styles)
-export default class extends Component {
+
+class Form extends Component {
     state = {
         name: '',
         message: '',
@@ -34,3 +34,5 @@ export default class extends Component {
         )
     }
 }
+
+export default injectSheet(styles)(Form)
