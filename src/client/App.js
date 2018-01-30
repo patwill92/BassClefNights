@@ -22,16 +22,25 @@ const styles = theme => ({
         },
         body: {
             margin: 0,
-            width: '100%',
-            height: '100%',
-            minHeight: '100%',
-            background: 'url("images/home.jpg") no-repeat center center',
-            backgroundAttachment: 'fixed',
+            background: 'url("images/home.jpg") no-repeat center center fixed',
             '-webkit-background-size': 'cover',
             '-moz-background-size': 'cover',
             '-o-background-size': 'cover',
             'background-size': 'cover',
-            zIndex: -10
+            '&:after': {
+                zIndex: -1,
+                content: '',
+                height: '100vh',
+                background: 'url("images/home.jpg") center center',
+                '-webkit-background-size': 'cover',
+                '-moz-background-size': 'cover',
+                '-o-background-size': 'cover',
+                'background-size': 'cover',
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0
+            }
         },
         html: {
             ...root
