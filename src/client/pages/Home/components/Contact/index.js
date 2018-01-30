@@ -18,6 +18,9 @@ const styles = theme => ({
         backgroundImage: 'url("images/triangles.png")',
         backgroundColor: 'rgba(7,7,7,0.9)'
     },
+    title: {
+        marginBottom: 25
+    },
     '@media (max-width: 942px)': {
         root: {
             padding: '30px 15px',
@@ -28,6 +31,9 @@ const styles = theme => ({
         root: {
             maxWidth: '100%',
             padding: 0
+        },
+        title: {
+            marginBottom: 40
         }
     }
 });
@@ -38,7 +44,9 @@ class Contact extends React.Component {
         return (
             <Fragment>
                 <div className={classes.root}>
-                    <TitleContainer text='questions?' color={'#fff'} icon='musicSax' y={180}/>
+                    <div className={classes.title}>
+                        <TitleContainer text='questions?' color={'#fff'} icon='musicSax' y={180} noBorder/>
+                    </div>
                     <Form/>
                 </div>
             </Fragment>

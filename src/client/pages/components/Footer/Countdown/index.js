@@ -115,12 +115,8 @@ class Countdown extends Component {
                 </div>
                 <div style={{textAlign: 'center'}}>
                     <div className={classes.countdownTitle} style={{padding: 0}}>
-                        <div style={{display: 'inline-block', marginBottom: 10}}
-                             onMouseOut={() => this.setState({iconColor: '#fff'})}
-                             onMouseOver={() => this.setState({iconColor: '#000'})}>
-                            <Button style={{fontSize: 13}} text={'tickets'} icon={'ticketAlt'}
-                                    iconColor={this.state.iconColor}/>
-                        </div>
+                        <Button style={{fontSize: 13}} text={'tickets'} icon={'ticketAlt'}
+                                iconColor={this.state.iconColor}/>
                     </div>
                 </div>
                 <div className={classes.overlay}/>

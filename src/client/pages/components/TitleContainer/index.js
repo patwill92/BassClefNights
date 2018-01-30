@@ -47,7 +47,7 @@ const styles = theme => ({
 });
 
 const TitleContainer = props => {
-    const {classes, text, color, icon, y, x, z} = props;
+    const {classes, text, color, icon, y, x, z, noBorder} = props;
     return (
         <Fragment>
             <div className={classes.root}>
@@ -55,9 +55,9 @@ const TitleContainer = props => {
                 <LineBreak icon={icon} color={color} rotateY={y && y} rotateX={x && x} rotateZ={z && z}/>
             </div>
             <div className={classes.mobileRoot}
-                 style={{margin: '4px 8px 9px 4px', padding: 4, border: `1px solid ${color}`, maxHeight: 100}}>
+                 style={{margin: '4px 8px 9px 4px', padding: 4, border: `1px solid ${!noBorder ? color : 'rgba(0,0,0,0)'}`, maxHeight: 100}}>
                 <div style={{
-                    border: `1px solid ${color}`,
+                    border: `1px solid ${!noBorder ? color : 'rgba(0,0,0,0)'}`,
                     position: 'relative',
                     top: '0',
                     left: 0,

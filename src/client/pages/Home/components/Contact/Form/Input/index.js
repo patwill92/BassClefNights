@@ -1,42 +1,49 @@
 import React, {Component} from 'react'
 import injectSheet from 'react-jss'
 
+let inputStyle = {
+    backgroundColor: 'rgba(0,0,0,0)',
+    border: 'none',
+    color: '#e8e8e8',
+    '&:focus': {
+        border: 'none',
+        outline: 'none',
+        '& $overlay': {
+            top: -40
+        }
+    },
+    lineHeight: '20px',
+    fontSize: 15
+};
+
 const styles = theme => ({
     root: {
         display: 'inline-block',
         position: 'relative',
-        '& input': {
+        width: '60%',
+        minWidth: 350,
+        maxWidth: 665,
+        '& input, & textarea, & #select': {
             position: 'relative',
-            zIndex: 2
+            zIndex: 2,
+            width: '100%',
+            height: props => props.type !== 'textarea' ? 30 : null
+        },
+        '& div': {
+            fontFamily: theme.font.secondary
         }
     },
     text: {
-        backgroundColor: 'rgba(0,0,0,0)',
-        border: 'none',
-        color: '#e8e8e8',
-        '&:focus': {
-            border: 'none',
-            outline: 'none',
-            '& $overlay': {
-                top: -40
-            }
-        },
-        lineHeight: '20px',
-        fontSize: 20
+        ...inputStyle
     },
     email: {
-        backgroundColor: 'rgba(0,0,0,0)',
-        border: 'none',
-        color: '#e8e8e8',
-        '&:focus': {
-            border: 'none',
-            outline: 'none',
-            '& $overlay': {
-                top: -40
-            }
-        },
-        lineHeight: '20px',
-        fontSize: 20
+        ...inputStyle
+    },
+    textarea: {
+        ...inputStyle
+    },
+    select: {
+        ...inputStyle
     },
     overlay: {
         position: 'absolute',
@@ -52,8 +59,8 @@ const styles = theme => ({
         textAlign: 'left',
         transition: 'top 0.5s, left 0.5s, font-size 0.5s',
         top: 0,
-        left: 5,
-        fontSize: 20
+        left: 0,
+        fontSize: 15
     },
     overlayFocus: {
         position: 'absolute',
@@ -61,9 +68,8 @@ const styles = theme => ({
         zIndex: 1,
         textAlign: 'left',
         transition: 'top 0.5s, left 0.5s, font-size 0.5s',
-        top: -20,
-        left: 0,
-        fontSize: 15
+        top: -25,
+        fontSize: 13
     },
     borderOverlay: {
         paddingBottom: '1px',
@@ -136,20 +142,50 @@ class Input extends Component {
         }
     };
 
+    focusTextArea = () => this.myText.focus();
+
     render() {
         const {classes, type, placeholder, name, onChange, value} = this.props;
+        let regular = type !== 'textarea' && type !== 'select';
+        let textArea = !regular && type !== 'select';
+        let select = !regular && type !== 'textarea';
         return (
             <div className={classes.root}>
-                <input onFocus={this.onFocus}
-                       onBlur={this.onBlur}
-                       onChange={onChange}
-                       value={value}
-                       name={name}
-                       type={type}
-                       className={classes[type]}/>
-                <div id='input' className={classes[this.state.overlayClass]}
+                {regular && <input onFocus={this.onFocus}
+                                   onBlur={this.onBlur}
+                                   onChange={onChange}
+                                   value={value}
+                                   name={name}
+                                   type={type}
+                                   className={classes[type]}/>}
+                {textArea && <textarea onFocus={this.onFocus}
+                                       onBlur={this.onBlur}
+                                       onChange={onChange}
+                                       ref={input => this.myText = input}
+                                       value={value}
+                                       rows={3}
+                                       name={name}
+                                       className={classes[type]}/>}
+                {select &&
+                <select onFocus={this.onFocus}
+                        style={{left: -7}}
+                        id='select'
+                                     onBlur={this.onBlur}
+                                     onChange={onChange}
+                                     value={value}
+                                     name={name}
+                                     className={classes[type]}>
+                    <option value=""/>
+                    <option value="sponsor">Potential Sponsor</option>
+                    <option value="ticket">Tickets</option>
+                    <option value="general">General</option>
+                </select>
+                }
+                <div id='input'
+                     className={classes[this.state.overlayClass]}
+                     onClick={textArea ? this.focusTextArea : null}
                      style={{color: this.state.inputColor}}>{placeholder}</div>
-                <div className={classes.borderOverlay}>
+                <div className={classes.borderOverlay} style={{marginBottom: 45}}>
                     <div className={classes[this.state.borderLeft]}/>
                     <div className={classes[this.state.borderRight]}/>
                 </div>

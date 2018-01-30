@@ -23,6 +23,23 @@ const styles = theme => ({
     }
 });
 
-const ClearButton = ({classes, text, style, icon, iconColor}) => <button className={classes.heroBtn} style={style && {...style}}>{icon && <Icon name={icon} color={iconColor} style={{marginRight: 10}}/>}{text}</button>;
+
+class ClearButton extends React.Component {
+    state = {
+        iconColor: this.props.iconColor
+    };
+
+    render() {
+        const {classes, text, style, icon} = this.props;
+        return (
+            <button onMouseOver={() => this.setState({iconColor: '#000'})}
+                    onMouseOut={() => this.setState({iconColor: this.props.iconColor})}
+                    className={classes.heroBtn} style={style && {...style}}>
+                {icon && <Icon name={icon} color={this.state.iconColor} style={{marginRight: 10, transition: 'fill 0.5s'}}/>}
+                {text}
+            </button>
+        )
+    }
+}
 
 export default injectSheet(styles)(ClearButton)
