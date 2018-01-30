@@ -46,6 +46,11 @@ const styles = theme => ({
         '-o-background-size': 'cover',
         'background-size': 'cover',
         backgroundPosition: 'center',
+    },
+    bodyOverlayChild: {
+        height: '100vh',
+        minWidth: '100%',
+        backgroundColor: 'rgba(0,0,0,0.5)'
     }
 });
 
@@ -62,7 +67,9 @@ class App extends Component {
                 {renderRoutes(route.routes)}
                 <Menu/>
                 <Footer/>
-                <div className={classes.bodyOverlay} />
+                <div className={classes.bodyOverlay}>
+                    <div className={classes.bodyOverlayChild}/>
+                </div>
             </Fragment>
         )
     }

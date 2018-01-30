@@ -21,10 +21,8 @@ const bounceLow = animation('bounceLow', 10, 20);
 const styles = theme => ({
     root: {
         height: '100%',
-        position: 'sticky',
         textAlign: 'center',
-        backgroundColor: 'rgba(0,0,0,0.5)',
-        top:0
+        position: 'relative'
     },
     overlayImg: {
         height: 'inherit',
