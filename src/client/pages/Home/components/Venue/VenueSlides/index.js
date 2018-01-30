@@ -68,13 +68,15 @@ const styles = theme => ({
     },
     ...fadeIn,
     ...fadeOut,
-    '@media (max-width: 942px)': {
+    '@media (max-width: 9000px)': {
         venueImages: {
             display: props => props.type === 'mobile' ? 'block' : 'none',
             minHeight: 330,
-            marginTop: 20,
             boxShadow: theme.shadows[3]
         }
+    },
+    '@media (max-width: 500px)': {
+        marginTop: 0,
     }
 });
 

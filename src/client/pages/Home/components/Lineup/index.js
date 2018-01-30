@@ -3,6 +3,8 @@ import injectSheet from 'react-jss'
 
 import LineupList from './LineupList'
 import TitleContainer from '../../../components/TitleContainer'
+import LineupGrid from './LineupGrid'
+import lineupData from './data'
 
 const root = {
     overflow: 'hidden',
@@ -24,15 +26,23 @@ const styles = theme => ({
         }
     },
     overlay: {
-        background: `linear-gradient(to right bottom, rgba(0,0,0,0) 50%, rgba(54, 69, 79, 0.5) 50%)`,
         margin: 'auto',
         padding: '30 5%',
         textAlign: 'center',
+    },
+    wrap: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        width: '100%'
     },
     '@media (max-width: 500px)': {
         overlay: {
             maxWidth: '100%',
             padding: 0,
+            background: `#fff`
+        },
+        root: {
             background: `#fff`
         }
     }
@@ -40,12 +50,20 @@ const styles = theme => ({
 
 const Lineup = props => {
     const {classes} = props;
+    let length = lineupData.length;
     return (
         <Fragment>
             <div className={classes.root}>
                 <div className={classes.overlay}>
                     <TitleContainer text='The lineup' color='#222' icon='musicSax' y={180}/>
-                    <LineupList/>
+                    {/*<LineupList/>*/}
+                    <div className={classes.wrap}>
+                        {lineupData.map((artist, i) => <LineupGrid name={artist.name}
+                                                                   image={artist.image}
+                                                                   key={artist.name}
+                                                                   lenth={length}
+                                                                   i={i}/>)}
+                    </div>
                 </div>
             </div>
         </Fragment>

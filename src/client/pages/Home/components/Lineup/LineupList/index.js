@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react'
 import injectSheet from 'react-jss'
 
-import lineupList from "./data";
+import lineupList from "../data";
 
 const animation = (name, property, from, to) => {
     return {
@@ -41,7 +41,7 @@ const styles = theme => ({
         height: 450,
         backgroundColor: '#fff',
         zIndex: 4,
-        boxShadow: theme.shadows[10]
+        // boxShadow: theme.shadows[10]
     },
     listMobile: {
         listStyleType: 'none',
