@@ -3,6 +3,7 @@ import injectSheet from 'react-jss'
 
 import Input from './Input'
 import Button from '../../../../components/ClearButton'
+import inputList from './data'
 
 const styles = theme => ({
     form: {
@@ -16,35 +17,32 @@ class Form extends Component {
         name: '',
         email: '',
         message: '',
-        category: ''
+        inquiry: ''
     }
+
+    onSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.state);
+    };
+
     onChange = (e) => {
         let {name, value} = e.target;
         this.setState({[name]: value})
-    }
+    };
 
     render() {
         const {classes} = this.props;
         return (
-            <form action="" className={classes.form}>
-                <div>
-                    <Input type='text' placeholder='Name' name='name' onChange={this.onChange} value={this.state.name}/>
-                </div>
-                <div>
-                    <Input type='email' placeholder='Email' name='email' onChange={this.onChange}
-                           value={this.state.email}/>
-                </div>
-                <div>
-                    <Input type='select' placeholder='Inquiry Type' name='category' onChange={this.onChange}
-                           value={this.state.category}/>
-                </div>
-                <div>
-                    <Input type='textarea' placeholder='Message' name='message' onChange={this.onChange}
-                           value={this.state.message}/>
-                </div>
-                <div>
-                    <Button text='send' icon='envelope' iconColor='#fff'/>
-                </div>
+            <form onSubmit={this.onSubmit} className={classes.form}>
+                {inputList.map(input => {
+                    return <Input type={input.type}
+                                  name={input.name}
+                                  value={this.state[input.name]}
+                                  placeholder={input.ph}
+                                  key={input.name}
+                                  onChange={this.onChange}/>
+                })}
+                <div><Button text='send' icon='envelope' iconColor='#fff' submit/></div>
             </form>
         )
     }

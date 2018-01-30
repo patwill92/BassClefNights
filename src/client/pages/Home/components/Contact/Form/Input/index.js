@@ -14,6 +14,7 @@ let inputStyle = {
     },
     lineHeight: '20px',
     fontSize: 15
+
 };
 
 const styles = theme => ({
@@ -27,7 +28,8 @@ const styles = theme => ({
             position: 'relative',
             zIndex: 2,
             width: '100%',
-            height: props => props.type !== 'textarea' ? 30 : null
+            height: props => props.type !== 'textarea' ? 30 : null,
+            cursor: props => props.type === 'select' ? 'pointer' : null
         },
         '& div': {
             fontFamily: theme.font.secondary
@@ -147,47 +149,50 @@ class Input extends Component {
     render() {
         const {classes, type, placeholder, name, onChange, value} = this.props;
         let regular = type !== 'textarea' && type !== 'select';
-        let textArea = !regular && type !== 'select';
-        let select = !regular && type !== 'textarea';
+        let textArea = type === 'textarea';
+        let select = type === 'select';
         return (
-            <div className={classes.root}>
-                {regular && <input onFocus={this.onFocus}
-                                   onBlur={this.onBlur}
-                                   onChange={onChange}
-                                   value={value}
-                                   name={name}
-                                   type={type}
-                                   className={classes[type]}/>}
-                {textArea && <textarea onFocus={this.onFocus}
+            <div>
+                <div className={classes.root}>
+                    {regular && <input onFocus={this.onFocus}
                                        onBlur={this.onBlur}
                                        onChange={onChange}
-                                       ref={input => this.myText = input}
                                        value={value}
-                                       rows={3}
                                        name={name}
+                                       type={type}
                                        className={classes[type]}/>}
-                {select &&
-                <select onFocus={this.onFocus}
-                        style={{left: -7}}
-                        id='select'
-                                     onBlur={this.onBlur}
-                                     onChange={onChange}
-                                     value={value}
-                                     name={name}
-                                     className={classes[type]}>
-                    <option value=""/>
-                    <option value="sponsor">Potential Sponsor</option>
-                    <option value="ticket">Tickets</option>
-                    <option value="general">General</option>
-                </select>
-                }
-                <div id='input'
-                     className={classes[this.state.overlayClass]}
-                     onClick={textArea ? this.focusTextArea : null}
-                     style={{color: this.state.inputColor}}>{placeholder}</div>
-                <div className={classes.borderOverlay} style={{marginBottom: 45}}>
-                    <div className={classes[this.state.borderLeft]}/>
-                    <div className={classes[this.state.borderRight]}/>
+                    {textArea && <textarea onFocus={this.onFocus}
+                                           onBlur={this.onBlur}
+                                           onChange={onChange}
+                                           ref={input => this.myText = input}
+                                           value={value}
+                                           rows={3}
+                                           name={name}
+                                           className={classes[type]}/>}
+                    {select &&
+                    <select onFocus={this.onFocus}
+                            style={{left: -7}}
+                            id='select'
+                            onBlur={this.onBlur}
+                            onChange={onChange}
+                            value={value}
+                            name={name}
+                            className={classes[type]}>
+                        <option value=""/>
+                        <option value="founder">Become a Founder</option>
+                        <option value="sponsor">Become a Sponsor</option>
+                        <option value="ticket">Tickets</option>
+                        <option value="general">General</option>
+                    </select>
+                    }
+                    <div id='input'
+                         className={classes[this.state.overlayClass]}
+                         onClick={textArea ? this.focusTextArea : null}
+                         style={{color: this.state.inputColor}}>{placeholder}</div>
+                    <div className={classes.borderOverlay} style={{marginBottom: 45}}>
+                        <div className={classes[this.state.borderLeft]}/>
+                        <div className={classes[this.state.borderRight]}/>
+                    </div>
                 </div>
             </div>
         )

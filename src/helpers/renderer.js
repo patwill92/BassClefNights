@@ -35,6 +35,24 @@ export default (req, store, context, routes) => {
         <style type="text/css" id="server-side-styles">
           ${sheets.toString()}
         </style>
+        <style>
+            input:-webkit-autofill,
+            input:-webkit-autofill:hover, 
+            input:-webkit-autofill:focus
+            input:-webkit-autofill, 
+            textarea:-webkit-autofill,
+            textarea:-webkit-autofill:hover
+            textarea:-webkit-autofill:focus,
+            select:-webkit-autofill,
+            select:-webkit-autofill:hover,
+            select:-webkit-autofill:focus {
+              border: none;
+              -webkit-text-fill-color: #fff;
+              -webkit-box-shadow: none;
+              transition: background-color 5000s ease-in-out 0s;
+              font-family: 'Montserrat', sans-serif;
+            }
+        </style>
       </head>
       <body>
         <div id="root">${content}</div>
