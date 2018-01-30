@@ -40,11 +40,12 @@ const styles = theme => ({
         left: 0,
         right: 0,
         zIndex: -10,
-        background: 'url("images/home.jpg") no-repeat center center fixed',
+        backgroundImage: 'url("images/home.jpg")',
         '-webkit-background-size': 'cover',
         '-moz-background-size': 'cover',
         '-o-background-size': 'cover',
         'background-size': 'cover',
+        backgroundPosition: 'center',
     }
 });
 
