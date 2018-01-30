@@ -22,29 +22,29 @@ const styles = theme => ({
         },
         body: {
             margin: 0,
-            background: 'url("images/home.jpg") no-repeat center center fixed',
-            '-webkit-background-size': 'cover',
-            '-moz-background-size': 'cover',
-            '-o-background-size': 'cover',
-            'background-size': 'cover',
-            '&:after': {
-                zIndex: -1,
-                content: '',
-                height: '100vh',
-                background: 'url("images/home.jpg") center center',
-                '-webkit-background-size': 'cover',
-                '-moz-background-size': 'cover',
-                '-o-background-size': 'cover',
-                'background-size': 'cover',
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                right: 0
-            }
+            height: '100%',
+            width: '100%',
+            minHeight: '100%',
+            position: 'relative',
+            backgroundColor: 'rgba(0,0,0,0.0)'
         },
         html: {
             ...root
         }
+    },
+    bodyOverlay: {
+        position: 'fixed',
+        minHeight: '100vh',
+        minWidth: '100vw',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: -10,
+        background: 'url("images/home.jpg") no-repeat center center fixed',
+        '-webkit-background-size': 'cover',
+        '-moz-background-size': 'cover',
+        '-o-background-size': 'cover',
+        'background-size': 'cover',
     }
 });
 
@@ -61,6 +61,7 @@ class App extends Component {
                 {renderRoutes(route.routes)}
                 <Menu/>
                 <Footer/>
+                <div className={classes.bodyOverlay} />
             </Fragment>
         )
     }
