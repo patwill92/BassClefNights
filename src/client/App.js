@@ -10,8 +10,7 @@ import {toggleNav} from "./actions";
 
 
 const root = {
-    margin: 0,
-    minHeight: '100%'
+    margin: 0
 };
 
 
@@ -22,12 +21,17 @@ const styles = theme => ({
             boxSizing: 'border-box'
         },
         body: {
-            ...root,
-            backgroundColor: '#fff',
-            backgroundImage: 'url("images/home.jpg")',
+            margin: 0,
+            width: '100%',
+            height: '100%',
+            minHeight: '100%',
+            background: 'url("images/home.jpg") no-repeat center center',
             backgroundAttachment: 'fixed',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
+            '-webkit-background-size': 'cover',
+            '-moz-background-size': 'cover',
+            '-o-background-size': 'cover',
+            'background-size': 'cover',
+            zIndex: -10
         },
         html: {
             ...root
