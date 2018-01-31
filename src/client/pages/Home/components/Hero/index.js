@@ -132,7 +132,8 @@ const styles = theme => ({
     '@media (max-width: 500px)': {
       socialContainer: {
           top: 13,
-          textAlign: 'right'
+          textAlign: 'right',
+          display: 'flex'
       }
     },
     '@media (max-height: 550px)': {
