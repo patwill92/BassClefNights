@@ -38,8 +38,8 @@ class Home extends Component {
             <div className={classes.root}>
                 <Hero/>
                 <Lineup/>
-                <Contact/>
                 <Venue/>
+                <Contact/>
             </div>
         )
     };

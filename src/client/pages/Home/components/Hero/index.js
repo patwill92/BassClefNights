@@ -22,7 +22,8 @@ const styles = theme => ({
     root: {
         height: '100%',
         textAlign: 'center',
-        position: 'relative'
+        position: 'relative',
+        minHeight: 500
     },
     overlayImg: {
         height: 'inherit',
@@ -30,13 +31,14 @@ const styles = theme => ({
     },
     logo: {
         width: 270,
-        height: 'auto'
+        height: 'auto',
+        marginBottom: 30
     },
     heroContainer: {
-        ...theme.flex.colCenter,
+        ...theme.flex.colStart,
         alignItems: 'center',
         height: 'inherit',
-        padding: '0 10',
+        padding: '60 10 200 10',
         '& *': {
             color: '#fff',
             textAlign: 'center'
@@ -47,7 +49,7 @@ const styles = theme => ({
         textTransform: 'uppercase',
         letterSpacing: 3,
         fontSize: '4.0em',
-        fontWeight: 100,
+        fontWeight: 200,
         marginBottom: '20px',
         marginTop: 0
     },
@@ -66,7 +68,8 @@ const styles = theme => ({
         height: 70,
         width: 40,
         fontSize: 20,
-        textAlign: 'center'
+        textAlign: 'center',
+        display: 'none'
     },
     innerContainer: {
         '& div': {
@@ -97,22 +100,40 @@ const styles = theme => ({
     '@media (max-width: 499px)': {
         heroSubTitle: {
             fontSize: '1.3rem',
-            marginTop: '10px'
+            marginTop: '10px',
+            fontWeight: 300
         },
         heroTitle: {
-            fontSize: '2.0rem',
-            marginBottom: '10px'
+            fontSize: '1.9rem',
+            marginBottom: '10px',
+            fontWeight: 300
         },
         logo: {
             maxWidth: 170,
             marginBottom: '10px'
         },
+        heroContainer: {
+            justifyContent: 'flex-start',
+            padding: '100 10 0 10',
+        }
     },
     '@media (max-height: 720px)': {
         logo: {
             width: 230,
             height: 'auto'
         },
+    },
+    '@media (min-width: 501px) and (max-width: 768px)': {
+        socialContainer: {
+            display: 'flex',
+            top: 17
+        }
+    },
+    '@media (max-width: 500px)': {
+      socialContainer: {
+          top: 13,
+          textAlign: 'right'
+      }
     },
     '@media (max-height: 550px)': {
         logo: {
@@ -125,7 +146,7 @@ const styles = theme => ({
             marginBottom: 15
         },
         heroTitle: {
-            fontSize: '2.1rem',
+            fontSize: '2.0rem',
             marginBottom: 5
         },
         heroContainer: {
@@ -159,8 +180,7 @@ const HomeHero = props => {
                     <div className={classes.innerContainer}>
                         <h1 className={classes.heroTitle}>bass clef nights</h1>
                         <LineBreak icon='musicNote' color='#fff' rotateZ={4}/>
-                        <h4 className={classes.heroSubTitle}>reliving old miami through jazz</h4>
-                        <Button text='Become a sponsor'/>
+                        <Button text='Become a sponsor' color={'#fff'} hover={'#161616'} style={{marginTop: 30}}/>
                     </div>
                 </div>
             </div>

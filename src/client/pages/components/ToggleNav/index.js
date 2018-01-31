@@ -37,6 +37,11 @@ const styles = theme => ({
         display: 'flex',
         flexDirection: 'column',
         fontSize: '20px'
+    },
+    '@media (max-width: 768px)': {
+        root: {
+            display: 'none'
+        }
     }
 });
 

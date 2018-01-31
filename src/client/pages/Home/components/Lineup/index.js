@@ -55,8 +55,7 @@ const Lineup = props => {
         <Fragment>
             <div className={classes.root}>
                 <div className={classes.overlay}>
-                    <TitleContainer text='The lineup' color='#222' icon='musicSax' y={180}/>
-                    {/*<LineupList/>*/}
+                    <div ><TitleContainer text='The lineup' color='#222' icon='musicSax' y={180} noBorder/></div>
                     <div className={classes.wrap}>
                         {lineupData.map((artist, i) => <LineupGrid name={artist.name}
                                                                    image={artist.image}

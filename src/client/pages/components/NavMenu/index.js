@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 
 import {toggleNav} from "../../../actions/index";
 import ToggleNav from '../ToggleNav/index'
+import TitleContainer from '../TitleContainer'
+import Icon from '../Icon'
 
 const animation = (name, property, from, to) => {
     return {
@@ -53,9 +55,42 @@ const styles = theme => ({
         height: '100vh',
         position: 'relative',
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         alignItems: 'center',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        padding: '50 0 150 0'
+    },
+    iconContainer: {
+        position: 'fixed',
+        top: 13,
+        left: 17,
+        display: 'flex',
+        alignItems: 'center',
+        textAlign: 'center',
+        justifyContent: 'center',
+        fontSize: 30,
+        height: 28,
+        width: 34
+    },
+    navItem: {
+        textTransform: 'uppercase',
+        fontFamily: theme.font.secondary,
+        fontWeight: 300,
+        color: '#161616',
+        textAlign: 'center',
+        fontSize: 20
+    },
+    '@media (max-width: 500px)': {
+        iconContainer: {
+            top: 7,
+            left: 10,
+            fontSize: 25,
+            height: 28,
+            width: 34
+        },
+        navItem: {
+            fontSize: 16
+        }
     },
     ...drop,
     ...fade,
@@ -78,11 +113,39 @@ class NavMenu extends React.Component {
         const {menu, classes} = this.props;
         const {open} = this.state;
         let className = !menu && !open ? 'root' : menu ? 'in' : 'out';
+        let nav = ['Home', 'Tickets', 'Lineup', 'About', 'Contact', 'News'];
         return (
             <div className={classes[className]}>
                 <div className={classes.overlay}>
-                    {menu && <ToggleNav text='close' color='#2a2a2a' onClick={this.change}/>}
-                    <h1>MENU</h1>
+                    {menu &&
+                    <div onClick={this.change} className={classes.iconContainer}>
+                        <Icon name={'times'} color={'#161616'}/>
+                    </div>}
+                    <div style={{
+                        textAlign: 'center',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}>
+                        <img src="images/logoFilled.png" alt=""
+                             style={{maxWidth: 100, height: 'auto', marginBottom: 15}}/>
+                        <TitleContainer text={'bass clef nights'} color={'#161616'} icon={'musicNote'} z={4} noPadding
+                                        fontSize={17}/>
+                    </div>
+                    <div style={{
+                        flex: 1,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                        maxHeight: 400
+                    }}>
+                        {nav.map(item => {
+                            return (
+                                <div className={classes.navItem} key={item}>{item}</div>
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
         )

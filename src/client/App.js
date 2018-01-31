@@ -3,7 +3,8 @@ import injectSheet from 'react-jss'
 import {renderRoutes} from 'react-router-config'
 import {connect} from 'react-redux'
 
-import ToggleNav from './pages/components/ToggleNav'
+import Navbar from './pages/components/NavBar'
+// import ToggleNav from './pages/components/ToggleNav'
 import Menu from './pages/components/NavMenu'
 import Footer from './pages/components/Footer'
 import {toggleNav} from "./actions";
@@ -63,7 +64,8 @@ class App extends Component {
         const {classes, route, menu} = this.props;
         return (
             <Fragment>
-                {!menu && <ToggleNav color='#e8e8e8' text='menu' onClick={() => this.props.toggleNav(!menu)}/>}
+                {/*{!menu && <ToggleNav color='#e8e8e8' text='menu' onClick={() => this.props.toggleNav(!menu)}/>}*/}
+                {!menu && <Navbar onClick={() => this.props.toggleNav(!menu)}/>}
                 {renderRoutes(route.routes)}
                 <Menu/>
                 <Footer/>

@@ -4,7 +4,7 @@ import injectSheet from 'react-jss'
 let inputStyle = {
     backgroundColor: 'rgba(0,0,0,0)',
     border: 'none',
-    color: '#e8e8e8',
+    color: '#161616',
     '&:focus': {
         border: 'none',
         outline: 'none',
@@ -13,7 +13,8 @@ let inputStyle = {
         }
     },
     lineHeight: '20px',
-    fontSize: 15
+    fontSize: 15,
+    fontFamily: "'Montserrat', sans-serif !important"
 
 };
 
@@ -21,8 +22,7 @@ const styles = theme => ({
     root: {
         display: 'inline-block',
         position: 'relative',
-        width: '60%',
-        minWidth: 350,
+        width: '100%',
         maxWidth: 665,
         '& input, & textarea, & #select': {
             position: 'relative',
@@ -75,12 +75,12 @@ const styles = theme => ({
     },
     borderOverlay: {
         paddingBottom: '1px',
-        backgroundColor: 'rgba(255,255,255,0.5)',
+        backgroundColor: 'rgba(22,22,22,0.5)',
         display: 'flex',
         justifyContent: 'center',
         '& div': {
             paddingBottom: '1px',
-            backgroundColor: 'rgba(255,255,255,1.0)'
+            backgroundColor: 'rgba(22,22,22,1.0)'
         }
     },
     borderOverlayLeft: {
@@ -115,7 +115,7 @@ class Input extends Component {
         overlayClass: 'overlayBlur',
         borderLeft: 'borderOverlayLeft',
         borderRight: 'borderOverlayRight',
-        inputColor: 'rgba(255,255,255,0.5)'
+        inputColor: 'rgba(22,22,22,0.5)'
     };
 
     onFocus = () => {
@@ -123,7 +123,7 @@ class Input extends Component {
             overlayClass: 'overlayFocus',
             borderLeft: 'extendedLeft',
             borderRight: 'extendedRight',
-            inputColor: 'rgba(255,255,255,1.0)'
+            inputColor: 'rgba(22,22,22,1.0)'
         })
     };
 
@@ -132,14 +132,14 @@ class Input extends Component {
             this.setState({
                 borderLeft: 'borderOverlayLeft',
                 borderRight: 'borderOverlayRight',
-                inputColor: 'rgba(255,255,255,0.5)'
+                inputColor: 'rgba(22,22,22,0.5)'
             })
         } else {
             this.setState({
                 overlayClass: 'overlayBlur',
                 borderLeft: 'borderOverlayLeft',
                 borderRight: 'borderOverlayRight',
-                inputColor: 'rgba(255,255,255,0.5)'
+                inputColor: 'rgba(22,22,22,0.5)'
             })
         }
     };
@@ -156,7 +156,7 @@ class Input extends Component {
                 <div className={classes.root}>
                     {regular && <input onFocus={this.onFocus}
                                        onBlur={this.onBlur}
-                                       autoComplete={'nope'}
+                                       autoComplete={'off'}
                                        onChange={onChange}
                                        value={value}
                                        name={name}
@@ -167,7 +167,7 @@ class Input extends Component {
                                            onChange={onChange}
                                            ref={input => this.myText = input}
                                            value={value}
-                                           rows={3}
+                                           rows={4}
                                            name={name}
                                            className={classes[type]}/>}
                     {select &&

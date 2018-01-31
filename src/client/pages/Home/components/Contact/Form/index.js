@@ -33,7 +33,7 @@ class Form extends Component {
     render() {
         const {classes} = this.props;
         return (
-            <form onSubmit={this.onSubmit} className={classes.form}>
+            <form onSubmit={this.onSubmit} className={classes.form}  autoComplete={'off'}>
                 {inputList.map(input => {
                     return <Input type={input.type}
                                   name={input.name}
@@ -42,7 +42,7 @@ class Form extends Component {
                                   key={input.name}
                                   onChange={this.onChange}/>
                 })}
-                <div><Button text='send' icon='envelope' iconColor='#fff' submit/></div>
+                <div><Button text='send' icon='envelope' iconColor='#161616' color={'#161616'} hover={'#fff'} submit/></div>
             </form>
         )
     }

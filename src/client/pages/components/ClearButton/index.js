@@ -6,8 +6,8 @@ import Icon from '../Icon'
 const styles = theme => ({
     heroBtn: {
         backgroundColor: 'rgba(0,0,0,0)',
-        border: '1px solid #fff',
-        color: '#fff',
+        border: props => `1px solid ${props.color}`,
+        color: props => props.color,
         fontFamily: theme.font.secondary,
         letterSpacing: 1,
         fontWeight: 300,
@@ -17,8 +17,8 @@ const styles = theme => ({
         transition: 'background-color 500ms, color 500ms',
         '&:hover': {
             cursor: 'pointer',
-            color: '#000',
-            backgroundColor: '#fff'
+            color: props => props.hover,
+            backgroundColor: props => props.color
         }
     }
 });
@@ -26,17 +26,17 @@ const styles = theme => ({
 
 class ClearButton extends React.Component {
     state = {
-        iconColor: this.props.iconColor
+        iconColor: this.props.color
     };
 
     render() {
         const {classes, text, style, icon, submit} = this.props;
         return (
-            <button onMouseOver={() => this.setState({iconColor: '#000'})}
-                    onMouseOut={() => this.setState({iconColor: this.props.iconColor})}
+            <button onMouseOver={() => this.setState({iconColor: this.props.hover})}
+                    onMouseOut={() => this.setState({iconColor: this.props.color})}
                     type={submit ? 'submit' : 'button'}
                     className={classes.heroBtn} style={style && {...style}}>
-                {icon && <Icon name={icon} color={this.state.iconColor} style={{marginRight: 10, transition: 'fill 0.5s'}}/>}
+                {icon && <Icon name={icon} color={this.state.iconColor} style={{marginRight: 10}}/>}
                 {text}
             </button>
         )

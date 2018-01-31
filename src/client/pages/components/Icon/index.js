@@ -64,7 +64,7 @@ const MyIcon = props => {
         <span className={props.hover && props.classes.hover} id='svg-icon' style={props.style ? {...svgStyle, ...props.style} : svgStyle}>
           <svg style={props.svgStyle ? {...style, ...props.svgStyle}: style} id={name} width={props.size ? width * (props.size / height) : width}
                height={props.size ? props.size : height} xmlns="http://www.w3.org/2000/svg" viewBox={viewBox}>
-            <path style={{pointerEvents: 'none'}} fill={props.color ? props.color : '#333'} d={path}/>
+            <path style={{pointerEvents: 'none', transition: 'fill 0.5s'}} fill={props.color ? props.color : '#333'} d={path}/>
           </svg>
         </span>
     )

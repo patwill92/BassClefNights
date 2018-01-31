@@ -6,11 +6,13 @@ import LineBreak from '../LineBreak/index'
 const styles = theme => ({
     root: {
         '& div': {
-            fontSize: '14px'
+            fontSize: props => props.fontSize ? props.fontSize : '14px'
         },
         textAlign: 'center',
         display: 'inline-block',
-        marginBottom: 20
+        marginBottom: 20,
+        paddingBottom: 50,
+        paddingTop: 20
     },
     title: {
         textAlign: 'center',
@@ -24,51 +26,30 @@ const styles = theme => ({
     },
     titleContainer: {
         '& div': {
-            fontSize: '18px'
+            fontSize: props => props.fontSize ? props.fontSize : '14px'
         },
         textAlign: 'center',
         display: 'inline-block',
         marginBottom: 20
     },
-    mobileRoot: {
-        display: 'none'
-    },
     '@media (max-width: 500px)': {
-        titleContainer: {
-            margin: 0,
-        },
-        mobileRoot: {
-            display: 'block'
-        },
         root: {
-            display: 'none'
+            paddingTop: 40,
+            paddingBottom: 20
+        },
+        title: {
+            fontSize: '1.5rem'
         }
     }
 });
 
 const TitleContainer = props => {
-    const {classes, text, color, icon, y, x, z, noBorder} = props;
+    const {classes, text, color, icon, y, x, z, noPadding} = props;
     return (
         <Fragment>
-            <div className={classes.root}>
+            <div className={classes.root} style={{padding: noPadding && 0}}>
                 <h1 className={classes.title} style={{color}}>{text}</h1>
                 <LineBreak icon={icon} color={color} rotateY={y && y} rotateX={x && x} rotateZ={z && z}/>
-            </div>
-            <div className={classes.mobileRoot}
-                 style={{margin: '4px 8px 9px 4px', padding: 4, border: `1px solid ${!noBorder ? color : 'rgba(0,0,0,0)'}`, maxHeight: 100}}>
-                <div style={{
-                    border: `1px solid ${!noBorder ? color : 'rgba(0,0,0,0)'}`,
-                    position: 'relative',
-                    top: '0',
-                    left: 0,
-                    minHeight: 100,
-                    minWidth: 'calc(100% + 9px)'
-                }}>
-                    <div className={classes.titleContainer} style={{marginRight: 8}}>
-                        <h1 className={classes.title} style={{color}}>{text}</h1>
-                        <LineBreak icon={icon} color={color} rotateY={y && y} rotateX={x && x} rotateZ={z && z}/>
-                    </div>
-                </div>
             </div>
         </Fragment>
     )

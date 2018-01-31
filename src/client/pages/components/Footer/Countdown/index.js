@@ -33,7 +33,7 @@ const styles = theme => ({
         color: '#fff',
         textAlign: 'center',
         position: 'relative',
-        zIndex: 3,
+        zIndex: 1,
         margin: 0,
         paddingTop: 0,
         paddingBottom: 20,
@@ -43,7 +43,7 @@ const styles = theme => ({
         maxWidth: 100,
         height: 'auto',
         position: 'relative',
-        zIndex: 3,
+        zIndex: 1,
         marginTop: 10
     },
     '@media(max-width: 500px)': {
@@ -115,7 +115,7 @@ class Countdown extends Component {
                 </div>
                 <div style={{textAlign: 'center'}}>
                     <div className={classes.countdownTitle} style={{padding: 0}}>
-                        <Button style={{fontSize: 13}} text={'tickets'} icon={'ticketAlt'}
+                        <Button color={'#fff'} hover={'#161616'} style={{fontSize: 13}} text={'tickets'} icon={'ticketAlt'}
                                 iconColor={this.state.iconColor}/>
                     </div>
                 </div>
