@@ -1,6 +1,6 @@
 export default {
     font: {
-        primary: "'Cormorant Garamond', serif",
+        primary: "'Montserrat', sans-serif",
         secondary: "'Montserrat', sans-serif"
     },
     palette: {

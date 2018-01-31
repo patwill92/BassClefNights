@@ -38,7 +38,6 @@ class Home extends Component {
             <div className={classes.root}>
                 <Hero/>
                 <Lineup/>
-                <Venue/>
                 <Contact/>
                 <Venue/>
             </div>

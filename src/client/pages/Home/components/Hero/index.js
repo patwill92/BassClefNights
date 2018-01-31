@@ -29,7 +29,7 @@ const styles = theme => ({
         position: 'relative'
     },
     logo: {
-        width: 330,
+        width: 270,
         height: 'auto'
     },
     heroContainer: {
@@ -46,7 +46,7 @@ const styles = theme => ({
         fontFamily: theme.font.primary,
         textTransform: 'uppercase',
         letterSpacing: 3,
-        fontSize: '5.0em',
+        fontSize: '4.0em',
         fontWeight: 100,
         marginBottom: '20px',
         marginTop: 0
@@ -55,7 +55,7 @@ const styles = theme => ({
         fontFamily: theme.font.secondary,
         letterSpacing: 2,
         fontSize: '1.5em',
-        fontWeight: 300,
+        fontWeight: 200,
         marginTop: '20px'
     },
     socialContainer: {

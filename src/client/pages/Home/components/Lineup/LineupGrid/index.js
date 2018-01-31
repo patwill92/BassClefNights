@@ -26,7 +26,8 @@ const styles = theme => ({
         flexDirection: 'column',
         textAlign: 'center',
         padding: '0 20 30 20',
-        letterSpacing: 1.5
+        letterSpacing: 1.5,
+        fontWeight: 300
     },
     '@media (min-width: 501px) and (max-width: 942px)': {
         root: {

@@ -16,7 +16,7 @@ const styles = theme => ({
     root: {
         ...root,
         backgroundImage: 'url("images/triangles.png")',
-        backgroundColor: 'rgba(7,7,7,0.9)'
+        backgroundColor: '#161616'
     },
     title: {
         marginBottom: 25

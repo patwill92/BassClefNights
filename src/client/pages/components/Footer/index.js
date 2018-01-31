@@ -7,7 +7,7 @@ import Countdown from './Countdown'
 const styles = theme => ({
     root: {
         backgroundImage: 'url("images/triangles.png")',
-        backgroundColor: 'rgba(7,7,7,0.6)'
+        backgroundColor: 'rgba(22,22,22,0.9)'
     },
     overlay: {
         ...theme.flex.colCenter,
@@ -18,7 +18,7 @@ const styles = theme => ({
             textAlign: 'center',
             fontFamily: theme.font.secondary,
             textTransform: 'uppercase',
-            fontWeight: 400
+            fontWeight: 300
         },
         '& h3': {
             fontSize: 14

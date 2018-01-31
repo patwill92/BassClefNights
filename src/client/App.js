@@ -40,7 +40,7 @@ const styles = theme => ({
         left: 0,
         right: 0,
         zIndex: -10,
-        backgroundImage: 'url("images/home.jpg")',
+        backgroundImage: 'url("images/homebw.jpg")',
         '-webkit-background-size': 'cover',
         '-moz-background-size': 'cover',
         '-o-background-size': 'cover',
