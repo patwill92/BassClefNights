@@ -1,2 +1,3 @@
 export const TOGGLE_NAV = 'TOGGLE_NAV';
 export const START_COUNTDOWN = 'START_COUNTDOWN';
+export const SCROLL_POSITION = 'SCROLL_POSITION';

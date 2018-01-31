@@ -33,6 +33,13 @@ const styles = theme => ({
             ...root
         }
     },
+    root: {
+        margin: 0,
+        height: '100%',
+        width: '100%',
+        minHeight: '100%',
+        position: 'relative'
+    },
     bodyOverlay: {
         position: 'fixed',
         minHeight: '100vh',
@@ -57,21 +64,22 @@ const styles = theme => ({
 
 class App extends Component {
     componentDidMount = () => {
-        this.props.toggleNav(false)
+        this.props.toggleNav(false);
     };
 
     render() {
         const {classes, route, menu} = this.props;
         return (
             <Fragment>
-                {/*{!menu && <ToggleNav color='#e8e8e8' text='menu' onClick={() => this.props.toggleNav(!menu)}/>}*/}
-                {!menu && <Navbar onClick={() => this.props.toggleNav(!menu)}/>}
-                {renderRoutes(route.routes)}
-                <Menu/>
-                <Footer/>
-                <div className={classes.bodyOverlay}>
-                    <div className={classes.bodyOverlayChild}/>
-                </div>
+               <div className={classes.root} id='main'>
+                   {!menu && <Navbar onClick={() => this.props.toggleNav(!menu)} />}
+                   {renderRoutes(route.routes)}
+                   <Menu scroll={this.props.scroll}/>
+                   <Footer/>
+                   <div className={classes.bodyOverlay}>
+                       <div className={classes.bodyOverlayChild}/>
+                   </div>
+               </div>
             </Fragment>
         )
     }
@@ -79,7 +87,8 @@ class App extends Component {
 
 const mapStateToProps = ({ui}) => {
     return {
-        menu: ui.nav
+        menu: ui.nav,
+        scroll: ui.scroll
     }
 };
 

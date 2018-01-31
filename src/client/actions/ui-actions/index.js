@@ -1,8 +1,15 @@
-import {TOGGLE_NAV, START_COUNTDOWN} from "../types";
+import {TOGGLE_NAV, START_COUNTDOWN, SCROLL_POSITION} from "../types";
 
 export const toggleNav = payload => {
     return {
         type: TOGGLE_NAV,
+        payload
+    }
+};
+
+export const scrollPosition = payload => {
+    return {
+        type: SCROLL_POSITION,
         payload
     }
 };

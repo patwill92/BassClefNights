@@ -1,7 +1,9 @@
 import React, {Component, Fragment} from 'react'
 import injectSheet from 'react-jss'
+import {connect} from 'react-redux'
 
 import Icon from '../Icon'
+import {scrollPosition} from "../../../actions";
 
 const styles = theme => ({
     root: {
@@ -103,6 +105,7 @@ const styles = theme => ({
     }
 });
 
+@connect(null, {scrollPosition})
 class ToggleNav extends Component {
     state = {
         window: {},
@@ -111,6 +114,12 @@ class ToggleNav extends Component {
         border: '',
         opacity: 0
     };
+
+    componentWillUnmount = () => {
+        window.removeEventListener("resize", this.getDimensions);
+        window.removeEventListener("scroll", this.opacity);
+        window.removeEventListener("scroll", this.getScroll);
+    }
 
     componentDidMount = () => {
         let myScroll = window.pageYOffset;
@@ -164,6 +173,7 @@ class ToggleNav extends Component {
 
     getScroll = () => {
         let state = this.state.window;
+        this.props.scrollPosition(window.pageYOffset);
         this.setState({
             window: {
                 ...state,
@@ -174,7 +184,6 @@ class ToggleNav extends Component {
 
     render() {
         const {classes, text, color, onClick} = this.props;
-        console.log(this.state.window.innerHeight, this.state.window.pageYOffset, this.state.color);
         let nav = ['Home', 'Tickets', 'Lineup', 'img', 'About', 'Contact', 'News'];
         return (
             <Fragment>

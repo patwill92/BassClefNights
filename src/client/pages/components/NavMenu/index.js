@@ -32,8 +32,7 @@ const main = {
     top: 0,
     backgroundColor: '#fff',
     animationFillMode: 'forwards',
-    zIndex: 2,
-    overflow: 'scroll'
+    zIndex: 2
 };
 
 const styles = theme => ({
@@ -105,9 +104,11 @@ class NavMenu extends React.Component {
     };
 
     change = () => {
+        window.scrollTo(0, this.props.scroll);
         this.setState({open: true}, () => {
             this.props.toggleNav(!this.props.menu)
         });
+
     };
 
     render() {
@@ -116,7 +117,7 @@ class NavMenu extends React.Component {
         let className = !menu && !open ? 'root' : menu ? 'in' : 'out';
         let nav = ['Home', 'Tickets', 'Lineup', 'About', 'Contact', 'News'];
         return (
-            <div className={classes[className]}>
+            <div className={classes[className]} style={{overflow: menu ? 'scroll' : 'hidden'}}>
                 <div className={classes.overlay}>
                     {menu &&
                     <div onClick={this.change} className={classes.iconContainer}>
