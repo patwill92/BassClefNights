@@ -55,7 +55,7 @@ const styles = theme => ({
         height: '100vh',
         position: 'relative',
         display: 'flex',
-        justifyContent: 'space-evenly',
+        justifyContent: 'flex-start',
         alignItems: 'center',
         flexDirection: 'column',
         padding: '50 0 150 0'
@@ -78,7 +78,8 @@ const styles = theme => ({
         fontWeight: 300,
         color: '#161616',
         textAlign: 'center',
-        fontSize: 20
+        fontSize: 20,
+        marginBottom: 30
     },
     '@media (max-width: 500px)': {
         iconContainer: {
@@ -137,7 +138,7 @@ class NavMenu extends React.Component {
                         flex: 1,
                         display: 'flex',
                         flexDirection: 'column',
-                        justifyContent: 'space-between',
+                        justifyContent: 'flex-start',
                         maxHeight: 400
                     }}>
                         {nav.map(item => {
