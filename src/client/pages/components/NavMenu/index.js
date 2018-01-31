@@ -3,7 +3,6 @@ import injectSheet from 'react-jss'
 import {connect} from 'react-redux'
 
 import {toggleNav} from "../../../actions/index";
-import ToggleNav from '../ToggleNav/index'
 import TitleContainer from '../TitleContainer'
 import Icon from '../Icon'
 
@@ -59,7 +58,7 @@ const styles = theme => ({
         justifyContent: 'flex-start',
         alignItems: 'center',
         flexDirection: 'column',
-        padding: '50 0 150 0'
+        padding: '50 0 0 0'
     },
     iconContainer: {
         position: 'fixed',
