@@ -2,7 +2,7 @@ export default [
     {
         type: 'text',
         ph: 'Name',
-        name: 'myName'
+        name: 'blah1'
     },
     {
         type: 'text',
