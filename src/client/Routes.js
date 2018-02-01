@@ -3,6 +3,7 @@ import App from './App'
 
 //pages
 import Home from './pages/Home'
+import About from './pages/About'
 
 export default [
     {
@@ -12,6 +13,10 @@ export default [
                 ...Home,
                 path: '/',
                 exact: true
+            },
+            {
+                ...About,
+                path: '/about'
             }
         ]
     }

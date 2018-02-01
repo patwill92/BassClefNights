@@ -15,22 +15,21 @@ const animation = (name, one, two) => {
     }
 };
 
-const bounce = animation('bounce', 15, 30);
-const bounceLow = animation('bounceLow', 10, 20);
+const bounce = animation('bounce', 10, 20);
 
 const styles = theme => ({
     root: {
         height: '100%',
         textAlign: 'center',
         position: 'relative',
-        minHeight: 500
+        minHeight: 568
     },
     overlayImg: {
         height: 'inherit',
         position: 'relative'
     },
     logo: {
-        width: 270,
+        width: 230,
         height: 'auto',
         marginBottom: 30
     },
@@ -40,7 +39,7 @@ const styles = theme => ({
         height: 'inherit',
         padding: '60 10 200 10',
         '& *': {
-            color: '#fff',
+            color: '#e8e8e8',
             textAlign: 'center'
         }
     },
@@ -52,13 +51,6 @@ const styles = theme => ({
         fontWeight: 200,
         marginBottom: '20px',
         marginTop: 0
-    },
-    heroSubTitle: {
-        fontFamily: theme.font.secondary,
-        letterSpacing: 2,
-        fontSize: '1.5em',
-        fontWeight: 200,
-        marginTop: '20px'
     },
     socialContainer: {
         ...theme.flex.colBetween,
@@ -85,85 +77,41 @@ const styles = theme => ({
         display: 'inline-block'
     },
     ...bounce,
-    ...bounceLow,
-    '@media (min-width: 500px) and (max-width: 810px)': {
-        heroSubTitle: {
-            fontSize: '1.8rem'
-        },
-        heroTitle: {
-            fontSize: '3.8rem'
-        },
-        heroContainer: {
-            justifyContent: 'center',
-        }
-    },
     '@media (max-width: 499px)': {
-        heroSubTitle: {
-            fontSize: '1.3rem',
-            marginTop: '10px',
-            fontWeight: 300
-        },
-        heroTitle: {
-            fontSize: '1.9rem',
-            marginBottom: '10px',
-            fontWeight: 300
-        },
         logo: {
-            maxWidth: 170,
+            maxWidth: 140,
             marginBottom: '10px'
         },
         heroContainer: {
             justifyContent: 'flex-start',
-            padding: '100 10 0 10',
+            padding: 0,
+            ...theme.flex.colCenter
+        },
+        socialContainer: {
+            top: 13,
+            textAlign: 'right',
+            display: 'flex'
         }
     },
-    '@media (max-height: 720px)': {
-        logo: {
-            width: 230,
-            height: 'auto'
-        },
+    '@media (max-width: 700px)': {
+        heroTitle: {
+            fontSize: '1.9rem',
+            marginBottom: '10px',
+            fontWeight: 300
+        }
     },
     '@media (min-width: 501px) and (max-width: 768px)': {
         socialContainer: {
             display: 'flex',
             top: 17
-        }
-    },
-    '@media (max-width: 500px)': {
-      socialContainer: {
-          top: 13,
-          textAlign: 'right',
-          display: 'flex'
-      }
-    },
-    '@media (max-height: 550px)': {
-        logo: {
-            width: 120,
-            height: 'auto'
-        },
-        heroSubTitle: {
-            fontSize: '1.0rem',
-            margin: '5 0',
-            marginBottom: 15
-        },
-        heroTitle: {
-            fontSize: '2.0rem',
-            marginBottom: 5
         },
         heroContainer: {
-            '& button': {
-                fontSize: '0.5rem'
-            },
-            paddingBottom: 20
+            justifyContent: 'center',
+            padding: 0
         },
-        bounce: {
-            animation: 'bounceLow 2s infinite',
-            fontSize: 15,
-            position: 'absolute',
-            bottom: 3,
-            textAlign: 'center',
-            display: 'inline-block'
-        },
+        logo: {
+            maxWidth: '35%'
+        }
     }
 });
 
@@ -177,16 +125,16 @@ const HomeHero = props => {
                     <a href='https://twitter.com/BClatinjazzfest'><Icon color='#e8e8e8' name='twitter' hover/></a>
                 </div>
                 <div className={classes.heroContainer}>
-                    <img className={classes.logo} src="images/logoWhite.png" alt=""/>
+                    <img className={classes.logo} src="images/logoWhiteFilled.png" alt="" style={{opacity: 0.7}}/>
                     <div className={classes.innerContainer}>
                         <h1 className={classes.heroTitle}>bass clef nights</h1>
-                        <LineBreak icon='musicNote' color='#fff' rotateZ={4}/>
-                        <Button text='Become a sponsor' color={'#fff'} hover={'#161616'} style={{marginTop: 30}}/>
+                        <LineBreak icon='musicNote' color='#e8e8e8' rotateZ={4}/>
+                        <Button text='Become a sponsor' color={'#e8e8e8'} hover={'#161616'} style={{marginTop: 30}}/>
                     </div>
                 </div>
             </div>
             <div className={classes.bounce}>
-                <Icon name='chevronDoubleDown' color='#fff' style={{left: -12}}/>
+                <Icon name='chevronDoubleDown' color='#e8e8e8' style={{left: -12}}/>
             </div>
         </div>
     )

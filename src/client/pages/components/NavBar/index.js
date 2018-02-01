@@ -200,7 +200,7 @@ class ToggleNav extends Component {
                         {/*<span id='underline' className={classes.underline} style={{backgroundColor: color}}/>*/}
                     </div>
                     <div className={classes.logo} style={{opacity: this.state.opacity}}>
-                        <img src="images/logoWhiteFilled.png" alt="" style={{maxWidth: 30, height: 'auto'}}/>
+                        <img src="images/logoWhiteFilled.png" alt="" style={{maxWidth: 25, height: 'auto'}}/>
                         <span
                             style={{
                                 position: 'relative',
@@ -223,7 +223,7 @@ class ToggleNav extends Component {
                                  src="images/logoWhiteFilled.png"
                                  alt=""
                                  style={{
-                                     maxWidth: 40,
+                                     maxWidth: 35,
                                      height: 'auto',
                                      position: 'relative',
                                      bottom: 2,

@@ -1,10 +1,12 @@
 import React from 'react'
 import injectSheet from 'react-jss'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 import {toggleNav} from "../../../actions/index";
 import TitleContainer from '../TitleContainer'
 import Icon from '../Icon'
+import nav from './data'
 
 const animation = (name, property, from, to) => {
     return {
@@ -115,7 +117,6 @@ class NavMenu extends React.Component {
         const {menu, classes} = this.props;
         const {open} = this.state;
         let className = !menu && !open ? 'root' : menu ? 'in' : 'out';
-        let nav = ['Home', 'Tickets', 'Lineup', 'About', 'Contact', 'News'];
         return (
             <div className={classes[className]} style={{overflow: menu ? 'scroll' : 'hidden'}}>
                 <div className={classes.overlay}>
@@ -144,7 +145,13 @@ class NavMenu extends React.Component {
                     }}>
                         {nav.map(item => {
                             return (
-                                <div className={classes.navItem} key={item}>{item}</div>
+                                <div className={classes.navItem}
+                                     onClick={this.change}
+                                     key={item.name}>
+                                    <Link to={item.link}
+                                          style={{textDecoration: 'none'}}
+                                          className={classes.navItem}>{item.name}</Link>
+                                </div>
                             )
                         })}
                     </div>

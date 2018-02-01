@@ -1,24 +1,18 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 import injectSheet from 'react-jss'
 import {renderRoutes} from 'react-router-config'
 import {connect} from 'react-redux'
+import moment from 'moment'
 
 import Navbar from './pages/components/NavBar'
-// import ToggleNav from './pages/components/ToggleNav'
 import Menu from './pages/components/NavMenu'
 import Footer from './pages/components/Footer'
-import {toggleNav} from "./actions";
-
-
-const root = {
-    margin: 0
-};
-
+import {startCountDown, toggleNav} from "./actions";
 
 const styles = theme => ({
     '@global': {
         '*': {
-            fontFamily: 'Roboto',
+            fontFamily: theme.font.secondary,
             boxSizing: 'border-box'
         },
         body: {
@@ -30,7 +24,7 @@ const styles = theme => ({
             backgroundColor: 'rgba(0,0,0,0.0)'
         },
         html: {
-            ...root
+            margin: 0
         }
     },
     root: {
@@ -70,17 +64,12 @@ class App extends Component {
     render() {
         const {classes, route, menu} = this.props;
         return (
-            <Fragment>
-               <div className={classes.root} id='main'>
-                   {!menu && <Navbar onClick={() => this.props.toggleNav(!menu)} />}
-                   {renderRoutes(route.routes)}
-                   <Menu scroll={this.props.scroll} menu={menu}/>
-                   <Footer/>
-                   <div className={classes.bodyOverlay}>
-                       <div className={classes.bodyOverlayChild}/>
-                   </div>
-               </div>
-            </Fragment>
+            <div className={classes.root} id='main'>
+                {!menu && <Navbar onClick={() => this.props.toggleNav(!menu)}/>}
+                {renderRoutes(route.routes)}
+                <Menu scroll={this.props.scroll} menu={menu}/>
+                <Footer/>
+            </div>
         )
     }
 }
@@ -92,6 +81,32 @@ const mapStateToProps = ({ui}) => {
     }
 };
 
+
+const loadData = () => {
+    let eventDate = new Date(Date.UTC(2018, 10, 15));
+    let currentTime = Date.now();
+    let duration = moment.duration((eventDate - currentTime));
+    let initialCountdown = {
+        totalDays: Math.floor(duration.asDays()) * 24 * 60 * 60,
+        totalHours: duration.hours() * 60 * 60,
+        totalMinutes: duration.minutes() * 60,
+        totalSeconds: duration.seconds(),
+        days: Math.floor(duration.asDays()),
+        hours: duration.hours(),
+        minutes: duration.minutes(),
+        seconds: duration.seconds()
+    };
+    console.log(initialCountdown);
+    return [
+        {
+            data: initialCountdown,
+            func: startCountDown
+        }
+    ]
+
+};
+
 export default {
-    component: connect(mapStateToProps, {toggleNav})(injectSheet(styles)(App))
+    component: connect(mapStateToProps, {toggleNav})(injectSheet(styles)(App)),
+    loadData
 };
