@@ -33,7 +33,7 @@ class Form extends Component {
     render() {
         const {classes} = this.props;
         return (
-            <form onSubmit={this.onSubmit} className={classes.form}  autoComplete={'nope'}>
+            <form onSubmit={this.onSubmit} className={classes.form}>
                 {inputList.map(input => {
                     return <Input type={input.type}
                                   name={input.name}
