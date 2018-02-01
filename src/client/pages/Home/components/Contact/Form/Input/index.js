@@ -156,7 +156,7 @@ class Input extends Component {
                 <div className={classes.root}>
                     {regular && <input onFocus={this.onFocus}
                                        onBlur={this.onBlur}
-                                       autoComplete={'off'}
+                                       autoComplete={'nope'}
                                        onChange={onChange}
                                        value={value}
                                        name={name}

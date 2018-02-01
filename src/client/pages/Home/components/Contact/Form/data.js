@@ -7,7 +7,7 @@ export default [
     {
         type: 'text',
         ph: 'Email',
-        name: 'myEmail'
+        name: 'blah'
     },
     {
         type: 'select',

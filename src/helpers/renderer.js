@@ -47,9 +47,11 @@ export default (req, store, context, routes) => {
             select:-webkit-autofill:hover,
             select:-webkit-autofill:focus {
               border: none !important;
-              -webkit-text-fill-color: #fff !important;
+              -webkit-text-fill-color: #161616 !important;
               -webkit-box-shadow: none !important;
-              transition: background-color 5000s ease-in-out 0s !important;
+              background-color: rgba(0,0,0,0) !important;
+              transition: background-color 5000s !important;
+              transition-delay: 9000s !important;
               font-family: 'Montserrat', sans-serif !important;
             }
         </style>

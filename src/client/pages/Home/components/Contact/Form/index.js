@@ -15,7 +15,7 @@ const styles = theme => ({
 class Form extends Component {
     state = {
         myName: '',
-        myEmail: '',
+        blah: '',
         message: '',
         inquiry: ''
     }
@@ -33,7 +33,7 @@ class Form extends Component {
     render() {
         const {classes} = this.props;
         return (
-            <form onSubmit={this.onSubmit} className={classes.form}  autoComplete={'off'}>
+            <form onSubmit={this.onSubmit} className={classes.form}  autoComplete={'nope'}>
                 {inputList.map(input => {
                     return <Input type={input.type}
                                   name={input.name}
