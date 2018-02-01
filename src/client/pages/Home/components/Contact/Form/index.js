@@ -14,8 +14,8 @@ const styles = theme => ({
 
 class Form extends Component {
     state = {
-        blah1: '',
-        blah: '',
+        name: '',
+        email: '',
         message: '',
         inquiry: ''
     }
