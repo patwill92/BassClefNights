@@ -36,16 +36,16 @@ const styles = theme => ({
         }
     },
     text: {
-        ...inputStyle
-    },
-    email: {
-        ...inputStyle
+        ...inputStyle,
+        caretColor: 'rgba(22, 22, 22, 1.0) !important'
     },
     textarea: {
-        ...inputStyle
+        ...inputStyle,
+        caretColor: 'rgba(22, 22, 22, 1.0) !important'
     },
     select: {
-        ...inputStyle
+        ...inputStyle,
+        caretColor: 'rgba(22, 22, 22, 1.0) !important'
     },
     overlay: {
         position: 'absolute',
@@ -157,6 +157,7 @@ class Input extends Component {
                     {regular && <input onFocus={this.onFocus}
                                        onBlur={this.onBlur}
                                        autoComplete={'nope'}
+                                       style={{caretColor: '#161616'}}
                                        onChange={onChange}
                                        value={value}
                                        name={name}
@@ -164,6 +165,7 @@ class Input extends Component {
                                        className={classes[type]}/>}
                     {textArea && <textarea onFocus={this.onFocus}
                                            onBlur={this.onBlur}
+                                           style={{caretColor: '#161616'}}
                                            onChange={onChange}
                                            ref={input => this.myText = input}
                                            value={value}
