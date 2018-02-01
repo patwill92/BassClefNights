@@ -2,12 +2,12 @@ export default [
     {
         type: 'text',
         ph: 'Name',
-        name: 'name'
+        name: 'nm'
     },
     {
         type: 'text',
         ph: 'Email',
-        name: 'email'
+        name: 'em'
     },
     {
         type: 'select',

@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 import injectSheet from 'react-jss'
 
 let inputStyle = {
-    backgroundColor: 'rgba(0,0,0,0)',
-    border: 'none',
-    color: '#161616',
+    backgroundColor: 'rgba(0,0,0,0) !important',
+    border: 'none !important',
+    color: '#161616 !important',
     '&:focus': {
         border: 'none',
         outline: 'none',
@@ -155,6 +155,7 @@ class Input extends Component {
             <div>
                 <div className={classes.root}>
                     {regular && <input onFocus={this.onFocus}
+                                       autoComplete={'off'}
                                        onBlur={this.onBlur}
                                        style={{caretColor: '#161616'}}
                                        onChange={onChange}

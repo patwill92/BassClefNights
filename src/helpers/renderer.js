@@ -49,7 +49,6 @@ export default (req, store, context, routes) => {
               border: none !important;
               -webkit-text-fill-color: #161616 !important;
               -webkit-box-shadow: none !important;
-              background-color: rgba(0,0,0,0) !important;
               transition: background-color 5000s !important;
               transition-delay: 9000s !important;
               font-family: 'Montserrat', sans-serif !important;
