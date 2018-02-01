@@ -48,7 +48,7 @@ const styles = theme => ({
         left: 0,
         right: 0,
         zIndex: -10,
-        backgroundImage: 'url("images/homebw.jpg")',
+        backgroundImage: 'url("images/home.jpg")',
         '-webkit-background-size': 'cover',
         '-moz-background-size': 'cover',
         '-o-background-size': 'cover',
@@ -74,7 +74,7 @@ class App extends Component {
                <div className={classes.root} id='main'>
                    {!menu && <Navbar onClick={() => this.props.toggleNav(!menu)} />}
                    {renderRoutes(route.routes)}
-                   <Menu scroll={this.props.scroll}/>
+                   <Menu scroll={this.props.scroll} menu={menu}/>
                    <Footer/>
                    <div className={classes.bodyOverlay}>
                        <div className={classes.bodyOverlayChild}/>
