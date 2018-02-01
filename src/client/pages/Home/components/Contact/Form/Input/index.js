@@ -155,7 +155,7 @@ class Input extends Component {
             <div>
                 <div className={classes.root}>
                     {regular && <input onFocus={this.onFocus}
-                                       autoComplete={'off'}
+                                       autoComplete={'nope'}
                                        onBlur={this.onBlur}
                                        style={{caretColor: '#161616'}}
                                        onChange={onChange}
