@@ -7,6 +7,7 @@ import Lineup from './components/Lineup'
 import Hero from './components/Hero'
 import Venue from './components/Venue'
 import Contact from './components/Contact'
+import Sponsors from './components/Sponsors'
 import {startCountDown} from "../../actions";
 
 const styles = theme => ({
@@ -39,6 +40,7 @@ class Home extends Component {
                 <Hero/>
                 <Lineup/>
                 <Venue/>
+                <Sponsors/>
                 <Contact/>
             </div>
         )
