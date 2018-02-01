@@ -9,13 +9,12 @@ const root = {
     textAlign: 'center',
     margin: 'auto',
     backgroundImage: 'url("images/triangles.png")',
-    backgroundColor: '#161616'
+    backgroundColor: 'rgba(22,22,22,0.9)'
 };
 
 const styles = theme => ({
     root: {
         ...root,
-        backgroundColor: '#151515'
     },
     sponsors: {
         ...theme.flex.rowBetween,
