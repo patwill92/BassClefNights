@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react'
 import injectSheet from 'react-jss'
+import {connect} from 'react-redux'
 
 import Lineup from './components/Lineup'
 import Hero from './components/Hero'
@@ -7,6 +8,8 @@ import Venue from './components/Venue'
 import Contact from './components/Contact'
 import Sponsors from './components/Sponsors'
 import Background from '../components/Background'
+import moment from "moment/moment";
+import {setNavColor} from "../../actions";
 
 const styles = theme => ({
     root: {
@@ -16,9 +19,11 @@ const styles = theme => ({
     }
 });
 
+@connect(null, {setNavColor})
 @injectSheet(styles)
 class Home extends Component {
     componentDidMount = () => {
+        this.props.setNavColor(22);
         window.scrollTo(0, 0);
     };
     render() {
@@ -39,7 +44,18 @@ class Home extends Component {
 
 }
 
+const loadData = () => {
+    return [
+        {
+            data: 22,
+            func: setNavColor
+        }
+    ]
+
+};
+
 
 export default {
-    component: Home
+    component: Home,
+    loadData
 }

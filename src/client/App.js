@@ -77,7 +77,8 @@ class App extends Component {
 const mapStateToProps = ({ui}) => {
     return {
         menu: ui.nav,
-        scroll: ui.scroll
+        scroll: ui.scroll,
+        color: ui.navColor
     }
 };
 

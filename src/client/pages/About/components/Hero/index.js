@@ -2,118 +2,91 @@ import React from 'react'
 import injectSheet from 'react-jss'
 
 import Hero from '../../../components/Hero'
+import Container from '../../../components/Container'
 import Title from '../../../components/TitleContainer'
 
 const styles = theme => ({
+    container: {
+    },
     root: {
-        ...theme.flex.rowBetween,
+        ...theme.flex.rowCenter,
         alignItems: 'center',
         minHeight: 'inherit'
     },
     title: {
-        ...theme.flex.colStart,
-        maxWidth: 500,
+        ...theme.flex.colCenter,
+        flex: 1,
+        '& *': {
+            margin: 0,
+            textAlign: 'left',
+            fontSize: 30
+        }
     },
     message: {
         fontFamily: theme.font.secondary,
         fontWeight: 400,
-        color: '#e8e8e8',
+        color: '#161616',
         textTransform: 'uppercase',
-        lineHeight: 2,
-        maxWidth: 500
+        lineHeight: 2
     },
     logo: {
-        maxWidth: 200,
+        maxWidth: 100,
         height: 'auto',
-        flex: 0,
+        flex: 1,
         opacity: 0.8,
-        margin: '0 15'
+        marginRight: 15
     },
     '@media (max-width: 1200px)': {
-        logo: {
-            maxWidth: 150
-        },
-        title: {
-            '& *': {
-                fontSize: 30 + ' !important'
-            }
-        },
-        message: {
-            fontSize: 15
-        }
+
     },
     '@media (min-width: 901px)': {
-        title: {
-            flex: 1,
-            '& *': {
-                fontSize: 30 + ' !important',
-                textAlign: 'right !important'
-            }
-        },
-        message: {
-            flex: 1,
-            fontSize: 15
-        }
+
     },
     '@media (max-width: 900px)': {
-        root: {
-            ...theme.flex.colCenter,
-            margin: '70 0',
-            padding: '0 15'
-        },
-        logo: {
-            maxWidth: 120,
-            margin: '0 0 15 0'
-        },
-        title: {
-            '& *': {
-                fontSize: 40 + ' !important',
-                textAlign: 'center !important'
-            }
-        },
-        message: {
-            fontSize: 20,
-            textAlign: 'center',
-            fontWeight: 400
-        }
+
     },
     '@media (max-width: 500px)': {
-        root: {
-            margin: '55 0 20 0'
-        },
-        logo: {
-            maxWidth: 100,
-            margin: '0 0 10 0'
-        },
         title: {
             '& *': {
-                fontSize: 25 + ' !important',
-                textAlign: 'center !important'
+                margin: 0,
+                textAlign: 'left',
+                fontSize: 20
             }
         },
-        message: {
-            fontSize: 13,
-            textAlign: 'center'
-        }
+        logo: {
+            maxWidth: 60,
+            height: 'auto',
+            flex: 0,
+            opacity: 0.8,
+            marginRight: 15
+        },
     }
 });
 
 const AboutHero = props => {
     const {classes} = props;
     return (
-        <Hero height={'60%'}>
-            <div className={classes.root}>
-                <div className={classes.title}>
-                    <Title text={'Bass clef nights'} noLine color='#e8e8e8' noPadding/>
-                    <Title text={'EST. 2014'} noLine color='#e8e8e8' noPadding/>
-                </div>
-                <img src="images/logoWhiteFilled.png" className={classes.logo} alt=""/>
-                <div className={classes.message}>
-                    "Empowering middle-aged visionary artists by developing their latent potential to reach new heights
-                    in their careers."
-                </div>
-            </div>
-        </Hero>
+        <div className={classes.container}>
+            <Container backgroundColor={'rgba(255, 255, 255, 0.9)'}>
+                <Hero height={'400px'}>
+                    <div className={classes.root}>
+                        <div style={{display: 'flex', alignItems: 'center'}}>
+                            <div>
+                                <img src="images/logoFilled.png" className={classes.logo} alt=""/>
+                            </div>
+                            <div className={classes.title} style={{justifyContent: 'center'}}>
+                                <Title text={'Bass clef nights'} noLine color='#161616' noPadding/>
+                                <Title text={'EST. 2014'} noLine color='#161616' noPadding/>
+                            </div>
+                        </div>
+                        {/*<div className={classes.message}>*/}
+                            {/*"Empowering middle-aged visionary artists by developing their latent potential to reach new heights*/}
+                            {/*in their careers."*/}
+                        {/*</div>*/}
+                    </div>
+                </Hero>
+            </Container>
+        </div>
     )
 };
 

@@ -6,7 +6,8 @@ const styles = theme => ({
         width: '100%',
         maxWidth: 'calc(1280px + 10%)',
         margin: '0 auto',
-        padding: '0 5% 0 5%'
+        padding: '0 5% 0 5%',
+        backgroundColor: props => props.backgroundColor ? props.backgroundColor : 'transparent'
     },
     '@media (max-width: 942px)': {
         root: {

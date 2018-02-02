@@ -32,7 +32,6 @@ const styles = theme => ({
         textTransform: 'uppercase',
         fontFamily: theme.font.secondary,
         fontWeight: 300,
-        color: '#e8e8e8',
         textAlign: 'center',
         margin: '0 20',
         cursor: 'pointer'
@@ -105,12 +104,18 @@ const styles = theme => ({
     }
 });
 
-@connect(null, {scrollPosition})
+const mapStateToProps = ({ui}) => {
+    return {
+        color: ui.navColor
+    }
+};
+
+@connect(mapStateToProps, {scrollPosition})
 class ToggleNav extends Component {
     state = {
         window: {},
         shadow: '',
-        color: 'rgba(22, 22, 22, 0)',
+        color: `rgba(${this.props.color}, ${this.props.color}, ${this.props.color}, 0)`,
         border: '',
         opacity: 0
     };
@@ -124,6 +129,7 @@ class ToggleNav extends Component {
     componentDidMount = () => {
         let myScroll = window.pageYOffset;
         let max = window.innerHeight;
+        let color = this.props.color;
         this.setState({
             window: {
                 innerHeight: window.innerHeight,
@@ -131,7 +137,7 @@ class ToggleNav extends Component {
                 pageYOffset: window.pageYOffset,
                 backgroundImage: '',
                 shadow: (myScroll / max) >= 1.0 ? 2 : 0,
-                color: `rgba(22, 22, 22, ${window.pageYOffset / window.innerHeight - 47})`
+                color: `rgba(${color}, ${color}, ${color}, ${window.pageYOffset / window.innerHeight - 47})`
             }
         });
         this.opacity();
@@ -144,19 +150,30 @@ class ToggleNav extends Component {
         let shadow = "0px 1px 5px 0px rgba(0, 0, 0, 0.2),0px 2px 2px 0px rgba(0, 0, 0, 0.14),0px 3px 1px -2px rgba(0, 0, 0, 0.12)";
         let myScroll = window.pageYOffset && window.pageYOffset;
         let max = window.innerHeight && window.innerHeight - 47;
+        let color = this.props.color;
         if (myScroll >= 0 && (myScroll / max) < 1.0) {
-            this.setState({shadow: '', color: `rgba(22, 22, 22, ${myScroll / max})`, backgroundImage: '', opacity: 0});
+            this.setState({
+                shadow: '',
+                color: `rgba(${color}, ${color}, ${color}, ${myScroll / max})`,
+                backgroundImage: '',
+                opacity: 0
+            });
             return this.state
         } else if ((myScroll / max) >= 1.0) {
             this.setState({
-                color: 'rgba(22, 22, 22, 1.0)',
+                color: `rgba(${color}, ${color}, ${color}, 1.0)`,
                 border: 'rgba(233, 233, 233, 1.0)',
-                backgroundImage: 'url("images/triangles.png")',
+                backgroundImage: color > 100 ? 'url("images/stripes.png")': 'url("images/triangles.png")',
                 opacity: 1,
                 shadow
             });
         } else {
-            this.setState({shadow: '', color: 'rgba(22, 22, 22, 0)', backgroundImage: '', opacity: 0});
+            this.setState({
+                shadow: '',
+                color: `rgba(${color}, ${color}, ${color}, 0)`,
+                backgroundImage: '',
+                opacity: 0
+            });
         }
     };
 
@@ -183,7 +200,7 @@ class ToggleNav extends Component {
     };
 
     render() {
-        const {classes, text, color, onClick} = this.props;
+        const {classes, onClick, color} = this.props;
         let nav = ['Home', 'Tickets', 'Lineup', 'img', 'About', 'Contact', 'News'];
         return (
             <Fragment>
@@ -196,16 +213,16 @@ class ToggleNav extends Component {
                          className={classes.menu}>
                     <span
                         className={classes.iconContainer}>
-                        <Icon name='thinMenu' color='#e9e9e9' style={{bottom: 2}}/></span>
-                        {/*<span id='underline' className={classes.underline} style={{backgroundColor: color}}/>*/}
+                        <Icon name='thinMenu' color={color > 100 ? "#161616" : "rgb(233,233,233)"} style={{bottom: 2}}/></span>
                     </div>
                     <div className={classes.logo} style={{opacity: this.state.opacity}}>
-                        <img src="images/logoWhiteFilled.png" alt="" style={{maxWidth: 25, height: 'auto'}}/>
+                        <img src={color > 100 ? "images/logoFilled.png" : "images/logoWhiteFilled.png"} alt=""
+                             style={{maxWidth: 25, height: 'auto'}}/>
                         <span
                             style={{
                                 position: 'relative',
                                 top: 1,
-                                color: '#e9e9e9',
+                                color: color > 100 ? "#161616" : "rgb(233,233,233)",
                                 fontSize: 20,
                                 marginLeft: 3
                             }}>BCN</span>
@@ -218,9 +235,11 @@ class ToggleNav extends Component {
                 }}>
                     {nav.map(item => {
                         return item !== 'img' ? (
-                            <div className={classes.navItem} key={item}>{item}</div>
+                            <div style={{color: color > 100 ? "#161616" : "rgb(233,233,233)"}}
+                                className={classes.navItem}
+                                key={item}>{item}</div>
                         ) : <img key={item}
-                                 src="images/logoWhiteFilled.png"
+                                 src={color > 100 ? "images/logoFilled.png" : "images/logoWhiteFilled.png"}
                                  alt=""
                                  style={{
                                      maxWidth: 35,

@@ -1,9 +1,23 @@
-import {TOGGLE_NAV, START_COUNTDOWN, SCROLL_POSITION} from "../types";
+import {TOGGLE_NAV, START_COUNTDOWN, SCROLL_POSITION, SET_NAV_COLOR} from "../types";
 
 export const toggleNav = payload => {
     return {
         type: TOGGLE_NAV,
         payload
+    }
+};
+
+export const setNavColor = payload => {
+    if(payload.dispatchData) {
+        return {
+            type: SET_NAV_COLOR,
+            payload: payload.dispatchData
+        }
+    } else {
+        return {
+            type: SET_NAV_COLOR,
+            payload
+        }
     }
 };
 

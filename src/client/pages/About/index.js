@@ -1,30 +1,29 @@
 import React, {Component, Fragment} from 'react'
 import injectSheet from 'react-jss'
+import {connect} from "react-redux";
 
 
 import Hero from './components/Hero'
-import Container from '../components/Container'
 import Background from '../components/Background'
-import Title from '../components/TitleContainer'
+import {setNavColor} from "../../actions";
 
 const styles = theme => ({
-    root: {
-
-    }
+    root: {}
 });
 
+@connect(null, {setNavColor})
 @injectSheet(styles)
 class About extends Component {
     componentDidMount = () => {
+        this.props.setNavColor(233);
         window.scrollTo(0, 0);
     };
+
     render() {
         const {classes} = this.props;
         return (
             <Fragment>
-                <Container>
-                    <Hero/>
-                </Container>
+                <Hero/>
                 <Background image='about2.jpeg'/>
             </Fragment>
         )
@@ -32,7 +31,16 @@ class About extends Component {
 
 }
 
+const loadData = () => {
+    return [
+        {
+            data: 233,
+            func: setNavColor
+        }
+    ]
+};
 
 export default {
-    component: About
+    component: About,
+    loadData
 }

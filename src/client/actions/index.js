@@ -1,5 +1,6 @@
 export {
     toggleNav,
     startCountDown,
-    scrollPosition
+    scrollPosition,
+    setNavColor
 } from './ui-actions'
