@@ -58,7 +58,7 @@ const styles = theme => ({
 });
 
 class Footer extends React.Component {
-    render(){
+    render() {
         const {classes} = this.props;
         let directions = 'https://www.google.com/maps/dir/?api=1&destination=3251+S+Miami+Ave+Miami+FL+33129&travelmode=driving';
         return (
@@ -70,9 +70,7 @@ class Footer extends React.Component {
                             <h3>Bass Clef Nights</h3>
                         </div>
                         <Countdown/>
-
                     </div>
-
                     <div>
                         <h3>About</h3>
                         <h3>Tickets</h3>

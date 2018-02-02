@@ -6,9 +6,11 @@ import compression from 'compression'
 import routes from './client/Routes'
 import renderer from './helpers/renderer';
 import {serverStore as createServerStore} from './helpers/store'
+import httpsRedirect from './middleware/secure'
 
 const app = express();
 
+app.use('/', httpsRedirect());
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
