@@ -1,4 +1,4 @@
-import {TOGGLE_NAV, START_COUNTDOWN, SCROLL_POSITION, SET_NAV_COLOR} from "../types";
+import {TOGGLE_NAV, START_COUNTDOWN, SCROLL_POSITION, SET_NAV_COLOR, OPEN_MODAL} from "../types";
 
 export const toggleNav = payload => {
     return {
@@ -7,8 +7,23 @@ export const toggleNav = payload => {
     }
 };
 
+export const openModal = (payload, scroll) => async dispatch => {
+    if(scroll) {
+        await dispatch({
+            type: OPEN_MODAL,
+            payload
+        });
+        window.scrollTo(0, scroll);
+    } else {
+        dispatch({
+            type: OPEN_MODAL,
+            payload
+        })
+    }
+};
+
 export const setNavColor = payload => {
-    if(payload.dispatchData) {
+    if (payload.dispatchData) {
         return {
             type: SET_NAV_COLOR,
             payload: payload.dispatchData
@@ -29,7 +44,7 @@ export const scrollPosition = payload => {
 };
 
 export const startCountDown = payload => {
-    if(payload.dispatchData) {
+    if (payload.dispatchData) {
         return {
             type: START_COUNTDOWN,
             payload: payload.dispatchData

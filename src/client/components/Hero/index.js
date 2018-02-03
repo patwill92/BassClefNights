@@ -5,8 +5,11 @@ const styles = theme => ({
     root: {
         minHeight: props => props.height
     },
-    '@media (max-width: 942px)': {},
-    '@media (max-width: 500px)': {}
+    '@media (max-width: 500px)': {
+        root: {
+            minHeight: props => props.mobile
+        },
+    }
 });
 
 const Hero = props => {

@@ -30,9 +30,10 @@ class ClearButton extends React.Component {
     };
 
     render() {
-        const {classes, text, style, icon, submit} = this.props;
+        const {classes, text, style, icon, submit, onClick} = this.props;
         return (
             <button onMouseOver={() => this.setState({iconColor: this.props.hover})}
+                    onClick={onClick ? onClick : null}
                     onMouseOut={() => this.setState({iconColor: this.props.color})}
                     type={submit ? 'submit' : 'button'}
                     className={classes.heroBtn} style={style && {...style}}>

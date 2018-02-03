@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import injectSheet from 'react-jss';
 
-import TitleContainer from '../../../components/TitleContainer'
-import Icon from '../../../components/Icon'
+import TitleContainer from '../../../../components/TitleContainer'
+import Icon from '../../../../components/Icon'
 import VenueSlides from './VenueSlides'
 
 const styles = theme => ({

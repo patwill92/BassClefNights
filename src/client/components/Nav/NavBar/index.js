@@ -1,9 +1,11 @@
 import React, {Component, Fragment} from 'react'
 import injectSheet from 'react-jss'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
-import Icon from '../Icon'
-import {scrollPosition} from "../../../actions";
+import Icon from '../../Icon/index'
+import {scrollPosition} from "../../../actions/index";
+import nav from '../data/index'
 
 const styles = theme => ({
     root: {
@@ -107,7 +109,8 @@ const styles = theme => ({
 const mapStateToProps = ({ui}) => {
     return {
         color: ui.navColor,
-        nav: ui.nav
+        nav: ui.nav,
+        modal: ui.modal
     }
 };
 
@@ -122,7 +125,6 @@ class ToggleNav extends Component {
     };
 
     componentWillUnmount = () => {
-        window.removeEventListener("resize", this.getDimensions);
         window.removeEventListener("scroll", this.opacity);
         window.removeEventListener("scroll", this.getScroll);
     };
@@ -134,7 +136,6 @@ class ToggleNav extends Component {
         this.setState({
             window: {
                 innerHeight: window.innerHeight,
-                innerWidth: window.innerWidth,
                 pageYOffset: window.pageYOffset,
                 backgroundImage: '',
                 shadow: (myScroll / max) >= 1.0 ? 2 : 0,
@@ -142,7 +143,6 @@ class ToggleNav extends Component {
             }
         });
         this.opacity();
-        window.addEventListener("resize", this.getDimensions);
         window.addEventListener("scroll", this.opacity);
         window.addEventListener("scroll", this.getScroll);
     };
@@ -152,7 +152,7 @@ class ToggleNav extends Component {
         let myScroll = window.pageYOffset && window.pageYOffset;
         let max = window.innerHeight && window.innerHeight - 47;
         let color = this.props.color;
-        if(!this.props.nav) {
+        if (!this.props.nav && !this.props.modal) {
             if (myScroll >= 0 && (myScroll / max) < 1.0) {
                 this.setState({
                     shadow: '',
@@ -180,23 +180,9 @@ class ToggleNav extends Component {
         }
     };
 
-    getDimensions = () => {
-        let state = this.state.window;
-        if(!this.props.nav) {
-            this.setState({
-                window: {
-                    ...state,
-                    innerHeight: window.innerHeight,
-                    innerWidth: window.innerWidth
-                }
-            });
-        }
-    };
-
     getScroll = () => {
         let state = this.state.window;
-        if (!this.props.nav) {
-            console.log('SCROLL');
+        if (!this.props.nav && !this.props.modal) {
             this.props.scrollPosition(window.pageYOffset);
             this.setState({
                 window: {
@@ -208,14 +194,14 @@ class ToggleNav extends Component {
     };
 
     render() {
-        const {classes, onClick, color} = this.props;
-        let nav = ['Home', 'Tickets', 'Lineup', 'img', 'About', 'Contact', 'News'];
+        const {classes, onClick, color, modal} = this.props;
         return (
             <Fragment>
                 <div className={classes.root} style={{
                     boxShadow: this.state.shadow,
                     backgroundColor: this.state.color,
-                    backgroundImage: this.state.backgroundImage ? this.state.backgroundImage : null
+                    backgroundImage: this.state.backgroundImage ? this.state.backgroundImage : null,
+                    paddingRight: modal ? 17 : 0
                 }}>
                     <div onClick={onClick}
                          className={classes.menu}>
@@ -239,24 +225,34 @@ class ToggleNav extends Component {
                 <div className={classes.root2} style={{
                     boxShadow: this.state.shadow,
                     backgroundColor: this.state.color,
-                    backgroundImage: this.state.backgroundImage ? this.state.backgroundImage : null
+                    backgroundImage: this.state.backgroundImage ? this.state.backgroundImage : null,
+                    paddingRight: modal ? 17 : 0
                 }}>
-                    {nav.map(item => {
-                        return item !== 'img' ? (
-                            <div style={{color: color > 100 ? "#161616" : "rgb(233,233,233)"}}
-                                 className={classes.navItem}
-                                 key={item}>{item}</div>
-                        ) : <img key={item}
-                                 src={color > 100 ? "images/logoFilled.png" : "images/logoWhiteFilled.png"}
-                                 alt=""
-                                 style={{
-                                     maxWidth: 35,
-                                     height: 'auto',
-                                     position: 'relative',
-                                     bottom: 2,
-                                     opacity: this.state.opacity,
-                                     transition: 'opacity 0.5s linear'
-                                 }}/>
+                    {nav.map((item, i) => {
+                        return (
+                            <Fragment key={item.name}>
+                                {i === nav.length / 2 &&
+                                <img src={color > 100 ? "images/logoFilled.png" : "images/logoWhiteFilled.png"}
+                                     alt=""
+                                     style={{
+                                         maxWidth: 35,
+                                         height: 'auto',
+                                         position: 'relative',
+                                         bottom: 2,
+                                         opacity: this.state.opacity,
+                                         transition: 'opacity 0.5s linear'
+                                     }}/>
+                                }
+                                <div className={classes.navItem}>
+                                    <Link to={item.link}
+                                          className={classes.navItem}
+                                          style={{
+                                              textDecoration: 'none',
+                                              color: color > 100 ? "#161616" : "rgb(233,233,233)"
+                                          }}>{item.name}</Link>
+                                </div>
+                            </Fragment>
+                        )
                     })}
                 </div>
             </Fragment>

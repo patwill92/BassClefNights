@@ -4,9 +4,9 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
 import {toggleNav} from "../../../actions/index";
-import TitleContainer from '../TitleContainer'
-import Icon from '../Icon'
-import nav from './data'
+import TitleContainer from '../../TitleContainer/index'
+import Icon from '../../Icon/index'
+import nav from '../data/index'
 
 const animation = (name, property, from, to) => {
     return {

@@ -2,5 +2,6 @@ export {
     toggleNav,
     startCountDown,
     scrollPosition,
-    setNavColor
+    setNavColor,
+    openModal
 } from './ui-actions'

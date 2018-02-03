@@ -1,13 +1,13 @@
 import React from 'react'
 import injectSheet from 'react-jss'
 
-import Container from '../../../components/Container'
-import Title from '../../../components/TitleContainer'
-import Icon from '../../../components/Icon'
+import Container from '../../../../components/Container'
+import Title from '../../../../components/TitleContainer'
 
 const styles = theme => ({
     root: {
-        textAlign: 'center'
+        textAlign: 'center',
+        padding: '100 0'
     },
     msgContainer: {
         ...theme.flex.rowCenter
@@ -16,16 +16,31 @@ const styles = theme => ({
         color: 'rgba(233,233,233,0.9)',
         fontWeight: 300,
         maxWidth: 500,
-        flex: 1
+        fontSize: 15,
+        lineHeight: 2
     },
     qLeft: {
-        flex: 0,
-        fontSize: 15
+        fontSize: 45,
+        color: 'rgba(233,233,233,0.9)',
+        position: 'relative',
+        top: 10,
+        lineHeight: 0.5,
 
     },
     qRight: {
-        flex: 0,
-        fontSize: 15
+        fontSize: 45,
+        color: 'rgba(233,233,233,0.9)',
+        position: 'relative',
+        top: 10,
+        lineHeight: 0.5,
+    },
+    '@media (max-width: 500px)': {
+        message: {
+            fontSize: 17
+        },
+        root: {
+            padding: '40 15'
+        }
     }
 });
 
@@ -34,15 +49,16 @@ const Mission = props => {
     return (
         <Container backgroundColor={'rgba(22,22,22,0.9)'} image={'triangles.png'}>
             <div className={classes.root}>
-                <Title text={'The mission'} color={'#e8e8e8'} icon={'bullseye'} align={'center'}/>
+                <Title text={'The mission'} color={'#e8e8e8'} icon={'bullseye'} align={'center'} noPadding />
                 <div className={classes.msgContainer}>
-                    <div className={classes.qLeft}><Icon name={'quoteLeft'} color={'rgba(233,233,233,0.9'}/></div>
-                    <div className={classes.message}>Empowering middle-aged visionary artists by developing their latent
+                    <span className={classes.qLeft}>&ldquo;</span>
+                    <div className={classes.message}>
+                        Empowering middle-aged visionary artists by developing their latent
                         potential to reach new
                         heights
                         in their careers.
                     </div>
-                    <div className={classes.qRight}><Icon name={'quoteRight'} color={'rgba(233,233,233,0.9'}/></div>
+                    <span className={classes.qRight}>&rdquo;</span>
                 </div>
             </div>
         </Container>

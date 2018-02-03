@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import injectSheet from 'react-jss'
 
-import TitleContainer from '../../../components/TitleContainer'
+import TitleContainer from '../../../../components/TitleContainer'
 import Form from './Form'
 
 const root = {

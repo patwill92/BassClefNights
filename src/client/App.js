@@ -4,10 +4,11 @@ import {renderRoutes} from 'react-router-config'
 import {connect} from 'react-redux'
 import moment from 'moment'
 
-import Navbar from './pages/components/NavBar'
-import Menu from './pages/components/NavMenu'
-import Footer from './pages/components/Footer'
-import {startCountDown, toggleNav} from "./actions";
+import Navbar from './components/Nav/NavBar'
+import Menu from './components/Nav/NavMenu'
+import Footer from './components/Footer'
+import Modal from './components/Modal'
+import {startCountDown, toggleNav, scrollPosition} from "./actions";
 
 const styles = theme => ({
     '@global': {
@@ -41,13 +42,8 @@ const styles = theme => ({
         top: 0,
         left: 0,
         right: 0,
-        zIndex: -10,
-        backgroundImage: 'url("images/home.jpg")',
-        '-webkit-background-size': 'cover',
-        '-moz-background-size': 'cover',
-        '-o-background-size': 'cover',
-        'background-size': 'cover',
-        backgroundPosition: 'center',
+        zIndex: 9,
+        backgroundColor: 'rgba(0,0,0,0.5)'
     },
     bodyOverlayChild: {
         height: '100vh',
@@ -57,18 +53,23 @@ const styles = theme => ({
 });
 
 class App extends Component {
+
     componentDidMount = () => {
         this.props.toggleNav(false);
     };
 
     render() {
-        const {classes, route, menu} = this.props;
+        const {classes, route, menu, modal, scroll} = this.props;
+        const myStyle = modal ? {position: 'fixed', top: `${-scroll}px`} : undefined;
         return (
-            <div className={classes.root} id='main'>
+            <div className={classes.root} id='main'
+                 style={{...myStyle}}>
                 <Navbar onClick={() => this.props.toggleNav(!menu)}/>
                 {renderRoutes(route.routes)}
-                <Menu scroll={this.props.scroll} menu={menu}/>
+                <Menu scroll={scroll} menu={menu}/>
                 <Footer/>
+                {modal && <div className={classes.bodyOverlay}/>}
+                <Modal scroll={scroll}/>
             </div>
         )
     }
@@ -78,7 +79,8 @@ const mapStateToProps = ({ui}) => {
     return {
         menu: ui.nav,
         scroll: ui.scroll,
-        color: ui.navColor
+        color: ui.navColor,
+        modal: ui.modal
     }
 };
 
@@ -108,6 +110,6 @@ const loadData = () => {
 };
 
 export default {
-    component: connect(mapStateToProps, {toggleNav})(injectSheet(styles)(App)),
+    component: connect(mapStateToProps, {toggleNav, scrollPosition})(injectSheet(styles)(App)),
     loadData
 };

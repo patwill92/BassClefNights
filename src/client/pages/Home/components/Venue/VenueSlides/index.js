@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import injectSheet from 'react-jss';
 
-import Icon from '../../../../components/Icon'
+import Icon from '../../../../../components/Icon'
 
 const animation = (name, property, from, to) => {
     return {

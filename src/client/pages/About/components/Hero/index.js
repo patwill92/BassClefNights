@@ -1,9 +1,9 @@
 import React from 'react'
 import injectSheet from 'react-jss'
 
-import Hero from '../../../components/Hero'
-import Container from '../../../components/Container'
-import Title from '../../../components/TitleContainer'
+import Hero from '../../../../components/Hero'
+import Container from '../../../../components/Container'
+import Title from '../../../../components/TitleContainer'
 
 const styles = theme => ({
     root: {
@@ -56,7 +56,7 @@ const AboutHero = props => {
     const {classes} = props;
     return (
         <Container>
-            <Hero height={'400px'}>
+            <Hero height={'600px'} mobile={'60%'}>
                 <div className={classes.root}>
                     <div style={{display: 'flex', alignItems: 'center'}}>
                         <div>

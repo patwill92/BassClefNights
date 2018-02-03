@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import injectSheet from 'react-jss'
 import moment from 'moment'
 
-import {startCountDown} from "../../../../actions/index";
+import {startCountDown} from "../../../actions/index";
 import Circle from './Circle/index'
 import Button from '../../ClearButton/index'
 
@@ -79,24 +79,24 @@ class Countdown extends Component {
         let duration = moment.duration((eventDate - currentTime));
         this.startTimer(duration);
         let interval = 1000;
-        setInterval(() => {
-            duration = moment.duration(duration - interval, 'milliseconds');
-            if (duration.seconds() < 1) {
-                this.props.startCountDown({totalSeconds: 60})
-            } else if (duration.minutes() * 60 < 1) {
-                this.startTimer(duration)
-            } else if (duration.hours() * 60 * 60 < 1) {
-                this.startTimer(duration)
-            } else if (Math.floor(duration.asDays()) * 24 * 60 * 60 < 1) {
-                this.startTimer(duration)
-            }
-            this.props.startCountDown({
-                days: Math.floor(duration.asDays()),
-                hours: duration.hours(),
-                minutes: duration.minutes(),
-                seconds: duration.seconds()
-            });
-        }, interval);
+        // setInterval(() => {
+        //     duration = moment.duration(duration - interval, 'milliseconds');
+        //     if (duration.seconds() < 1) {
+        //         this.props.startCountDown({totalSeconds: 60})
+        //     } else if (duration.minutes() * 60 < 1) {
+        //         this.startTimer(duration)
+        //     } else if (duration.hours() * 60 * 60 < 1) {
+        //         this.startTimer(duration)
+        //     } else if (Math.floor(duration.asDays()) * 24 * 60 * 60 < 1) {
+        //         this.startTimer(duration)
+        //     }
+        //     this.props.startCountDown({
+        //         days: Math.floor(duration.asDays()),
+        //         hours: duration.hours(),
+        //         minutes: duration.minutes(),
+        //         seconds: duration.seconds()
+        //     });
+        // }, interval);
     };
 
     twoDigit = (num) => {

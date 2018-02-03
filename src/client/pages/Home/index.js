@@ -8,7 +8,7 @@ import Hero from './components/Hero'
 import Venue from './components/Venue'
 import Contact from './components/Contact'
 import Sponsors from './components/Sponsors'
-import Background from '../components/Background'
+import Background from '../../components/Background'
 import {setNavColor} from "../../actions";
 
 const styles = theme => ({

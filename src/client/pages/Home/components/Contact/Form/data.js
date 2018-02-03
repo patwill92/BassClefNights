@@ -2,12 +2,12 @@ export default [
     {
         type: 'text',
         ph: 'Name',
-        name: 'log'
+        name: 'nm'
     },
     {
         type: 'text',
         ph: 'Email',
-        name: 'logem'
+        name: 'em'
     },
     {
         type: 'select',

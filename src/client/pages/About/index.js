@@ -6,7 +6,8 @@ import {Helmet} from 'react-helmet'
 
 import Hero from './components/Hero'
 import Mission from './components/Mission'
-import Background from '../components/Background'
+import Festival from './components/Festival'
+import Background from '../../components/Background'
 import {setNavColor} from "../../actions";
 
 const styles = theme => ({
@@ -17,7 +18,7 @@ const styles = theme => ({
 @injectSheet(styles)
 class About extends Component {
     componentDidMount = () => {
-        this.props.setNavColor(233);
+        this.props.setNavColor(255);
         window.scrollTo(0, 0);
     };
 
@@ -35,7 +36,8 @@ class About extends Component {
                 </Helmet>
                 <Hero/>
                 <Mission/>
-                <Background image='about2.jpeg' overlay={'rgba(255, 255, 255, 0.9)'}/>
+                <Festival/>
+                <Background image='about2.jpeg' overlay={'rgba(255, 255, 255, 0.97)'}/>
             </Fragment>
         )
     };
@@ -45,7 +47,7 @@ class About extends Component {
 const loadData = () => {
     return [
         {
-            data: 233,
+            data: 255,
             func: setNavColor
         }
     ]

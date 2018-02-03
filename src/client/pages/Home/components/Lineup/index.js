@@ -1,8 +1,7 @@
 import React, {Fragment} from 'react'
 import injectSheet from 'react-jss'
 
-import LineupList from './LineupList'
-import TitleContainer from '../../../components/TitleContainer'
+import TitleContainer from '../../../../components/TitleContainer'
 import LineupGrid from './LineupGrid'
 import lineupData from './data'
 

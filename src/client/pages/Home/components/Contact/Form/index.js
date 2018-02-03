@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import injectSheet from 'react-jss'
 
 import Input from './Input'
-import Button from '../../../../components/ClearButton'
+import Button from '../../../../../components/ClearButton'
 import inputList from './data'
 
 const styles = theme => ({
