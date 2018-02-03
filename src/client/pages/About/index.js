@@ -30,7 +30,7 @@ class About extends Component {
                     <meta property={'og:title'} content={'ABOUT - BASS CLEF NIGHTS'} />
                     <meta property={'og:description'} content={"Miami's most exclusive jazz festival"} />
                     <meta property={'og:url'} content={"https://bassclefnights.herokuapp.com/about"} />
-                    <meta property={'og:image'} content={"https://bassclefnights.herokuapp.com/images/logoFilled.jpg"} />
+                    <meta property={'og:image'} content={"https://bassclefnights.herokuapp.com/images/blackBack.jpg"} />
                 </Helmet>
                 <Hero/>
                 <Background image='about2.jpeg'/>

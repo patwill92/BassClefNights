@@ -37,7 +37,7 @@ class Home extends Component {
                     <meta property={'og:title'} content={'HOME - BASS CLEF NIGHTS'} />
                     <meta property={'og:description'} content={"Miami's most exclusive jazz festival"} />
                     <meta property={'og:url'} content={"https://bassclefnights.herokuapp.com/"} />
-                    <meta property={'og:image'} content={"https://bassclefnights.herokuapp.com/images/logoFilled.jpg"} />
+                    <meta property={'og:image'} content={"https://bassclefnights.herokuapp.com/images/blackBack.jpg"} />
                 </Helmet>
                 <div className={classes.root}>
                     <Hero/>
