@@ -7,18 +7,10 @@ export const toggleNav = payload => {
     }
 };
 
-export const openModal = (payload, scroll) => async dispatch => {
-    if(scroll) {
-        await dispatch({
-            type: OPEN_MODAL,
-            payload
-        });
-        window.scrollTo(0, scroll);
-    } else {
-        dispatch({
-            type: OPEN_MODAL,
-            payload
-        })
+export const openModal = payload => {
+    return {
+        type: OPEN_MODAL,
+        payload
     }
 };
 

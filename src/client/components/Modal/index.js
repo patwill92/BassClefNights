@@ -172,6 +172,7 @@ class Modal extends Component {
                             undisputed talent continues to inspire.</p>
                         <Button text='close'
                                 onClick={() => {
+                                    window.scrollTo(0, scroll);
                                     this.setState({
                                         animation: 'dropBackModal 0.3s ease-in-out, fadeOutModal 0.3s ease-in-out',
                                         overlay: 'fadeOutOverlay 0.3s ease-in-out'
