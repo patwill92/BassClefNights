@@ -6,8 +6,6 @@ import Container from '../../../components/Container'
 import Title from '../../../components/TitleContainer'
 
 const styles = theme => ({
-    container: {
-    },
     root: {
         ...theme.flex.rowCenter,
         alignItems: 'center',
@@ -36,15 +34,6 @@ const styles = theme => ({
         opacity: 0.8,
         marginRight: 15
     },
-    '@media (max-width: 1200px)': {
-
-    },
-    '@media (min-width: 901px)': {
-
-    },
-    '@media (max-width: 900px)': {
-
-    },
     '@media (max-width: 500px)': {
         title: {
             '& *': {
@@ -66,27 +55,21 @@ const styles = theme => ({
 const AboutHero = props => {
     const {classes} = props;
     return (
-        <div className={classes.container}>
-            <Container backgroundColor={'rgba(255, 255, 255, 0.9)'}>
-                <Hero height={'400px'}>
-                    <div className={classes.root}>
-                        <div style={{display: 'flex', alignItems: 'center'}}>
-                            <div>
-                                <img src="images/logoFilled.png" className={classes.logo} alt=""/>
-                            </div>
-                            <div className={classes.title} style={{justifyContent: 'center'}}>
-                                <Title text={'Bass clef nights'} noLine color='#161616' noPadding/>
-                                <Title text={'EST. 2014'} noLine color='#161616' noPadding/>
-                            </div>
+        <Container>
+            <Hero height={'400px'}>
+                <div className={classes.root}>
+                    <div style={{display: 'flex', alignItems: 'center'}}>
+                        <div>
+                            <img src="images/logoFilled.png" className={classes.logo} alt=""/>
                         </div>
-                        {/*<div className={classes.message}>*/}
-                            {/*"Empowering middle-aged visionary artists by developing their latent potential to reach new heights*/}
-                            {/*in their careers."*/}
-                        {/*</div>*/}
+                        <div className={classes.title} style={{justifyContent: 'center'}}>
+                            <Title text={'Bass clef nights'} noLine color='#161616' noPadding/>
+                            <Title text={'EST. 2014'} noLine color='#161616' noPadding/>
+                        </div>
                     </div>
-                </Hero>
-            </Container>
-        </div>
+                </div>
+            </Hero>
+        </Container>
     )
 };
 

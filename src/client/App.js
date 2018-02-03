@@ -65,7 +65,7 @@ class App extends Component {
         const {classes, route, menu} = this.props;
         return (
             <div className={classes.root} id='main'>
-                {!menu && <Navbar onClick={() => this.props.toggleNav(!menu)}/>}
+                <Navbar onClick={() => this.props.toggleNav(!menu)}/>
                 {renderRoutes(route.routes)}
                 <Menu scroll={this.props.scroll} menu={menu}/>
                 <Footer/>

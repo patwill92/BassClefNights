@@ -5,6 +5,7 @@ import {Helmet} from 'react-helmet'
 
 
 import Hero from './components/Hero'
+import Mission from './components/Mission'
 import Background from '../components/Background'
 import {setNavColor} from "../../actions";
 
@@ -33,7 +34,8 @@ class About extends Component {
                     <meta property={'og:image'} content={"https://bassclefnights.herokuapp.com/images/blackBack.jpg"} />
                 </Helmet>
                 <Hero/>
-                <Background image='about2.jpeg'/>
+                <Mission/>
+                <Background image='about2.jpeg' overlay={'rgba(255, 255, 255, 0.9)'}/>
             </Fragment>
         )
     };

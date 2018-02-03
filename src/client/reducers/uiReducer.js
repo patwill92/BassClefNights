@@ -3,6 +3,7 @@ import {TOGGLE_NAV, START_COUNTDOWN, SCROLL_POSITION, SET_NAV_COLOR} from "../ac
 export default (state = {}, action) => {
     switch (action.type) {
         case TOGGLE_NAV:
+            console.log('NAV', action.payload)
             return {...state, nav: action.payload};
         case SET_NAV_COLOR:
             return {...state, navColor: action.payload};

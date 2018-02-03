@@ -9,7 +9,6 @@ import Venue from './components/Venue'
 import Contact from './components/Contact'
 import Sponsors from './components/Sponsors'
 import Background from '../components/Background'
-import moment from "moment/moment";
 import {setNavColor} from "../../actions";
 
 const styles = theme => ({
@@ -46,7 +45,7 @@ class Home extends Component {
                     <Sponsors/>
                     <Contact/>
                 </div>
-                <Background image='home.jpg'/>
+                <Background image='home.jpg' overlay={'rgba(0,0,0,0.5)'}/>
             </Fragment>
         )
     };
@@ -62,7 +61,6 @@ const loadData = () => {
     ]
 
 };
-
 
 export default {
     component: Home,

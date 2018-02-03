@@ -87,6 +87,10 @@ export default class VenueSlides extends Component {
         previousActiveIndex: ''
     };
 
+    componentWillUnmount = () => {
+        clearInterval(this.startShow);
+    };
+
     startShow = setInterval(() => {
         let {activeIndex} = this.state;
         this.setState({

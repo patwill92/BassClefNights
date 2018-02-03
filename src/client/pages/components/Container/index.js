@@ -7,7 +7,8 @@ const styles = theme => ({
         maxWidth: 'calc(1280px + 10%)',
         margin: '0 auto',
         padding: '0 5% 0 5%',
-        backgroundColor: props => props.backgroundColor ? props.backgroundColor : 'transparent'
+        backgroundColor: props => props.backgroundColor ? props.backgroundColor : 'transparent',
+        backgroundImage: props => props.image ? `url("images/${props.image}")` : null
     },
     '@media (max-width: 942px)': {
         root: {

@@ -19,8 +19,8 @@ const animation = (name, property, from, to) => {
 
 const drop = animation('drop', 'left', '-100vw', 0);
 const back = animation('dropBack', 'left', 0, '-100vw');
-const fade = animation('fade', 'opacity', 0, 1);
-const fadeOut = animation('fadeOut', 'opacity', 1, 0);
+const fade = animation('fade', 'opacity', 0.9, 1);
+const fadeOut = animation('fadeOut', 'opacity', 1, 0.9);
 const main = {
     height: '100vh',
     width: '100%',
@@ -43,13 +43,13 @@ const styles = theme => ({
     },
     in: {
         ...main,
-        animation: 'drop 0.5s linear, fade 0.5s linear',
+        animation: 'drop 0.3s linear, fade 0.3s linear',
     },
     out: {
         ...main,
         top: 0,
         left: '-100vw',
-        animation: 'dropBack 0.5s linear, fadeOut 0.5s linear',
+        animation: 'dropBack 0.3s linear, fadeOut 0.3s linear',
     },
     overlay: {
         width: '100%',

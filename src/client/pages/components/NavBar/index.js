@@ -106,7 +106,8 @@ const styles = theme => ({
 
 const mapStateToProps = ({ui}) => {
     return {
-        color: ui.navColor
+        color: ui.navColor,
+        nav: ui.nav
     }
 };
 
@@ -124,7 +125,7 @@ class ToggleNav extends Component {
         window.removeEventListener("resize", this.getDimensions);
         window.removeEventListener("scroll", this.opacity);
         window.removeEventListener("scroll", this.getScroll);
-    }
+    };
 
     componentDidMount = () => {
         let myScroll = window.pageYOffset;
@@ -151,52 +152,59 @@ class ToggleNav extends Component {
         let myScroll = window.pageYOffset && window.pageYOffset;
         let max = window.innerHeight && window.innerHeight - 47;
         let color = this.props.color;
-        if (myScroll >= 0 && (myScroll / max) < 1.0) {
-            this.setState({
-                shadow: '',
-                color: `rgba(${color}, ${color}, ${color}, ${myScroll / max})`,
-                backgroundImage: '',
-                opacity: 0
-            });
-            return this.state
-        } else if ((myScroll / max) >= 1.0) {
-            this.setState({
-                color: `rgba(${color}, ${color}, ${color}, 1.0)`,
-                border: 'rgba(233, 233, 233, 1.0)',
-                backgroundImage: color > 100 ? 'url("images/stripes.png")': 'url("images/triangles.png")',
-                opacity: 1,
-                shadow
-            });
-        } else {
-            this.setState({
-                shadow: '',
-                color: `rgba(${color}, ${color}, ${color}, 0)`,
-                backgroundImage: '',
-                opacity: 0
-            });
+        if(!this.props.nav) {
+            if (myScroll >= 0 && (myScroll / max) < 1.0) {
+                this.setState({
+                    shadow: '',
+                    color: `rgba(${color}, ${color}, ${color}, ${myScroll / max})`,
+                    backgroundImage: '',
+                    opacity: 0
+                });
+                return this.state
+            } else if ((myScroll / max) >= 1.0) {
+                this.setState({
+                    color: `rgba(${color}, ${color}, ${color}, 1.0)`,
+                    border: 'rgba(233, 233, 233, 1.0)',
+                    backgroundImage: color > 100 ? 'url("images/stripes.png")' : 'url("images/triangles.png")',
+                    opacity: 1,
+                    shadow
+                });
+            } else {
+                this.setState({
+                    shadow: '',
+                    color: `rgba(${color}, ${color}, ${color}, 0)`,
+                    backgroundImage: '',
+                    opacity: 0
+                });
+            }
         }
     };
 
     getDimensions = () => {
         let state = this.state.window;
-        this.setState({
-            window: {
-                ...state,
-                innerHeight: window.innerHeight,
-                innerWidth: window.innerWidth
-            }
-        });
+        if(!this.props.nav) {
+            this.setState({
+                window: {
+                    ...state,
+                    innerHeight: window.innerHeight,
+                    innerWidth: window.innerWidth
+                }
+            });
+        }
     };
 
     getScroll = () => {
         let state = this.state.window;
-        this.props.scrollPosition(window.pageYOffset);
-        this.setState({
-            window: {
-                ...state,
-                pageYOffset: window.pageYOffset
-            }
-        });
+        if (!this.props.nav) {
+            console.log('SCROLL');
+            this.props.scrollPosition(window.pageYOffset);
+            this.setState({
+                window: {
+                    ...state,
+                    pageYOffset: window.pageYOffset
+                }
+            });
+        }
     };
 
     render() {
@@ -236,8 +244,8 @@ class ToggleNav extends Component {
                     {nav.map(item => {
                         return item !== 'img' ? (
                             <div style={{color: color > 100 ? "#161616" : "rgb(233,233,233)"}}
-                                className={classes.navItem}
-                                key={item}>{item}</div>
+                                 className={classes.navItem}
+                                 key={item}>{item}</div>
                         ) : <img key={item}
                                  src={color > 100 ? "images/logoFilled.png" : "images/logoWhiteFilled.png"}
                                  alt=""

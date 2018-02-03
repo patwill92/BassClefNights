@@ -21,7 +21,7 @@ const styles = theme => ({
     bodyOverlayChild: {
         height: '100vh',
         minWidth: '100%',
-        backgroundColor: 'rgba(0,0,0,0.5)'
+        backgroundColor: props => props.overlay
     }
 });
 
