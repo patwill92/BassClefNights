@@ -35,16 +35,6 @@ const styles = theme => ({
         minHeight: '100%',
         position: 'relative'
     },
-    bodyOverlay: {
-        position: 'fixed',
-        minHeight: '100vh',
-        minWidth: '100vw',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 9,
-        backgroundColor: 'rgba(0,0,0,0.5)'
-    },
     bodyOverlayChild: {
         height: '100vh',
         minWidth: '100%',
@@ -68,8 +58,7 @@ class App extends Component {
                 {renderRoutes(route.routes)}
                 <Menu scroll={scroll} menu={menu}/>
                 <Footer/>
-                {modal && <div className={classes.bodyOverlay}/>}
-                <Modal scroll={scroll}/>
+                {modal && <Modal scroll={scroll}/>}
             </div>
         )
     }

@@ -18,6 +18,7 @@ const styles = theme => ({
         top: 0,
         left: 0,
         zIndex: 2,
+        paddingRight: props => props.modal ? 17 : 0
     },
     root2: {
         display: 'flex',
@@ -85,7 +86,8 @@ const styles = theme => ({
     },
     '@media (max-width: 768px)': {
         root: {
-            display: 'flex'
+            display: 'flex',
+            paddingRight: 0
         },
         root2: {
             display: 'none'
@@ -200,8 +202,7 @@ class ToggleNav extends Component {
                 <div className={classes.root} style={{
                     boxShadow: this.state.shadow,
                     backgroundColor: this.state.color,
-                    backgroundImage: this.state.backgroundImage ? this.state.backgroundImage : null,
-                    paddingRight: modal ? 17 : 0
+                    backgroundImage: this.state.backgroundImage ? this.state.backgroundImage : null
                 }}>
                     <div onClick={onClick}
                          className={classes.menu}>
