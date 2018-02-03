@@ -5,6 +5,7 @@ import {Provider} from 'react-redux'
 import {renderRoutes} from 'react-router-config'
 import serialize from 'serialize-javascript'
 import {JssProvider, SheetsRegistry, ThemeProvider} from 'react-jss'
+import {Helmet} from 'react-helmet'
 
 import theme from '../styles/theme'
 
@@ -22,9 +23,12 @@ export default (req, store, context, routes) => {
             </StaticRouter>
         </Provider>
     );
+    const helmet = Helmet.renderStatic();
     return `
     <html>
       <head>
+        ${helmet.title.toString()}
+        ${helmet.meta.toString()}
         <meta charset="UTF-8">
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">

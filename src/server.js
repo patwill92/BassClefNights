@@ -2,6 +2,7 @@ import express from 'express'
 import {matchRoutes} from 'react-router-config'
 import bodyParser from 'body-parser'
 import compression from 'compression'
+// import {Helmet} from 'react-helmet'
 
 import routes from './client/Routes'
 import renderer from './helpers/renderer';
