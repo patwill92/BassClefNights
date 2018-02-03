@@ -51,7 +51,7 @@ const styles = theme => ({
         },
         modalChild: {
             padding: '30 20 30 20',
-            overflow: 'auto',
+            '-webkit-overflow-scrolling': 'touch',
             textAlign: 'center',
             '& p': {
                 color: 'rgba(22,22,22,0.9)',
