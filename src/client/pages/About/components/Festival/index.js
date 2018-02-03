@@ -126,7 +126,7 @@ class Festival extends Component {
                             </div>
                         </div>
                         <div className={classes.msgContainer}>
-                            <Title text={'The Festival'} color={'#161616'} icon={'musicSax'} align={'center'} y={180}
+                            <Title text={'The Festival'} color={'#161616'} icon={'music'} align={'center'}
                                    noPadding/>
                             <div className={classes.message}>
                                 Allow yourself to experience an evening in Old Miami, when its name defined a time rich
