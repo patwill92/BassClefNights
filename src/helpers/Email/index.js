@@ -2,8 +2,8 @@ import React from 'react'
 
 import Title from './Title'
 
-export default () => {
+export default props => {
     return (
-        <Title/>
+        <Title name={props.name}/>
     )
 };

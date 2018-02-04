@@ -2,8 +2,8 @@ import React from 'react';
 import {renderToString} from 'react-dom/server'
 import Email from './Email'
 
-export default () => {
-    const content = renderToString(<Email/>);
+export default (name) => {
+    const content = renderToString(<Email name={name}/>);
     return `
     <html>
       <head>
