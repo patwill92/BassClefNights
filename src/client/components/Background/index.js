@@ -4,8 +4,8 @@ import injectSheet from 'react-jss'
 const styles = theme => ({
     bodyOverlay: {
         position: 'fixed',
-        minHeight: '100vh',
-        minWidth: '100vw',
+        height: '100%',
+        width: '100%',
         top: 0,
         left: 0,
         right: 0,
@@ -16,11 +16,12 @@ const styles = theme => ({
         '-o-background-size': 'cover',
         'background-size': 'cover',
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center'
+        backgroundPosition: 'center',
+        overflow: 'hidden'
     },
     bodyOverlayChild: {
-        height: '100vh',
-        minWidth: '100%',
+        height: '100%',
+        width: '100%',
         backgroundColor: props => props.overlay
     }
 });
