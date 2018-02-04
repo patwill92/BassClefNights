@@ -6,6 +6,7 @@ import compression from 'compression'
 
 import routes from './client/Routes'
 import renderer from './helpers/renderer';
+// import emailRender from './helpers/emailRender'
 import {serverStore as createServerStore} from './helpers/store'
 import httpsRedirect from './middleware/secure'
 
@@ -16,6 +17,12 @@ app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static('public'));
+
+// app.get('/email', async (req, res) => {
+//     const content = await emailRender();
+//     console.log(content);
+//     res.send(content);
+// });
 
 app.get('*', (req, res) => {
     const store = createServerStore();

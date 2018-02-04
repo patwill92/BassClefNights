@@ -9,3 +9,5 @@ test.html
 /public/bundle.js
 /public/bundle.js.map
 playground.js
+/src/helpers/Email
+/src/helpers/emailRender.js
