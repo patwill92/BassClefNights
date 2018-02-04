@@ -25,7 +25,7 @@ export default (req, store, context, routes) => {
     );
     const helmet = Helmet.renderStatic();
     return `
-    <html>
+    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us">
       <head>
         ${helmet.title.toString()}
         ${helmet.meta.toString()}

@@ -30,12 +30,16 @@ const sheet = theme => ({
         fill: 'none',
         strokeWidth: 0.5,
         strokeLinecap: 'round',
+        maxWidth: 176.8,
+        minWidth: 176.8
     },
     circlePath2: {
         stroke: '#ffffff',
         fill: 'none',
         strokeWidth: 0.5,
         strokeLinecap: 'round',
+        maxWidth: 176.8,
+        minWidth: 176.8
     },
     unit: {
         fontSize: 14,
@@ -57,6 +61,14 @@ const sheet = theme => ({
             top: `${(110 - 97.25) / 2}`,
             left: `${(110 - 97.25) / 2}`,
             fontSize: 20,
+        },
+        circlePath: {
+            maxWidth: 97.25,
+            minWidth: 97.25,
+        },
+        circlePath2: {
+            maxWidth: 97.25,
+            minWidth: 97.25,
         },
         unit: {
             fontSize: 12
@@ -105,7 +117,7 @@ class Countdown extends Component {
         return (
             <div className={classes.circle}>
                 {props.percent === 100 ?
-                    <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" version="1.1">
                         <path className={classes.circlePath2 + ' ' + this.state.circlePath2}
                               strokeWidth="1"
                               d={path}
@@ -113,7 +125,7 @@ class Countdown extends Component {
                               stroke="#444"/>
                     </svg>
                     :
-                    <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" version="1.1">
                         <path className={classes.circlePath + ' ' + this.state.circlePath}
                               strokeWidth="1"
                               strokeDasharray={`${this.props.percent}, 100`}
