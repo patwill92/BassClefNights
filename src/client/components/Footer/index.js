@@ -69,7 +69,7 @@ class Footer extends React.Component {
                             <img src="images/logoWhiteFilled.png" alt="logo" style={{maxWidth: 50, height: 'auto'}}/>
                             <h3>Bass Clef Nights</h3>
                         </div>
-                        {/*<Countdown/>*/}
+                        <Countdown/>
                     </div>
                     <div>
                         <h3>About</h3>

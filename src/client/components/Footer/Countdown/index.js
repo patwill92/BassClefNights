@@ -113,31 +113,31 @@ class Countdown extends Component {
                         november <span style={{margin: '0 7'}}>15</span> 2018
                     </h1>
                 </div>
-                <div style={{textAlign: 'center'}}>
-                    <div className={classes.countdownTitle} style={{padding: 0}}>
-                        <Button color={'#fff'} hover={'#161616'} style={{fontSize: 13}} text={'tickets'} icon={'ticketAlt'}
-                                iconColor={this.state.iconColor}/>
-                    </div>
-                </div>
+                {/*<div style={{textAlign: 'center'}}>*/}
+                    {/*<div className={classes.countdownTitle} style={{padding: 0}}>*/}
+                        {/*<Button color={'#fff'} hover={'#161616'} style={{fontSize: 13}} text={'tickets'} icon={'ticketAlt'}*/}
+                                {/*iconColor={this.state.iconColor}/>*/}
+                    {/*</div>*/}
+                {/*</div>*/}
                 <div className={classes.overlay}/>
-                <div className={classes.circleContainer}>
-                    <Circle unit={'Days'}
-                            text={countdown.days < 10 ? twoDigit(countdown.days) : countdown.days}
-                            percent={fillCircle(countdown.totalDays, 60 * 60 * 24 * 365)}
-                            timer={countdown.totalDays}/>
-                    <Circle unit={'hours'}
-                            text={countdown.hours < 10 ? twoDigit(countdown.hours) : countdown.hours}
-                            percent={fillCircle(countdown.totalHours, 60 * 60 * 24)}
-                            timer={countdown.totalHours}/>
-                    <Circle unit={'minutes'}
-                            text={twoDigit(countdown.minutes)}
-                            percent={fillCircle(countdown.totalMinutes, 60 * 60)}
-                            timer={countdown.totalMinutes}/>
-                    <Circle unit={'seconds'}
-                            text={twoDigit(countdown.seconds)}
-                            percent={fillCircle(countdown.totalSeconds, 60)}
-                            timer={countdown.totalSeconds}/>
-                </div>
+                {/*<div className={classes.circleContainer}>*/}
+                    {/*<Circle unit={'Days'}*/}
+                            {/*text={countdown.days < 10 ? twoDigit(countdown.days) : countdown.days}*/}
+                            {/*percent={fillCircle(countdown.totalDays, 60 * 60 * 24 * 365)}*/}
+                            {/*timer={countdown.totalDays}/>*/}
+                    {/*<Circle unit={'hours'}*/}
+                            {/*text={countdown.hours < 10 ? twoDigit(countdown.hours) : countdown.hours}*/}
+                            {/*percent={fillCircle(countdown.totalHours, 60 * 60 * 24)}*/}
+                            {/*timer={countdown.totalHours}/>*/}
+                    {/*<Circle unit={'minutes'}*/}
+                            {/*text={twoDigit(countdown.minutes)}*/}
+                            {/*percent={fillCircle(countdown.totalMinutes, 60 * 60)}*/}
+                            {/*timer={countdown.totalMinutes}/>*/}
+                    {/*<Circle unit={'seconds'}*/}
+                            {/*text={twoDigit(countdown.seconds)}*/}
+                            {/*percent={fillCircle(countdown.totalSeconds, 60)}*/}
+                            {/*timer={countdown.totalSeconds}/>*/}
+                {/*</div>*/}
             </div>
         )
     }

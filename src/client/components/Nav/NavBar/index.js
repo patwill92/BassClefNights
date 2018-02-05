@@ -248,6 +248,7 @@ class ToggleNav extends Component {
                                     <Link to={item.link}
                                           className={classes.navItem}
                                           style={{
+                                              margin: '0 10',
                                               textDecoration: 'none',
                                               color: color > 100 ? "#161616" : "rgb(233,233,233)"
                                           }}>{item.name}</Link>
