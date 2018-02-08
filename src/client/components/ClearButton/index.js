@@ -15,15 +15,20 @@ const styles = theme => ({
         textTransform: 'uppercase',
         padding: '10px',
         transition: 'background-color 500ms, color 500ms',
-        '&:hover': {
+        cursor: 'pointer',
+        '&:active': {
             cursor: 'pointer',
             color: props => props.hover,
             backgroundColor: props => props.color
-        },
-        '&:active': {
-            backgroundColor: 'rgba(255, 255, 255, 1.0) !important',
-            border: props => `1px solid ${props.color}`,
-            color: props => props.color,
+        }
+    },
+    '@media (min-width: 769px)': {
+        heroBtn: {
+            '&:hover': {
+                cursor: 'pointer',
+                color: props => props.hover,
+                backgroundColor: props => props.color
+            },
         }
     }
 });
@@ -37,9 +42,8 @@ class ClearButton extends React.Component {
     render() {
         const {classes, text, style, icon, submit, onClick} = this.props;
         return (
-            <button onMouseOver={() => this.setState({iconColor: this.props.hover})}
-                    onFocus={() => this.setState({iconColor: this.props.color})}
-                    onClick={onClick ? onClick : null}
+            <button onClick={onClick ? onClick : null}
+                    onFocus={() => this.setState({iconColor: this.props.hover})}
                     onMouseOut={() => this.setState({iconColor: this.props.color})}
                     type={submit ? 'submit' : 'button'}
                     className={classes.heroBtn} style={style && {...style}}>

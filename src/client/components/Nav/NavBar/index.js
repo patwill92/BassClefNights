@@ -17,8 +17,7 @@ const styles = theme => ({
         position: 'fixed',
         top: 0,
         left: 0,
-        zIndex: 2,
-        paddingRight: props => props.modal ? 17 : 0
+        zIndex: 2
     },
     root2: {
         display: 'flex',

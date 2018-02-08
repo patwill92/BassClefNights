@@ -6,8 +6,7 @@ const styles = theme => ({
     root: {
         width: '100%',
         backgroundColor: props => props.backgroundColor ? props.backgroundColor : 'transparent',
-        backgroundImage: props => props.image ? `url("images/${props.image}")` : null,
-        paddingRight: props => props.modal ? 17 : 0
+        backgroundImage: props => props.image ? `url("images/${props.image}")` : null
     },
     rootChild: {
         width: '100%',
