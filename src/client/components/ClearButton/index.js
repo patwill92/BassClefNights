@@ -19,6 +19,11 @@ const styles = theme => ({
             cursor: 'pointer',
             color: props => props.hover,
             backgroundColor: props => props.color
+        },
+        '&:active': {
+            backgroundColor: 'rgba(255, 255, 255, 1.0) !important',
+            border: props => `1px solid ${props.color}`,
+            color: props => props.color,
         }
     }
 });
@@ -33,7 +38,7 @@ class ClearButton extends React.Component {
         const {classes, text, style, icon, submit, onClick} = this.props;
         return (
             <button onMouseOver={() => this.setState({iconColor: this.props.hover})}
-                    onFocus={() => this.setState({iconColor: this.props.hover})}
+                    onFocus={() => this.setState({iconColor: this.props.color})}
                     onClick={onClick ? onClick : null}
                     onMouseOut={() => this.setState({iconColor: this.props.color})}
                     type={submit ? 'submit' : 'button'}
