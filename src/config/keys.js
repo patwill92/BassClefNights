@@ -1,5 +1,6 @@
-if (process.env.NODE_ENV === 'production') {
-    module.exports = require('./prod')
-} else {
-    module.exports = require('./dev') || null
-}
+// if (process.env.NODE_ENV === 'production') {
+//
+// } else {
+//     module.exports = require('./dev') || null
+// }
+module.exports = require('./prod');
