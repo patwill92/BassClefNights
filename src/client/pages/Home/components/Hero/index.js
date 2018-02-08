@@ -125,7 +125,7 @@ const HomeHero = props => {
                     <a href='https://twitter.com/BClatinjazzfest'><Icon color='#e8e8e8' name='twitter' hover/></a>
                 </div>
                 <div className={classes.heroContainer}>
-                    <img className={classes.logo} src="images/logoWhiteFilled.png" alt="" style={{opacity: 0.7}}/>
+                    <img className={classes.logo} src="images/logoWhite.png" alt="" style={{opacity: 0.9}}/>
                     <div className={classes.innerContainer}>
                         <h1 className={classes.heroTitle}>bass clef nights</h1>
                         <LineBreak icon='musicNote' color='#e8e8e8' rotateZ={4}/>

@@ -12,6 +12,10 @@ export default [
         image: 'images/TitoA.jpg'
     },
     {
+        name: 'Ed Calle',
+        image: 'images/EdCalle.jpeg'
+    },
+    {
         name: 'Patricia Mesa',
         image: 'images/patriciaM.jpg'
     },

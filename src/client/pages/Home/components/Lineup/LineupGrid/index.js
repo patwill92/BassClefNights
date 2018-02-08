@@ -11,8 +11,8 @@ const styles = theme => ({
         display: 'flex',
         alignItems: 'flex-end',
         marginBottom: props => props.i <= 2 ? '0.5%' : 0,
-        marginLeft: props => props.i > 2 ? props.i === 3 ? 0 : '0.25%' : props.i === 1 && '0.5%',
-        marginRight: props => props.i > 2 ? props.i === 3 ? '0.25%' : 0 : props.i === 1 && '0.5%'
+        marginLeft: props => (props.i === 1 || props.i === 4) ? '0.5%' : 0,
+        marginRight: props => (props.i === 1 || props.i === 4) ? '0.5%' : 0
     },
     overlay: {
         width: '100%',
@@ -41,7 +41,7 @@ const styles = theme => ({
     '@media (max-width: 500px)': {
         root: {
             flexBasis: '100%',
-            marginBottom: props => props.i ===4 ? 0 : '0.5%',
+            marginBottom: props => props.i === props.length - 1 ? 0 : '0.5%',
             marginLeft: 0 + ' !important',
             marginRight: 0 + ' !important',
             minHeight: 300

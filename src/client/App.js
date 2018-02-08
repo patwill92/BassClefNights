@@ -88,7 +88,6 @@ const loadData = () => {
         minutes: duration.minutes(),
         seconds: duration.seconds()
     };
-    console.log(initialCountdown);
     return [
         {
             data: initialCountdown,

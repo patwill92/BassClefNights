@@ -38,7 +38,7 @@ const styles = theme => ({
             paddingBottom: 20
         },
         title: {
-            fontSize: '1.5rem'
+            fontSize: '1.5rem !important'
         }
     }
 });

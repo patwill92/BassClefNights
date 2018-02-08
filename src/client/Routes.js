@@ -4,6 +4,7 @@ import App from './App'
 //pages
 import Home from './pages/Home'
 import About from './pages/About'
+import Lineup from './pages/Lineup'
 
 export default [
     {
@@ -17,6 +18,10 @@ export default [
             {
                 ...About,
                 path: '/about'
+            },
+            {
+                ...Lineup,
+                path: '/lineup'
             }
         ]
     }
