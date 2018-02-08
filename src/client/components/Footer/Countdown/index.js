@@ -12,10 +12,11 @@ const styles = theme => ({
         position: 'relative'
     },
     circleContainer: {
-        ...theme.flex.rowEven,
-        flexWrap: 'wrap',
+        ...theme.flex.rowCenter,
         position: 'relative',
-        zIndex: 1
+        zIndex: 1,
+        fontSize: 35,
+        marginBottom: 20
     },
     overlay: {
         position: 'absolute',
@@ -26,7 +27,7 @@ const styles = theme => ({
         left: 0
     },
     countdownTitle: {
-        fontSize: 27,
+        fontSize: 24,
         textTransform: 'uppercase',
         fontWeight: 400,
         fontFamily: "'Montserrat', sans-serif",
@@ -36,7 +37,7 @@ const styles = theme => ({
         zIndex: 1,
         margin: 0,
         paddingTop: 0,
-        paddingBottom: 20,
+        paddingBottom: 10,
         letterSpacing: '1px'
     },
     image: {
@@ -48,14 +49,14 @@ const styles = theme => ({
     },
     '@media(max-width: 500px)': {
         countdownTitle: {
-            fontSize: 22
+            fontSize: 24
         }
     }
 });
 
 class Countdown extends Component {
     state = {
-        date: [2018, 1,15],
+        date: [2018, 1, 15],
         iconColor: '#fff'
     };
 
@@ -114,29 +115,50 @@ class Countdown extends Component {
                     </h1>
                 </div>
                 {/*<div style={{textAlign: 'center'}}>*/}
-                    {/*<div className={classes.countdownTitle} style={{padding: 0}}>*/}
-                        {/*<Button color={'#fff'} hover={'#161616'} style={{fontSize: 13}} text={'tickets'} icon={'ticketAlt'}*/}
-                                {/*iconColor={this.state.iconColor}/>*/}
-                    {/*</div>*/}
+                {/*<div className={classes.countdownTitle} style={{padding: 0}}>*/}
+                {/*<Button color={'#fff'} hover={'#161616'} style={{fontSize: 13}} text={'tickets'} icon={'ticketAlt'}*/}
+                {/*iconColor={this.state.iconColor}/>*/}
+                {/*</div>*/}
                 {/*</div>*/}
                 <div className={classes.overlay}/>
+                <div className={classes.circleContainer}>
+                    <div className={classes.units}>
+                        <div style={{minWidth: 39}}>{countdown.days < 10 ? twoDigit(countdown.days) : countdown.days}</div>
+                        <div style={{fontSize: 10, marginTop: 5}}>DAYS</div>
+                    </div>
+                    <div style={{flex: 0, margin: '0 10 0 10'}}>:</div>
+                    <div className={classes.units}>
+                        <div style={{minWidth: 39}}>{countdown.hours < 10 ? twoDigit(countdown.hours) : countdown.hours}</div>
+                        <div style={{fontSize: 10, marginTop: 5}}>HOURS</div>
+                    </div>
+                    <div style={{flex: 0, margin: '0 10 0 10'}}>:</div>
+                    <div className={classes.units}>
+                        <div style={{minWidth: 39}}>{twoDigit(countdown.minutes)}</div>
+                        <div style={{fontSize: 10, marginTop: 5}}>MINUTES</div>
+                    </div>
+                    <div style={{flex: 0, margin: '0 10 0 10'}}>:</div>
+                    <div className={classes.units}>
+                        <div style={{minWidth: 39}}>{twoDigit(countdown.seconds)}</div>
+                        <div style={{fontSize: 10, marginTop: 5}}>SECONDS</div>
+                    </div>
+                </div>
                 {/*<div className={classes.circleContainer}>*/}
-                    {/*<Circle unit={'Days'}*/}
-                            {/*text={countdown.days < 10 ? twoDigit(countdown.days) : countdown.days}*/}
-                            {/*percent={fillCircle(countdown.totalDays, 60 * 60 * 24 * 365)}*/}
-                            {/*timer={countdown.totalDays}/>*/}
-                    {/*<Circle unit={'hours'}*/}
-                            {/*text={countdown.hours < 10 ? twoDigit(countdown.hours) : countdown.hours}*/}
-                            {/*percent={fillCircle(countdown.totalHours, 60 * 60 * 24)}*/}
-                            {/*timer={countdown.totalHours}/>*/}
-                    {/*<Circle unit={'minutes'}*/}
-                            {/*text={twoDigit(countdown.minutes)}*/}
-                            {/*percent={fillCircle(countdown.totalMinutes, 60 * 60)}*/}
-                            {/*timer={countdown.totalMinutes}/>*/}
-                    {/*<Circle unit={'seconds'}*/}
-                            {/*text={twoDigit(countdown.seconds)}*/}
-                            {/*percent={fillCircle(countdown.totalSeconds, 60)}*/}
-                            {/*timer={countdown.totalSeconds}/>*/}
+                {/*<Circle unit={'Days'}*/}
+                {/*text={countdown.days < 10 ? twoDigit(countdown.days) : countdown.days}*/}
+                {/*percent={fillCircle(countdown.totalDays, 60 * 60 * 24 * 365)}*/}
+                {/*timer={countdown.totalDays}/>*/}
+                {/*<Circle unit={'hours'}*/}
+                {/*text={countdown.days < 10 ? twoDigit(countdown.days) : countdown.days}*/}
+                {/*percent={fillCircle(countdown.totalHours, 60 * 60 * 24)}*/}
+                {/*timer={countdown.totalHours}/>*/}
+                {/*<Circle unit={'minutes'}*/}
+                {/*text={twoDigit(countdown.minutes)}*/}
+                {/*percent={fillCircle(countdown.totalMinutes, 60 * 60)}*/}
+                {/*timer={countdown.totalMinutes}/>*/}
+                {/*<Circle unit={'seconds'}*/}
+                {/*text={twoDigit(countdown.seconds)}*/}
+                {/*percent={fillCircle(countdown.totalSeconds, 60)}*/}
+                {/*timer={countdown.totalSeconds}/>*/}
                 {/*</div>*/}
             </div>
         )
