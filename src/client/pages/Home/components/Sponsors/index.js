@@ -17,7 +17,7 @@ const styles = theme => ({
         ...root,
     },
     sponsors: {
-        ...theme.flex.rowBetween,
+        ...theme.flex.rowCenter,
         flexWrap: 'wrap'
     },
     sponsor: {
@@ -69,10 +69,13 @@ class Sponsors extends React.Component {
                         <TitleContainer text='The Sponsors' color={'#fff'} icon='sponsor'/>
                     </div>
                     <div className={classes.sponsors}>
-                        {sponsors.map(sponsor => {
-                            return <div key={sponsor} className={classes.sponsor}><img className={classes.img}
-                                                                                       src={`images/s${sponsor}.png`}/>
-                            </div>
+                        {sponsors.map((sponsor, i) => {
+                            return (
+                                <div key={sponsor}
+                                     className={classes.sponsor}>
+                                    <img className={classes.img} src={`images/s${sponsor}.png`}/>
+                                </div>
+                            )
                         })}
                     </div>
                 </div>
