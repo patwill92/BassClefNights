@@ -34,7 +34,7 @@ const main = {
     top: 0,
     backgroundColor: '#fff',
     animationFillMode: 'forwards',
-    zIndex: 2
+    zIndex: 3
 };
 
 const styles = theme => ({

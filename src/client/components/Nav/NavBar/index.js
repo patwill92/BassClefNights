@@ -17,7 +17,7 @@ const styles = theme => ({
         position: 'fixed',
         top: 0,
         left: 0,
-        zIndex: 2
+        zIndex: 3
     },
     root2: {
         display: 'flex',
@@ -28,7 +28,7 @@ const styles = theme => ({
         position: 'fixed',
         top: 0,
         left: 0,
-        zIndex: 2,
+        zIndex: 3,
     },
     navItem: {
         textTransform: 'uppercase',
@@ -50,7 +50,7 @@ const styles = theme => ({
             }
         },
         position: 'relative',
-        zIndex: 2
+        zIndex: 3
     },
     underline: {
         paddingTop: 3,
