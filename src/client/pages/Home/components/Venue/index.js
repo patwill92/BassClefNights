@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, PureComponent} from 'react';
 import injectSheet from 'react-jss';
 
 import TitleContainer from '../../../../components/TitleContainer'
@@ -71,7 +71,7 @@ const styles = theme => ({
     }
 });
 
-class Venue extends Component {
+class Venue extends PureComponent {
     static testFunc = () => {
         console.log('Venue');
     }

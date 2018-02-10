@@ -26,15 +26,20 @@ const styles = theme => ({
         heroBtn: {
             '&:hover': {
                 cursor: 'pointer',
-                color: props => props.hover,
-                backgroundColor: props => props.color
-            },
+                color: props => {
+                    return props.hover
+                },
+                backgroundColor: props => props.color,
+                '& path': {
+                    fill: '#fff !important'
+                }
+            }
         }
     }
 });
 
 
-class ClearButton extends React.Component {
+class ClearButton extends React.PureComponent {
     state = {
         iconColor: this.props.color
     };
@@ -44,7 +49,6 @@ class ClearButton extends React.Component {
         return (
             <button onClick={onClick ? onClick : null}
                     onFocus={() => this.setState({iconColor: this.props.hover})}
-                    onMouseOut={() => this.setState({iconColor: this.props.color})}
                     type={submit ? 'submit' : 'button'}
                     className={classes.heroBtn} style={style && {...style}}>
                 {icon && <Icon name={icon} color={this.state.iconColor} style={{marginRight: 10}}/>}

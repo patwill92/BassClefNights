@@ -43,17 +43,20 @@ const styles = theme => ({
     }
 });
 
-const TitleContainer = props => {
-    const {classes, text, color, icon, y, x, z, noPadding, noLine, style} = props;
-    return (
-        <Fragment>
-            <div className={classes.root} style={{padding: noPadding && 0}}>
-                <h1 className={classes.title} style={style ? {color, ...style} : {color}}>{text}</h1>
-                {!noLine && <LineBreak icon={icon} color={color} rotateY={y && y} rotateX={x && x} rotateZ={z && z}/>}
-            </div>
-        </Fragment>
-    )
-};
+class TitleContainer extends React.PureComponent {
+    render() {
+        const {classes, text, color, icon, y, x, z, noPadding, noLine, style} = this.props;
+        return (
+            <Fragment>
+                <div className={classes.root} style={{padding: noPadding && 0}}>
+                    <h1 className={classes.title} style={style ? {color, ...style} : {color}}>{text}</h1>
+                    {!noLine &&
+                    <LineBreak icon={icon} color={color} rotateY={y && y} rotateX={x && x} rotateZ={z && z}/>}
+                </div>
+            </Fragment>
+        )
+    };
+}
 
 TitleContainer.propTypes = {
     text: PropTypes.string.isRequired,

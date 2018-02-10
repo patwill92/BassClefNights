@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PureComponent} from 'react'
 import injectSheet from 'react-jss'
 import {connect} from 'react-redux'
 
@@ -37,7 +37,7 @@ const mapStateToProps = ({ui}) => {
 
 @connect(mapStateToProps)
 @injectSheet(styles)
-class Container extends Component {
+class Container extends PureComponent {
     render(){
         const {classes, children} = this.props;
         return (

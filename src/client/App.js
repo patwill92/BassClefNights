@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import injectSheet from 'react-jss'
 import {renderRoutes} from 'react-router-config'
 import {connect} from 'react-redux'
@@ -42,7 +42,7 @@ const styles = theme => ({
     }
 });
 
-class App extends Component {
+class App extends PureComponent {
 
     componentDidMount = () => {
         this.props.toggleNav(false);
@@ -50,13 +50,11 @@ class App extends Component {
 
     render() {
         const {classes, route, menu, modal, scroll} = this.props;
-        // const myStyle = modal ? {position: 'fixed', top: `${-scroll}px`} : undefined;
-        // const myStyle = modal ? {overflow: 'hidden', top: `${scroll}px`} : undefined;
         return (
             <div className={classes.root} id='main'>
                 <Navbar onClick={() => this.props.toggleNav(!menu)}/>
                 {renderRoutes(route.routes)}
-                <Menu scroll={scroll} menu={menu}/>
+                <Menu scroll={menu ? scroll : null} />
                 <Footer/>
                 {modal && <Modal scroll={scroll}/>}
             </div>

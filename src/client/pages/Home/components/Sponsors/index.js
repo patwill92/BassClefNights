@@ -58,7 +58,7 @@ const styles = theme => ({
     }
 });
 
-class Sponsors extends React.Component {
+class Sponsors extends React.PureComponent {
     render() {
         const {classes} = this.props;
         let sponsors = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];

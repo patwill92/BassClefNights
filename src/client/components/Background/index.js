@@ -26,13 +26,15 @@ const styles = theme => ({
     }
 });
 
-const Background = props => {
-    const {classes} = props;
-    return (
-        <div className={classes.bodyOverlay}>
-            <div className={classes.bodyOverlayChild}/>
-        </div>
-    )
+class Background extends React.PureComponent {
+    render() {
+        const {classes} = this.props;
+        return (
+            <div className={classes.bodyOverlay}>
+                <div className={classes.bodyOverlayChild}/>
+            </div>
+        )
+    }
 }
 
 export default injectSheet(styles)(Background)

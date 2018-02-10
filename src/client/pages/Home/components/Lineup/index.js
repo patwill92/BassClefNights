@@ -47,25 +47,27 @@ const styles = theme => ({
     }
 });
 
-const Lineup = props => {
-    const {classes} = props;
-    let length = lineupData.length;
-    return (
-        <Fragment>
-            <div className={classes.root}>
-                <div className={classes.overlay}>
-                    <div ><TitleContainer text='The lineup' color='#222' icon='musicSax' y={180} noBorder/></div>
-                    <div className={classes.wrap}>
-                        {lineupData.map((artist, i) => <LineupGrid name={artist.name}
-                                                                   image={artist.image}
-                                                                   key={artist.name}
-                                                                   lenth={length}
-                                                                   i={i}/>)}
+class Lineup extends React.PureComponent {
+    render() {
+        const {classes} = this.props;
+        let length = lineupData.length;
+        return (
+            <Fragment>
+                <div className={classes.root}>
+                    <div className={classes.overlay}>
+                        <div><TitleContainer text='The lineup' color='#222' icon='musicSax' y={180} noBorder/></div>
+                        <div className={classes.wrap}>
+                            {lineupData.map((artist, i) => <LineupGrid name={artist.name}
+                                                                       image={artist.image}
+                                                                       key={artist.name}
+                                                                       lenth={length}
+                                                                       i={i}/>)}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </Fragment>
-    )
-};
+            </Fragment>
+        )
+    };
+}
 
 export default injectSheet(styles)(Lineup)

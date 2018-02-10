@@ -11,4 +11,4 @@ export const serverStore = () => createStore(reducers, {ui: {nav: false, scroll:
 
 export const clientStore = (initialState) => process.env.NODE_ENV === 'production' ?
     createStore(reducers, initialState, applyMiddleware(thunk)) :
-    createStore(reducers, initialState, applyMiddleware(epicMiddleware, logger));
+    createStore(reducers, initialState, applyMiddleware(epicMiddleware));

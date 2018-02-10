@@ -1,12 +1,12 @@
 import React from 'react'
 import injectSheet from 'react-jss'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 
-import {toggleNav} from "../../../actions/index";
-import TitleContainer from '../../TitleContainer/index'
-import Icon from '../../Icon/index'
-import nav from '../data/index'
+import {toggleNav} from "../../../actions";
+import TitleContainer from '../../TitleContainer'
+import Icon from '../../Icon'
+import nav from '../../data'
 
 const animation = (name, property, from, to) => {
     return {
@@ -100,7 +100,7 @@ const styles = theme => ({
     ...fadeOut
 });
 
-class NavMenu extends React.Component {
+class NavMenu extends React.PureComponent {
     state = {
         open: false
     };
@@ -110,11 +110,10 @@ class NavMenu extends React.Component {
         this.setState({open: true}, () => {
             this.props.toggleNav(!this.props.menu)
         });
-
     };
 
     render() {
-        const {menu, classes} = this.props;
+        const {menu, classes, history} = this.props;
         const {open} = this.state;
         let className = !menu && !open ? 'root' : menu ? 'in' : 'out';
         return (
@@ -131,8 +130,18 @@ class NavMenu extends React.Component {
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}>
-                        <img src="images/logoFilled.png" alt=""
-                             style={{maxWidth: 100, height: 'auto', marginBottom: 15}}/>
+                        <img src="images/logoFilled.png"
+                             alt="LOGO"
+                             onClick={() => {
+                                 this.change();
+                                 history.push('/')
+                             }}
+                             style={{
+                                 cursor: 'pointer',
+                                 maxWidth: 100,
+                                 height: 'auto',
+                                 marginBottom: 15
+                             }}/>
                         <TitleContainer text={'bass clef nights'} color={'#161616'} icon={'musicNote'} z={4} noPadding
                                         fontSize={17}/>
                     </div>
@@ -167,4 +176,4 @@ const mapStateToProps = ({ui}) => {
     }
 };
 
-export default connect(mapStateToProps, {toggleNav})(injectSheet(styles)(NavMenu))
+export default connect(mapStateToProps, {toggleNav})(injectSheet(styles)(withRouter(NavMenu)))

@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import injectSheet from 'react-jss'
 
-import TitleContainer from '../../../../components/TitleContainer'
+import Container from '../../../../components/Container'
 import Form from './Form'
 
 const root = {
@@ -14,34 +14,27 @@ const root = {
 
 const styles = theme => ({
     root: {
-        ...root,
-        backgroundColor: '#fff'
-    },
-    '@media (max-width: 942px)': {
-        root: {
-            padding: '30px 15px',
-            maxWidth: '100%',
+        padding: '50 15',
+        '& form': {
+            marginBottom: '0 !important'
         }
     },
     '@media (max-width: 500px)': {
         root: {
-            padding: '0 15px'
+            padding: '45 15'
         }
     }
 });
 
 class Contact extends React.PureComponent {
-    render(){
+    render() {
         const {classes} = this.props;
         return (
-            <Fragment>
+            <Container backgroundColor={'rgba(255,255,255,1.0)'}>
                 <div className={classes.root}>
-                    <div className={classes.title} >
-                        <TitleContainer text='questions?' color={'#161616'} icon='musicSax' y={180} />
-                    </div>
                     <Form/>
                 </div>
-            </Fragment>
+            </Container>
         )
     };
 }

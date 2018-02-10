@@ -1,8 +1,10 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import injectSheet from 'react-jss'
 
 import Icon from '../Icon'
 import Countdown from './Countdown'
+import nav from '../data'
 
 const styles = theme => ({
     root: {
@@ -24,6 +26,11 @@ const styles = theme => ({
             fontSize: 14
         }
     },
+    nav: {
+      '& a': {
+          textDecoration: 'none !important'
+      }
+    },
     logoSection: {
         ...theme.flex.colStart,
         '& h3': {
@@ -31,7 +38,7 @@ const styles = theme => ({
             fontSize: 24,
             position: 'relative',
             textAlign: 'center',
-            marginBottom: 10
+            marginBottom: 10,
         },
         '& *': {
             textAlign: 'center',
@@ -57,7 +64,7 @@ const styles = theme => ({
     }
 });
 
-class Footer extends React.Component {
+class Footer extends React.PureComponent {
     render() {
         const {classes} = this.props;
         let directions = 'https://www.google.com/maps/dir/?api=1&destination=3251+S+Miami+Ave+Miami+FL+33129&travelmode=driving';
@@ -71,12 +78,8 @@ class Footer extends React.Component {
                         </div>
                         <Countdown/>
                     </div>
-                    <div>
-                        <h3>About</h3>
-                        <h3>Tickets</h3>
-                        <h3>Live sets</h3>
-                        <h3>news</h3>
-                        <h3>contact us</h3>
+                    <div className={classes.nav}>
+                        {nav.map(({name, link}) => <h3 key={name}><Link to={link}>{name}</Link></h3>)}
                     </div>
                     <div>
                         <a href={directions} style={{position: 'relative', textDecoration: 'none'}}>

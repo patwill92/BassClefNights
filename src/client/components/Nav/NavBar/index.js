@@ -1,11 +1,11 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component, Fragment, PureComponent} from 'react'
 import injectSheet from 'react-jss'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 
 import Icon from '../../Icon/index'
 import {scrollPosition} from "../../../actions/index";
-import nav from '../data/index'
+import nav from '../../data'
 
 const styles = theme => ({
     root: {
@@ -116,7 +116,7 @@ const mapStateToProps = ({ui}) => {
 };
 
 @connect(mapStateToProps, {scrollPosition})
-class ToggleNav extends Component {
+class ToggleNav extends PureComponent {
     state = {
         window: {},
         shadow: '',
@@ -195,7 +195,7 @@ class ToggleNav extends Component {
     };
 
     render() {
-        const {classes, onClick, color, modal} = this.props;
+        const {classes, onClick, color, modal, history} = this.props;
         return (
             <Fragment>
                 <div className={classes.root} style={{
@@ -210,7 +210,9 @@ class ToggleNav extends Component {
                         <Icon name='thinMenu' color={color > 100 ? "#161616" : "rgb(233,233,233)"} style={{bottom: 2}}/></span>
                     </div>
                     <div className={classes.logo} style={{opacity: this.state.opacity}}>
-                        <img src={color > 100 ? "images/logoFilled.png" : "images/logoWhiteFilled.png"} alt=""
+                        <img src={color > 100 ? "images/logoFilled.png" : "images/logoWhiteFilled.png"}
+                             alt="LOGO"
+
                              style={{maxWidth: 25, height: 'auto'}}/>
                         <span
                             style={{
@@ -233,8 +235,10 @@ class ToggleNav extends Component {
                             <Fragment key={item.name}>
                                 {i === nav.length / 2 &&
                                 <img src={color > 100 ? "images/logoFilled.png" : "images/logoWhiteFilled.png"}
-                                     alt=""
+                                     alt="LOGO"
+                                     onClick={() => history.push('/')}
                                      style={{
+                                         cursor: 'pointer',
                                          maxWidth: 35,
                                          height: 'auto',
                                          position: 'relative',
@@ -261,4 +265,4 @@ class ToggleNav extends Component {
     };
 }
 
-export default injectSheet(styles)(ToggleNav)
+export default injectSheet(styles)(withRouter(ToggleNav))

@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component, Fragment, PureComponent} from 'react'
 import injectSheet from 'react-jss'
 import {connect} from 'react-redux'
 import {Helmet} from 'react-helmet'
@@ -21,7 +21,7 @@ const styles = theme => ({
 
 @connect(null, {setNavColor})
 @injectSheet(styles)
-class Home extends Component {
+class Home extends PureComponent {
     componentDidMount = () => {
         this.props.setNavColor(22);
         window.scrollTo(0, 0);

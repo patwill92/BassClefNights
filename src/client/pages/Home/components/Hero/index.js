@@ -115,29 +115,32 @@ const styles = theme => ({
     }
 });
 
-const HomeHero = props => {
-    const {classes} = props;
-    return (
-        <div className={classes.root}>
-            <div className={classes.overlayImg}>
-                <div className={classes.socialContainer}>
-                    <a href='https://www.facebook.com'><Icon color='#e8e8e8' name='facebookF' hover/></a>
-                    <a href='https://twitter.com/BClatinjazzfest'><Icon color='#e8e8e8' name='twitter' hover/></a>
-                </div>
-                <div className={classes.heroContainer}>
-                    <img className={classes.logo} src="images/logoWhite.png" alt="" style={{opacity: 0.9}}/>
-                    <div className={classes.innerContainer}>
-                        <h1 className={classes.heroTitle}>bass clef nights</h1>
-                        <LineBreak icon='musicNote' color='#e8e8e8' rotateZ={4}/>
-                        <Button text='Become a sponsor' color={'#e8e8e8'} hover={'#161616'} style={{marginTop: 30}}/>
+class HomeHero extends React.PureComponent {
+    render() {
+        const {classes} = this.props;
+        return (
+            <div className={classes.root}>
+                <div className={classes.overlayImg}>
+                    <div className={classes.socialContainer}>
+                        <a href='https://www.facebook.com'><Icon color='#e8e8e8' name='facebookF' hover/></a>
+                        <a href='https://twitter.com/BClatinjazzfest'><Icon color='#e8e8e8' name='twitter' hover/></a>
+                    </div>
+                    <div className={classes.heroContainer}>
+                        <img className={classes.logo} src="images/logoWhite.png" alt="" style={{opacity: 0.9}}/>
+                        <div className={classes.innerContainer}>
+                            <h1 className={classes.heroTitle}>bass clef nights</h1>
+                            <LineBreak icon='musicNote' color='#e8e8e8' rotateZ={4}/>
+                            <Button text='Become a sponsor' color={'#e8e8e8'} hover={'#161616'}
+                                    style={{marginTop: 30}}/>
+                        </div>
                     </div>
                 </div>
+                <div className={classes.bounce}>
+                    <Icon name='chevronDoubleDown' color='#e8e8e8' style={{left: -12}}/>
+                </div>
             </div>
-            <div className={classes.bounce}>
-                <Icon name='chevronDoubleDown' color='#e8e8e8' style={{left: -12}}/>
-            </div>
-        </div>
-    )
-};
+        )
+    };
+}
 
 export default injectSheet(styles)(HomeHero)
