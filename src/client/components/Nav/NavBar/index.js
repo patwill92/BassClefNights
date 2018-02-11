@@ -136,6 +136,7 @@ class NavBar extends PureComponent {
             opacity: 0,
             offset: rootHeight
         });
+        window.addEventListener("scroll", this.getScroll);
         window.addEventListener("scroll", this.opacity);
         window.addEventListener("resize", this.onResize);
         this.opacity();
@@ -146,6 +147,13 @@ class NavBar extends PureComponent {
         this.props.scrollPosition({
             offset: rootHeight
         })
+    };
+
+    getScroll = () => {
+        let {modal, nav} = this.props;
+        if (!nav && !modal) {
+            this.props.scrollPosition({scroll: window.pageYOffset})
+        }
     };
 
     opacity = () => {
@@ -163,12 +171,10 @@ class NavBar extends PureComponent {
             if (scroll >= 0 && max < 1.0) {
                 this.props.scrollPosition({
                     color: `rgba(${color}, ${color}, ${color}, ${max})`,
-                    ...reset,
-                    scroll: window.pageYOffset
+                    ...reset
                 });
             } else if (scroll / max >= 1.0) {
                 this.props.scrollPosition({
-                    scroll: window.pageYOffset,
                     color: `rgba(${color}, ${color}, ${color}, 1.0)`,
                     backgroundImage: color > 100 ? 'url("images/stripes.png")' : 'url("images/triangles.png")',
                     opacity: 1,
@@ -178,7 +184,6 @@ class NavBar extends PureComponent {
                 this.props.scrollPosition({
                     color: `rgba(${color}, ${color}, ${color}, 0)`,
                     ...reset,
-                    scroll: window.pageYOffset
                 });
             }
 
