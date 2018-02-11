@@ -18,13 +18,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static('public'));
 app.use('/email', emailRoutes);
-const store = createServerStore();
-
-app.post('/test', (req, res) => {
-    store.dispatch(scrollPosition(req.body));
-});
 
 app.get('*', (req, res) => {
+    const store = createServerStore();
     const promises = matchRoutes(routes, req.url).map(({route}) => {
         return route.loadData ? route.loadData() : null
     }).filter(promise => promise);

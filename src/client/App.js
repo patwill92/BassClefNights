@@ -47,11 +47,6 @@ class App extends PureComponent {
 
     componentDidMount = () => {
         this.props.toggleNav(false);
-        window.addEventListener("beforeunload", this.onRefresh)
-    };
-
-    onRefresh = () => {
-        axios.post('/test', this.props.scroll)
     };
 
     render() {
