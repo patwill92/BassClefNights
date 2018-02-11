@@ -1,4 +1,4 @@
-import React, {Component, Fragment, PureComponent} from 'react'
+import React, {Fragment, PureComponent} from 'react'
 import injectSheet from 'react-jss'
 import {connect} from 'react-redux'
 import {Link, withRouter} from 'react-router-dom'
@@ -81,7 +81,7 @@ const styles = theme => ({
             fontWeight: 300
         },
         right: 22,
-        transition: 'opacity 0.5s linear'
+        transition: props => props.scroll.transition ? 'opacity 0.5s linear' : ''
     },
     '@media (max-width: 768px)': {
         root: {
@@ -111,18 +111,17 @@ const mapStateToProps = ({ui}) => {
     return {
         color: ui.navColor,
         nav: ui.nav,
-        modal: ui.modal
+        modal: ui.modal,
+        scroll: ui.scroll
     }
 };
 
 @connect(mapStateToProps, {scrollPosition})
-class ToggleNav extends PureComponent {
+@withRouter
+@injectSheet(styles)
+class NavBar extends PureComponent {
     state = {
-        window: {},
-        shadow: '',
-        color: `rgba(${this.props.color}, ${this.props.color}, ${this.props.color}, 0)`,
-        border: '',
-        opacity: 0
+        shadow: "0px 1px 5px 0px rgba(0, 0, 0, 0.2),0px 2px 2px 0px rgba(0, 0, 0, 0.14),0px 3px 1px -2px rgba(0, 0, 0, 0.12)"
     };
 
     componentWillUnmount = () => {
@@ -131,85 +130,81 @@ class ToggleNav extends PureComponent {
     };
 
     componentDidMount = () => {
-        let myScroll = window.pageYOffset;
-        let max = window.innerHeight;
-        let color = this.props.color;
-        this.setState({
-            window: {
-                innerHeight: window.innerHeight,
-                pageYOffset: window.pageYOffset,
-                backgroundImage: '',
-                shadow: (myScroll / max) >= 1.0 ? 2 : 0,
-                color: `rgba(${color}, ${color}, ${color}, ${window.pageYOffset / window.innerHeight - 47})`
-            }
+        let rootHeight = this.root.clientHeight || this.root2.clientHeight;
+        this.props.scrollPosition({
+            scroll: window.pageYOffset,
+            shadow: '',
+            opacity: 0,
+            offset: rootHeight
         });
-        this.opacity();
         window.addEventListener("scroll", this.opacity);
-        window.addEventListener("scroll", this.getScroll);
+        window.addEventListener("resize", this.onResize);
+        this.opacity();
+    };
+
+    onResize = () => {
+        let rootHeight = this.root.clientHeight || this.root2.clientHeight;
+        this.props.scrollPosition({
+            offset: rootHeight
+        })
     };
 
     opacity = () => {
-        let shadow = "0px 1px 5px 0px rgba(0, 0, 0, 0.2),0px 2px 2px 0px rgba(0, 0, 0, 0.14),0px 3px 1px -2px rgba(0, 0, 0, 0.12)";
-        let myScroll = window.pageYOffset && window.pageYOffset;
-        let max = window.innerHeight && window.innerHeight - 47;
-        let color = this.props.color;
-        if (!this.props.nav && !this.props.modal) {
-            if (myScroll >= 0 && (myScroll / max) < 1.0) {
-                this.setState({
-                    shadow: '',
-                    color: `rgba(${color}, ${color}, ${color}, ${myScroll / max})`,
-                    backgroundImage: '',
-                    opacity: 0
+        let {max, offset} = this.props.scroll;
+        let {color, modal, nav} = this.props;
+        let {shadow} = this.state;
+        let scroll = window.pageYOffset;
+        max = scroll / (max - offset);
+        let reset = {
+            shadow: '',
+            opacity: 0,
+            backgroundImage: ''
+        };
+        if (!nav && !modal) {
+            if (scroll >= 0 && max < 1.0) {
+                this.props.scrollPosition({
+                    color: `rgba(${color}, ${color}, ${color}, ${max})`,
+                    ...reset,
+                    scroll: window.pageYOffset
                 });
-                return this.state
-            } else if ((myScroll / max) >= 1.0) {
-                this.setState({
+            } else if (scroll / max >= 1.0) {
+                this.props.scrollPosition({
+                    scroll: window.pageYOffset,
                     color: `rgba(${color}, ${color}, ${color}, 1.0)`,
-                    border: 'rgba(233, 233, 233, 1.0)',
                     backgroundImage: color > 100 ? 'url("images/stripes.png")' : 'url("images/triangles.png")',
                     opacity: 1,
                     shadow
                 });
             } else {
-                this.setState({
-                    shadow: '',
+                this.props.scrollPosition({
                     color: `rgba(${color}, ${color}, ${color}, 0)`,
-                    backgroundImage: '',
-                    opacity: 0
+                    ...reset,
+                    scroll: window.pageYOffset
                 });
             }
-        }
-    };
 
-    getScroll = () => {
-        let state = this.state.window;
-        if (!this.props.nav && !this.props.modal) {
-            this.props.scrollPosition(window.pageYOffset);
-            this.setState({
-                window: {
-                    ...state,
-                    pageYOffset: window.pageYOffset
-                }
-            });
         }
     };
 
     render() {
         const {classes, onClick, color, modal, history} = this.props;
+        const {scroll: {shadow, color: bColor, opacity, backgroundImage}} = this.props;
         return (
             <Fragment>
-                <div className={classes.root} style={{
-                    boxShadow: this.state.shadow,
-                    backgroundColor: this.state.color,
-                    backgroundImage: this.state.backgroundImage ? this.state.backgroundImage : null
-                }}>
+                <div className={classes.root}
+                     ref={root => this.root = root}
+                     style={{
+                         boxShadow: shadow,
+                         backgroundColor: bColor,
+                         backgroundImage
+                     }}>
                     <div onClick={onClick}
                          className={classes.menu}>
                     <span
                         className={classes.iconContainer}>
                         <Icon name='thinMenu' color={color > 100 ? "#161616" : "rgb(233,233,233)"} style={{bottom: 2}}/></span>
                     </div>
-                    <div className={classes.logo} style={{opacity: this.state.opacity}}>
+                    <div className={classes.logo} style={{opacity}}>
                         <img src={color > 100 ? "images/logoFilled.png" : "images/logoWhiteFilled.png"}
                              alt="LOGO"
 
@@ -224,12 +219,14 @@ class ToggleNav extends PureComponent {
                             }}>BCN</span>
                     </div>
                 </div>
-                <div className={classes.root2} style={{
-                    boxShadow: this.state.shadow,
-                    backgroundColor: this.state.color,
-                    backgroundImage: this.state.backgroundImage ? this.state.backgroundImage : null,
-                    paddingRight: modal ? 17 : 0
-                }}>
+                <div className={classes.root2}
+                     ref={root => this.root2 = root}
+                     style={{
+                         boxShadow: shadow,
+                         backgroundColor: bColor,
+                         backgroundImage,
+                         paddingRight: modal ? 17 : 0
+                     }}>
                     {nav.map((item, i) => {
                         return (
                             <Fragment key={item.name}>
@@ -243,8 +240,8 @@ class ToggleNav extends PureComponent {
                                          height: 'auto',
                                          position: 'relative',
                                          bottom: 2,
-                                         opacity: this.state.opacity,
-                                         transition: 'opacity 0.5s linear'
+                                         opacity,
+                                         transition: this.props.scroll.transition ? 'opacity 0.5s linear' : ''
                                      }}/>
                                 }
                                 <div className={classes.navItem}>
@@ -265,4 +262,4 @@ class ToggleNav extends PureComponent {
     };
 }
 
-export default injectSheet(styles)(withRouter(ToggleNav))
+export default NavBar

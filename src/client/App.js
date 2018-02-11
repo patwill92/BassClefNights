@@ -3,6 +3,7 @@ import injectSheet from 'react-jss'
 import {renderRoutes} from 'react-router-config'
 import {connect} from 'react-redux'
 import moment from 'moment'
+import axios from 'axios'
 
 import Navbar from './components/Nav/NavBar'
 import Menu from './components/Nav/NavMenu'
@@ -46,6 +47,11 @@ class App extends PureComponent {
 
     componentDidMount = () => {
         this.props.toggleNav(false);
+        window.addEventListener("beforeunload", this.onRefresh)
+    };
+
+    onRefresh = () => {
+        axios.post('/test', this.props.scroll)
     };
 
     render() {

@@ -9,7 +9,7 @@ import Venue from './components/Venue'
 import Contact from './components/Contact'
 import Sponsors from './components/Sponsors'
 import Background from '../../components/Background'
-import {setNavColor} from "../../actions";
+import {setNavColor, scrollPosition} from "../../actions";
 
 const styles = theme => ({
     root: {
@@ -19,12 +19,12 @@ const styles = theme => ({
     }
 });
 
-@connect(null, {setNavColor})
+@connect(null, {setNavColor, scrollPosition})
 @injectSheet(styles)
 class Home extends PureComponent {
     componentDidMount = () => {
         this.props.setNavColor(22);
-        window.scrollTo(0, 0);
+        this.props.scrollPosition({transition: true})
     };
     render() {
         const {classes} = this.props;

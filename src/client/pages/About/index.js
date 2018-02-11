@@ -8,18 +8,18 @@ import Hero from './components/Hero'
 import Mission from './components/Mission'
 import Festival from './components/Festival'
 import Background from '../../components/Background'
-import {setNavColor} from "../../actions";
+import {setNavColor, scrollPosition} from "../../actions";
 
 const styles = theme => ({
     root: {}
 });
 
-@connect(null, {setNavColor})
+@connect(null, {setNavColor, scrollPosition})
 @injectSheet(styles)
 class About extends Component {
     componentDidMount = () => {
         this.props.setNavColor(255);
-        window.scrollTo(0, 0);
+        this.props.scrollPosition({transition: true});
     };
 
     render() {

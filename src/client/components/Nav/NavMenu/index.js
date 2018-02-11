@@ -3,7 +3,7 @@ import injectSheet from 'react-jss'
 import {connect} from 'react-redux'
 import {Link, withRouter} from 'react-router-dom'
 
-import {toggleNav} from "../../../actions";
+import {toggleNav, scrollPosition} from "../../../actions";
 import TitleContainer from '../../TitleContainer'
 import Icon from '../../Icon'
 import nav from '../../data'
@@ -155,7 +155,11 @@ class NavMenu extends React.PureComponent {
                         {nav.map(item => {
                             return (
                                 <div className={classes.navItem}
-                                     onClick={this.change}
+                                     onClick={() => {
+                                         this.change();
+                                         this.props.scrollPosition({opacity: 0, transition: false});
+                                        }
+                                     }
                                      key={item.name}>
                                     <Link to={item.link}
                                           style={{textDecoration: 'none'}}
@@ -176,4 +180,4 @@ const mapStateToProps = ({ui}) => {
     }
 };
 
-export default connect(mapStateToProps, {toggleNav})(injectSheet(styles)(withRouter(NavMenu)))
+export default connect(mapStateToProps, {toggleNav, scrollPosition})(withRouter(injectSheet(styles)(NavMenu)))

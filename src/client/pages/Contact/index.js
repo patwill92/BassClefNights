@@ -6,7 +6,7 @@ import {Helmet} from 'react-helmet'
 
 import Hero from './components/Hero'
 import Background from '../../components/Background'
-import {setNavColor} from "../../actions";
+import {setNavColor, scrollPosition} from "../../actions";
 import ContactIntro from './components/ContactIntro'
 import Form from './components/Contact'
 
@@ -14,12 +14,12 @@ const styles = theme => ({
     root: {}
 });
 
-@connect(null, {setNavColor})
+@connect(null, {setNavColor, scrollPosition})
 @injectSheet(styles)
 class Contact extends Component {
     componentDidMount = () => {
         this.props.setNavColor(255);
-        window.scrollTo(0, 0);
+        this.props.scrollPosition({transition: true})
     };
 
     render() {

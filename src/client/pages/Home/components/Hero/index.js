@@ -1,9 +1,11 @@
 import React from 'react'
 import injectSheet from 'react-jss'
+import {connect} from 'react-redux'
 
 import Icon from '../../../../components/Icon'
 import LineBreak from '../../../../components/LineBreak'
 import Button from '../../../../components/ClearButton'
+import {scrollPosition} from "../../../../actions";
 
 const animation = (name, one, two) => {
     return {
@@ -115,11 +117,17 @@ const styles = theme => ({
     }
 });
 
+@connect(null, {scrollPosition})
+@injectSheet(styles)
 class HomeHero extends React.PureComponent {
+    componentDidMount = () => {
+        this.props.scrollPosition({max: this.root.clientHeight})
+    };
+
     render() {
         const {classes} = this.props;
         return (
-            <div className={classes.root}>
+            <div ref={root => this.root = root} className={classes.root}>
                 <div className={classes.overlayImg}>
                     <div className={classes.socialContainer}>
                         <a href='https://www.facebook.com'><Icon color='#e8e8e8' name='facebookF' hover/></a>
@@ -143,4 +151,4 @@ class HomeHero extends React.PureComponent {
     };
 }
 
-export default injectSheet(styles)(HomeHero)
+export default HomeHero

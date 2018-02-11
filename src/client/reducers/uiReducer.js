@@ -7,7 +7,7 @@ export default (state = {}, action) => {
         case SET_NAV_COLOR:
             return {...state, navColor: action.payload};
         case SCROLL_POSITION:
-            return {...state, scroll: action.payload};
+            return {...state, scroll: {...state.scroll, ...action.payload}};
         case OPEN_MODAL:
             return {...state, modal: action.payload};
         case START_COUNTDOWN:

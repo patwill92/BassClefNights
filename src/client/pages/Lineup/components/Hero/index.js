@@ -7,7 +7,7 @@ const LineupHero = () => {
     return (
         <Container>
             <Hero height={'600px'}
-                  mobile={'60%'}
+                  mobile={'400px'}
                   image={"images/logoFilled.png"}
                   title={'Bass clef nights'}
                   subtitle={'2018 Lineup'}/>

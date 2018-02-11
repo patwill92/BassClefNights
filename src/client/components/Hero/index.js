@@ -1,7 +1,9 @@
 import React from 'react'
 import injectSheet from 'react-jss'
+import {connect} from 'react-redux'
 
 import Title from '../TitleContainer'
+import {scrollPosition} from "../../actions";
 
 const styles = theme => ({
     root: {
@@ -56,24 +58,38 @@ const styles = theme => ({
     }
 });
 
-const Hero = props => {
-    const {classes, image, title, subtitle} = props;
-    return (
-        <div className={classes.root}>
-            <div className={classes.child}>
-                <div style={{display: 'flex', alignItems: 'center'}}>
-                    <div>
-                        <img src={image} className={classes.logo} alt=""/>
-                    </div>
-                    <div className={classes.title} style={{justifyContent: 'center'}}>
-                        <Title text={title} noLine color='#161616' noPadding/>
-                        <Title text={subtitle} noLine color='#161616' noPadding/>
+@connect(null, {scrollPosition})
+@injectSheet(styles)
+class Hero extends React.PureComponent {
+    componentDidMount = () => {
+        this.props.scrollPosition({max: this.root.clientHeight});
+        window.addEventListener("resize", this.onResize);
+    };
+
+    onResize = () => {
+        this.props.scrollPosition({
+            height: this.root.clientHeight
+        })
+    };
+    render() {
+        const {classes, image, title, subtitle} = this.props;
+        return (
+            <div ref={root => this.root = root} className={classes.root}>
+                <div className={classes.child}>
+                    <div style={{display: 'flex', alignItems: 'center'}}>
+                        <div>
+                            <img src={image} className={classes.logo} alt=""/>
+                        </div>
+                        <div className={classes.title} style={{justifyContent: 'center'}}>
+                            <Title text={title} noLine color='#161616' noPadding/>
+                            <Title text={subtitle} noLine color='#161616' noPadding/>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    )
-};
+        )
+    };
+}
 
 
-export default injectSheet(styles)(Hero)
+export default Hero
