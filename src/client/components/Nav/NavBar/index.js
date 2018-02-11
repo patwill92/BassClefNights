@@ -126,7 +126,6 @@ class NavBar extends PureComponent {
 
     componentWillUnmount = () => {
         window.removeEventListener("scroll", this.opacity);
-        window.removeEventListener("scroll", this.getScroll);
     };
 
     componentDidMount = () => {
