@@ -160,20 +160,20 @@ class NavBar extends PureComponent {
         let {max, offset} = this.props.scroll;
         let {color, modal, nav} = this.props;
         let {shadow} = this.state;
-        let scroll = window.pageYOffset;
-        max = scroll / (max - offset);
+        let scroll = window.pageYOffset && window.pageYOffset;
+        let myMax = max && max - offset;
         let reset = {
             shadow: '',
             opacity: 0,
             backgroundImage: ''
         };
         if (!nav && !modal) {
-            if (scroll >= 0 && max < 1.0) {
+            if (scroll >= 0 && (scroll/myMax) < 1.0) {
                 this.props.scrollPosition({
-                    color: `rgba(${color}, ${color}, ${color}, ${max})`,
+                    color: `rgba(${color}, ${color}, ${color}, ${scroll/myMax})`,
                     ...reset
                 });
-            } else if (scroll / max >= 1.0) {
+            } else if ((scroll / myMax) >= 1.0) {
                 this.props.scrollPosition({
                     color: `rgba(${color}, ${color}, ${color}, 1.0)`,
                     backgroundImage: color > 100 ? 'url("images/stripes.png")' : 'url("images/triangles.png")',
