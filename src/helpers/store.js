@@ -7,7 +7,7 @@ import epics from './epics';
 
 const epicMiddleware = createEpicMiddleware(epics);
 
-export const serverStore = () => createStore(reducers, {ui: {nav: false, modal: false}});
+export const serverStore = () => createStore(reducers, {ui: {nav: false, scroll: {opacity: 0}, modal: false}});
 
 export const clientStore = (initialState) => process.env.NODE_ENV === 'production' ?
     createStore(reducers, initialState, applyMiddleware(thunk)) :

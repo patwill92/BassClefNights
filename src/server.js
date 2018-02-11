@@ -25,9 +25,6 @@ app.post('/test', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-    if(!store.getState().ui.scroll) {
-        store.dispatch(scrollPosition({opacity: 0}));
-    }
     const promises = matchRoutes(routes, req.url).map(({route}) => {
         return route.loadData ? route.loadData() : null
     }).filter(promise => promise);
