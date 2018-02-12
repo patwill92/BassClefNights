@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Lineup from './pages/Lineup'
 import Contact from './pages/Contact'
+import Tickets from './pages/Tickets'
 
 export default [
     {
@@ -27,6 +28,10 @@ export default [
             {
                 ...Contact,
                 path: '/contact'
+            },
+            {
+                ...Tickets,
+                path: '/tickets'
             }
         ]
     }

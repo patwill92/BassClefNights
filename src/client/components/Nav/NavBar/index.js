@@ -168,9 +168,9 @@ class NavBar extends PureComponent {
             backgroundImage: ''
         };
         if (!nav && !modal) {
-            if (scroll >= 0 && (scroll/myMax) < 1.0) {
+            if (scroll >= 0 && (scroll / myMax) < 1.0) {
                 this.props.scrollPosition({
-                    color: `rgba(${color}, ${color}, ${color}, ${scroll/myMax})`,
+                    color: `rgba(${color}, ${color}, ${color}, ${scroll / myMax})`,
                     ...reset
                 });
             } else if ((scroll / myMax) >= 1.0) {
@@ -237,7 +237,11 @@ class NavBar extends PureComponent {
                                 {i === nav.length / 2 &&
                                 <img src={color > 100 ? "images/logoFilled.png" : "images/logoWhiteFilled.png"}
                                      alt="LOGO"
-                                     onClick={() => history.push('/')}
+                                     onClick={() => {
+                                         window.scrollTo(0, 0);
+                                         this.props.scrollPosition({opacity: 0, transition: false});
+                                         history.push('/');
+                                     }}
                                      style={{
                                          cursor: 'pointer',
                                          maxWidth: 35,
@@ -248,7 +252,11 @@ class NavBar extends PureComponent {
                                          transition: this.props.scroll.transition ? 'opacity 0.5s linear' : ''
                                      }}/>
                                 }
-                                <div className={classes.navItem}>
+                                <div onClick={() => {
+                                    window.scrollTo(0, 0);
+                                    this.props.scrollPosition({opacity: 0, transition: false});
+                                }}
+                                     className={classes.navItem}>
                                     <Link to={item.link}
                                           className={classes.navItem}
                                           style={{

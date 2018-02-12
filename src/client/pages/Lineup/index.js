@@ -1,5 +1,4 @@
 import React, {Component, Fragment} from 'react'
-import injectSheet from 'react-jss'
 import {connect} from "react-redux";
 import {Helmet} from 'react-helmet'
 
@@ -10,12 +9,7 @@ import {setNavColor, scrollPosition} from "../../actions";
 import Artists from './components/ArtistList'
 import LineupIntro from './components/LineupIntro'
 
-const styles = theme => ({
-    root: {}
-});
-
 @connect(null, {setNavColor, scrollPosition})
-@injectSheet(styles)
 class Lineup extends Component {
     componentDidMount = () => {
         this.props.setNavColor(255);

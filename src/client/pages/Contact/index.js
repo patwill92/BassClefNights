@@ -1,8 +1,6 @@
 import React, {Component, Fragment} from 'react'
-import injectSheet from 'react-jss'
 import {connect} from "react-redux";
 import {Helmet} from 'react-helmet'
-
 
 import Hero from './components/Hero'
 import Background from '../../components/Background'
@@ -10,12 +8,7 @@ import {setNavColor, scrollPosition} from "../../actions";
 import ContactIntro from './components/ContactIntro'
 import Form from './components/Contact'
 
-const styles = theme => ({
-    root: {}
-});
-
 @connect(null, {setNavColor, scrollPosition})
-@injectSheet(styles)
 class Contact extends Component {
     componentDidMount = () => {
         this.props.setNavColor(255);

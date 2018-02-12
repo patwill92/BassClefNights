@@ -105,22 +105,22 @@ class NavMenu extends React.PureComponent {
         open: false
     };
 
-    change = () => {
-        window.scrollTo(0, this.props.scroll);
+    change = (scroll) => {
+        window.scrollTo(0, scroll);
         this.setState({open: true}, () => {
             this.props.toggleNav(!this.props.menu)
         });
     };
 
     render() {
-        const {menu, classes, history} = this.props;
+        const {menu, classes, history, scroll} = this.props;
         const {open} = this.state;
         let className = !menu && !open ? 'root' : menu ? 'in' : 'out';
         return (
             <div className={classes[className]} style={{overflow: menu ? 'scroll' : 'hidden'}}>
                 <div className={classes.overlay}>
                     {menu &&
-                    <div onClick={this.change} className={classes.iconContainer}>
+                    <div onClick={() => this.change(scroll)} className={classes.iconContainer}>
                         <Icon name={'times'} color={'#161616'}/>
                     </div>}
                     <div style={{
@@ -133,7 +133,8 @@ class NavMenu extends React.PureComponent {
                         <img src="images/logoFilled.png"
                              alt="LOGO"
                              onClick={() => {
-                                 this.change();
+                                 this.change(0);
+                                 this.props.scrollPosition({opacity: 0, transition: false});
                                  history.push('/')
                              }}
                              style={{
@@ -156,7 +157,7 @@ class NavMenu extends React.PureComponent {
                             return (
                                 <div className={classes.navItem}
                                      onClick={() => {
-                                         this.change();
+                                         this.change(0);
                                          this.props.scrollPosition({opacity: 0, transition: false});
                                         }
                                      }

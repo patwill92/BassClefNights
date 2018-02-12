@@ -55,7 +55,7 @@ class App extends PureComponent {
     };
 
     render() {
-        const {classes, route, menu, modal, scroll} = this.props;
+        const {classes, route, menu, modal, scroll: {scroll}} = this.props;
         return (
             <div className={classes.root} id='main'>
                 <Navbar onClick={() => this.props.toggleNav(!menu)}/>
