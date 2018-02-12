@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {Helmet} from 'react-helmet'
 
 import Hero from './components/Hero'
+import Nav from './components/Nav'
 import Background from '../../components/Background'
 import {setNavColor, scrollPosition} from "../../actions";
 
@@ -26,6 +27,7 @@ class Tickets extends Component {
                     <meta property={'og:image'} content={"https://bassclefnights.herokuapp.com/images/blackBack.jpg"} />
                 </Helmet>
                 <Hero/>
+                <Nav/>
                 <Background image='about2.jpeg' overlay={'rgba(255, 255, 255, 0.97)'}/>
             </Fragment>
         )

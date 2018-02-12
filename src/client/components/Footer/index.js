@@ -1,10 +1,12 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 import injectSheet from 'react-jss'
 
 import Icon from '../Icon'
 import Countdown from './Countdown'
 import nav from '../data'
+import {scrollPosition} from "../../actions";
 
 const styles = theme => ({
     root: {
@@ -64,6 +66,8 @@ const styles = theme => ({
     }
 });
 
+@connect(null, {scrollPosition})
+@injectSheet(styles)
 class Footer extends React.PureComponent {
     render() {
         const {classes} = this.props;
@@ -79,7 +83,17 @@ class Footer extends React.PureComponent {
                         <Countdown/>
                     </div>
                     <div className={classes.nav}>
-                        {nav.map(({name, link}) => <h3 key={name}><Link to={link}>{name}</Link></h3>)}
+                        {nav.map(({name, link}) => {
+                            return (
+                                <h3 onClick={() => {
+                                    window.scrollTo(0, 0);
+                                    this.props.scrollPosition({opacity: 0, transition: false});
+                                }}
+                                    key={name}>
+                                    <Link to={link}>{name}</Link>
+                                </h3>
+                            )
+                        })}
                     </div>
                     <div>
                         <a href={directions} style={{position: 'relative', textDecoration: 'none'}}>
@@ -102,4 +116,4 @@ class Footer extends React.PureComponent {
     }
 }
 
-export default injectSheet(styles)(Footer)
+export default Footer
