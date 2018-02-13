@@ -9,15 +9,18 @@ import inputList from './data'
 const styles = theme => ({
     form: {
         ...theme.flex.colCenter,
-        textAlign: 'center'
+        textAlign: 'center',
+        maxWidth: 600,
+        width: '100%',
+        margin: 'auto'
     }
 })
 
 
 class Form extends Component {
     state = {
-        nm: '',
-        em: '',
+        name: '',
+        email: '',
         message: '',
         inquiry: '',
         sent: false,
@@ -31,20 +34,20 @@ class Form extends Component {
 
     onSubmit = async (e) => {
         e.preventDefault();
-        let {nm, em, message, inquiry} = this.state;
-        let email = {
-            name: nm,
-            email: em,
+        let {name, email, message, inquiry} = this.state;
+        let myEmail = {
+            name,
+            email,
             message,
             inquiry
         };
         try {
-            let {data} = await axios.post('/email/send', email);
+            let {data} = await axios.post('/email/send', myEmail);
             this.setState({
                 sent: true,
                 emailConfirmation: data,
-                nm: '',
-                em: '',
+                name: '',
+                email: '',
                 message: '',
                 inquiry: ''
             })

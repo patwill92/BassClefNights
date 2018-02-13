@@ -8,19 +8,19 @@ export default [
         name: 'Tickets'
     },
     {
-        link: '/lineup',
-        name: 'Lineup'
+        link: '/contact',
+        name: 'Contact'
     },
     {
        link: '/about',
        name: 'About'
     },
     {
-        link: '/contact',
-        name: 'Contact'
+        link: '/lineup',
+        name: 'Lineup'
     },
     {
-        link: '/sponsorship',
-        name: 'Sponsorship'
+        link: '/sponsor',
+        name: 'Sponsor'
     }
 ];
