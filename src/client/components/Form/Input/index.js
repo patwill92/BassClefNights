@@ -31,7 +31,7 @@ const styles = theme => ({
         position: 'relative'
     },
     label: {
-        transition: 'transform 200ms cubic-bezier(0.0, 0, 0.2, 1), font-size 200ms cubic-bezier(0.0, 0, 0.2, 1)',
+        transition: 'transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms',
         position: 'absolute',
         top: 0,
         left: 0,
@@ -59,10 +59,16 @@ class Input extends Component {
 
     labelFocus = (focus, value) => {
         if ((focus && !!value) || (focus && !value)) {
-            return {color: '#222', fontSize: '0.8rem'}
+            return {
+                color: '#222', transform: 'translate(0,0) scale(0.8)',
+                transformOrigin: 'top left'
+            }
         }
         if (!focus && !!value) {
-            return {color: '#333', fontSize: '0.8rem'}
+            return {
+                color: '#333', transform: 'translate(0,0) scale(0.8)',
+                transformOrigin: 'top left'
+            }
         }
         return {
             transform: 'translate(0,24px) scale(1)',
