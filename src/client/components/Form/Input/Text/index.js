@@ -74,7 +74,7 @@ const styles = theme => ({
         display: 'block',
         minWidth: 0,
         boxSizing: 'content-box',
-        background: 'none',
+        backgroundColor: 'rgba(0,0,0,0)',
         verticalAlign: 'middle',
         fontSize: '1rem'
     },
@@ -116,7 +116,6 @@ const Text = props => {
                                    outlineOffset: '-2px'
                                } : {}}
                                {...myProps}
-                               autoComplete={name}
                                className={classes.inputText}/>}
             {textArea && <textarea rows={4}
                                    style={props.focus ? {
