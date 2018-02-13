@@ -6,7 +6,7 @@ import Container from '../../../../components/Container'
 const TicketsHero = () => {
     return (
         <Container>
-            <Hero height={'600px'}
+            <Hero height={'400px'}
                   mobile={'250px'}
                   image={"images/logoFilled.png"}
                   title={'Bass clef nights'}
