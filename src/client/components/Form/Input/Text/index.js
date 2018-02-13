@@ -49,7 +49,10 @@ const styles = theme => ({
         padding: 0 + ' !important',
         flexDirection: 'column',
         whiteSpace: 'pre-wrap',
-        wordWrap: 'break-word'
+        wordWrap: 'break-word',
+        '&:focus': {
+            outline: 0
+        }
     },
     inputWrapper2: {
         marginTop: 16,
@@ -76,7 +79,10 @@ const styles = theme => ({
         boxSizing: 'content-box',
         backgroundColor: 'rgba(0,0,0,0)',
         verticalAlign: 'middle',
-        fontSize: '1rem'
+        fontSize: '1rem',
+        '&:focus': {
+            outline: 0
+        }
     },
     select: {
         width: 'calc(100% - 32px) !important',
@@ -88,7 +94,12 @@ const styles = theme => ({
         paddingRight: '32px !important',
         whiteSpace: 'pre',
         alignItems: 'center',
-        '-webkit-rtl-ordering': 'logical'
+        '-webkit-rtl-ordering': 'logical',
+        '&:focus': {
+            outline: 0,
+            background: 'rgba(0, 0, 0, 0.05)',
+            borderRadius: 0
+        }
     }
 });
 
@@ -111,26 +122,13 @@ const Text = props => {
     return (
         <div className={(regular || select) ? textClass : textAreaClass}>
             {regular && <input type="text"
-                               style={props.focus ? {
-                                   outline: 0,
-                                   outlineOffset: '-2px'
-                               } : {}}
                                {...myProps}
                                className={classes.inputText}/>}
             {textArea && <textarea rows={4}
-                                   style={props.focus ? {
-                                       outline: 0,
-                                       outlineOffset: '-2px'
-                                   } : {}}
                                    {...myProps}
                                    className={classes.inputText + ' ' + classes.textArea}/>}
             {select && <Fragment>
                 <select {...myProps}
-                        style={props.focus ? {
-                            outline: 0,
-                            background: 'rgba(0, 0, 0, 0.05)',
-                            borderRadius: 0
-                        } : {}}
                         className={classes.inputText + ' ' + classes.select}>
                     <option value=""/>
                     <option value="founder">Become a Founder</option>

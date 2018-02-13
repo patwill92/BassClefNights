@@ -25,7 +25,7 @@ const styles = theme => ({
     },
     '@media (max-width: 500px)': {
         root: {
-            padding: '0 15px'
+            padding: '0 15 40 15'
         }
     }
 });
