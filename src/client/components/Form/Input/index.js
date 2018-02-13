@@ -31,7 +31,7 @@ const styles = theme => ({
         position: 'relative'
     },
     label: {
-        transition: 'transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms',
+        transition: 'transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, font-size 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms',
         position: 'absolute',
         top: 0,
         left: 0,
