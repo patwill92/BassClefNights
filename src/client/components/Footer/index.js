@@ -94,6 +94,12 @@ class Footer extends React.PureComponent {
                                 </h3>
                             )
                         })}
+                        <h3 onClick={() => {
+                            window.scrollTo(0, 0);
+                            this.props.scrollPosition({opacity: 0, transition: false});
+                        }}>
+                            <Link to={'/news'}>news</Link>
+                        </h3>
                     </div>
                     <div>
                         <a href={directions} style={{position: 'relative', textDecoration: 'none'}}>

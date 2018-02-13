@@ -20,7 +20,7 @@ export default [
         name: 'Contact'
     },
     {
-        link: '/news',
-        name: 'News'
+        link: '/sponsorship',
+        name: 'Sponsorship'
     }
 ];
