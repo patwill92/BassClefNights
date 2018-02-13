@@ -31,12 +31,11 @@ const styles = theme => ({
         position: 'relative'
     },
     label: {
-        transition: 'transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, font-size 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms',
+        transition: 'transform 200ms cubic-bezier(0.0, 0, 0.2, 1), font-size 200ms cubic-bezier(0.0, 0, 0.2, 1)',
         position: 'absolute',
         top: 0,
         left: 0,
         padding: 0,
-        fontSize: '1rem',
         lineHeight: 1
     }
 });
@@ -69,6 +68,7 @@ class Input extends Component {
             transform: 'translate(0,24px) scale(1)',
             transformOrigin: 'top left',
             color: '#333',
+            fontSize: '1.0rem'
         }
     };
 
