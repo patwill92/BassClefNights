@@ -104,7 +104,7 @@ const styles = theme => ({
 });
 
 const Text = props => {
-    let {classes, type, onFocus, onChange, onBlur, name, value, focus} = props;
+    let {classes, type, onFocus, onChange, onBlur, name, value, focus, onAutofill} = props;
     let myProps = {
         type,
         onFocus,
@@ -119,9 +119,11 @@ const Text = props => {
     let textAreaClass = focus ? classes.inputWrapper2 + ' ' + classes.textAreaWrapper : classes.inputWrapper
         + ' ' + classes.textAreaWrapper;
     let textClass = focus ? classes.inputWrapper2 : classes.inputWrapper;
+    this[name] && this[name].addEventListener('change', () => onAutofill(name, this[name].value));
     return (
         <div className={(regular || select) ? textClass : textAreaClass}>
             {regular && <input type="text"
+                               ref={input => this[name] = input}
                                {...myProps}
                                className={classes.inputText}/>}
             {textArea && <textarea rows={4}

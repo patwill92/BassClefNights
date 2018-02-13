@@ -79,7 +79,7 @@ class Input extends Component {
 
     render() {
         const {focus} = this.state;
-        const {classes, type, name, value} = this.props;
+        const {classes, type, name, value, onAutofill} = this.props;
 
         return (
             <div className={classes.inputContainer}>
@@ -91,6 +91,7 @@ class Input extends Component {
                       onFocus={this.onFocus}
                       name={name}
                       value={value}
+                      onAutofill={onAutofill}
                       onChange={this.onChange}
                       onBlur={this.onBlur}/>
             </div>

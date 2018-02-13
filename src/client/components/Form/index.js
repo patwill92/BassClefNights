@@ -61,6 +61,11 @@ class Form extends Component {
         this.setState({[name]: value})
     };
 
+    onAutofill = (name, value) => {
+        this.setState({[name]: value})
+        console.log(this.state);
+    };
+
     render() {
         const {classes} = this.props;
         let {message, error} = this.state.emailConfirmation;
@@ -73,6 +78,7 @@ class Form extends Component {
                                       value={this.state[input.name]}
                                       placeholder={input.ph}
                                       key={input.name}
+                                      onAutofill={this.onAutofill}
                                       onChange={this.onChange}/>
                     }) :
                     <div style={{
