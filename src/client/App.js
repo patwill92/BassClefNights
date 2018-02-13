@@ -23,7 +23,8 @@ const styles = theme => ({
             backgroundColor: 'rgba(0,0,0,0.0)'
         },
         html: {
-            margin: 0
+            margin: 0,
+            '-webkit-font-smoothing': 'antialiased'
         }
     },
     bodyOverlayChild: {

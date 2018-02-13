@@ -65,8 +65,7 @@ class Form extends Component {
         const {classes} = this.props;
         let {message, error} = this.state.emailConfirmation;
         return (
-            <form ref={input => this.myForm = input} onSubmit={this.onSubmit} className={classes.form}
-                  autoComplete={'nope'}>
+            <form ref={input => this.myForm = input} onSubmit={this.onSubmit} className={classes.form} autoComplete='on'>
                 {!this.state.sent ?
                     inputList.map(input => {
                         return <Input type={input.type}
