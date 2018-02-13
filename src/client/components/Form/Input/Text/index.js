@@ -77,7 +77,7 @@ const styles = theme => ({
         display: 'block',
         minWidth: 0,
         boxSizing: 'content-box',
-        backgroundColor: 'rgba(0,0,0,0)',
+        background: 'none',
         verticalAlign: 'middle',
         fontSize: '1rem',
         '&:focus': {
@@ -91,15 +91,21 @@ const styles = theme => ({
         '-moz-appearance': 'none',
         '-webkit-appearance': 'none',
         '-webkit-user-select': 'none',
+        borderRadius: 0,
         paddingRight: '32px !important',
         whiteSpace: 'pre',
         alignItems: 'center',
         '-webkit-rtl-ordering': 'logical',
         '&:focus': {
-            outline: 0,
             background: 'rgba(0, 0, 0, 0.05)',
-            borderRadius: 0
-        }
+            border: 'none !important',
+            outline: 'none !important',
+        },
+        '&:-moz-focusring': {
+            color: 'transparent',
+            textShadow: '0 0 0 #000'
+        },
+        '-webkit-tap-highlight-color': 'transparent'
     }
 });
 
