@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import injectSheet from 'react-jss'
 
-import Icon from '../../../../../../../components/Icon'
+import Icon from '../../../Icon'
 
 const absolute = {
     position: 'absolute',
@@ -66,17 +66,7 @@ const styles = theme => ({
         }
     },
     inputText: {
-        '-webkit-appearance': 'textfield',
-        '-webkit-user-select': 'text',
-        cursor: 'auto',
-        writingMode: 'horizontal-tb !important',
-        letterSpacing: 'normal',
-        wordSpacing: 'normal',
-        textTransform: 'none',
-        textIndent: 0,
-        textShadow: 'none',
-        textAlign: 'start',
-        color: 'currentColor',
+        color: '#222',
         width: '100%',
         border: 0,
         margin: 0,
@@ -86,9 +76,7 @@ const styles = theme => ({
         boxSizing: 'content-box',
         background: 'none',
         verticalAlign: 'middle',
-        fontSize: '1rem',
-        'webkit-tap-highlight-color': 'transparent',
-        '-webkit-rtl-ordering': 'logical'
+        fontSize: '1rem'
     },
     select: {
         width: 'calc(100% - 32px) !important',
@@ -128,6 +116,7 @@ const Text = props => {
                                    outlineOffset: '-2px'
                                } : {}}
                                {...myProps}
+                               autoComplete={name}
                                className={classes.inputText}/>}
             {textArea && <textarea rows={4}
                                    style={props.focus ? {

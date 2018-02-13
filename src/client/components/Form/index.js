@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import injectSheet from 'react-jss'
 import axios from 'axios'
 
-import Input from './Input'
-import Button from '../../../../../components/ClearButton'
+import Input from './Input/index'
+import Button from '../ClearButton/index'
 import inputList from './data'
 
 const styles = theme => ({
@@ -65,7 +65,7 @@ class Form extends Component {
         const {classes} = this.props;
         let {message, error} = this.state.emailConfirmation;
         return (
-            <form ref={input => this.myForm = input} onSubmit={this.onSubmit} className={classes.form} autoComplete='on'>
+            <form ref={input => this.myForm = input} onSubmit={this.onSubmit} className={classes.form}>
                 {!this.state.sent ?
                     inputList.map(input => {
                         return <Input type={input.type}

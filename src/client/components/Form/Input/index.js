@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import injectSheet from 'react-jss'
 
-import Text from './Text'
+import Text from './Text/index'
 
 let inputStyle = {
     backgroundColor: 'rgba(0,0,0,0) !important',
@@ -72,9 +72,14 @@ class Input extends Component {
         }
     };
 
+    onChange = (e) => {
+        this.props.onChange(e);
+        this.labelFocus(this.state.focus, this.props.value)
+    };
+
     render() {
         const {focus} = this.state;
-        const {classes, type, name, onChange, value} = this.props;
+        const {classes, type, name, value} = this.props;
 
         return (
             <div className={classes.inputContainer}>
@@ -86,7 +91,7 @@ class Input extends Component {
                       onFocus={this.onFocus}
                       name={name}
                       value={value}
-                      onChange={onChange}
+                      onChange={this.onChange}
                       onBlur={this.onBlur}/>
             </div>
         )

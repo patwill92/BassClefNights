@@ -2,7 +2,7 @@ import React, {Fragment} from 'react'
 import injectSheet from 'react-jss'
 
 import TitleContainer from '../../../../components/TitleContainer'
-import Form from './Form'
+import Form from '../../../../components/Form'
 
 const root = {
     overflow: 'hidden',
