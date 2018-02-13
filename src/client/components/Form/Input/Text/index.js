@@ -103,54 +103,62 @@ const styles = theme => ({
     }
 });
 
-const Text = props => {
-    let {classes, type, onFocus, onChange, onBlur, name, value, focus, onAutofill} = props;
-    let myProps = {
-        type,
-        onFocus,
-        onChange,
-        onBlur,
-        name,
-        value
+class Text extends React.Component {
+    componentDidMount =() => {
+        if(this.props.name === 'name' || this.props.name === 'email') {
+            let name = document.getElementById(this.props.name);
+            name.addEventListener('change', () => this.props.onAutofill(this.props.name, name.value));
+        }
     };
-    let regular = type !== 'textarea' && type !== 'select';
-    let textArea = type === 'textarea';
-    let select = type === 'select';
-    let textAreaClass = focus ? classes.inputWrapper2 + ' ' + classes.textAreaWrapper : classes.inputWrapper
-        + ' ' + classes.textAreaWrapper;
-    let textClass = focus ? classes.inputWrapper2 : classes.inputWrapper;
-    this[name] && this[name].addEventListener('change', () => onAutofill(name, this[name].value));
-    return (
-        <div className={(regular || select) ? textClass : textAreaClass}>
-            {regular && <input type="text"
-                               ref={input => this[name] = input}
-                               {...myProps}
-                               className={classes.inputText}/>}
-            {textArea && <textarea rows={4}
+    render() {
+        let {props} = this;
+        let {classes, type, onFocus, onChange, onBlur, name, value, focus} = props;
+        let myProps = {
+            type,
+            onFocus,
+            onChange,
+            onBlur,
+            name,
+            value
+        };
+        let regular = type !== 'textarea' && type !== 'select';
+        let textArea = type === 'textarea';
+        let select = type === 'select';
+        let textAreaClass = focus ? classes.inputWrapper2 + ' ' + classes.textAreaWrapper : classes.inputWrapper
+            + ' ' + classes.textAreaWrapper;
+        let textClass = focus ? classes.inputWrapper2 : classes.inputWrapper;
+        return (
+            <div className={(regular || select) ? textClass : textAreaClass}>
+                {regular && <input type="text"
+                                   id={name}
                                    {...myProps}
-                                   className={classes.inputText + ' ' + classes.textArea}/>}
-            {select && <Fragment>
-                <select {...myProps}
-                        className={classes.inputText + ' ' + classes.select}>
-                    <option value=""/>
-                    <option value="founder">Become a Founder</option>
-                    <option value="sponsor">Become a Sponsor</option>
-                    <option value="ticket">Tickets</option>
-                    <option value="general">General</option>
-                </select>
-                <Icon name='caretDownSolid'
-                      color={props.focus ? '#222' : '#333'}
-                      style={{
-                          position: 'absolute',
-                          top: 'calc(50% - 12px)',
-                          right: 0,
-                          cursor: 'pointer',
-                          pointerEvents: 'none'
-                      }}/>
-            </Fragment>
-            }
-        </div>
-    )
-};
+                                   className={classes.inputText}/>}
+                {textArea && <textarea rows={4}
+                                       {...myProps}
+                                       className={classes.inputText + ' ' + classes.textArea}/>}
+                {select && <Fragment>
+                    <select {...myProps}
+                            className={classes.inputText + ' ' + classes.select}>
+                        <option value=""/>
+                        <option value="founder">Become a Founder</option>
+                        <option value="sponsor">Become a Sponsor</option>
+                        <option value="ticket">Tickets</option>
+                        <option value="general">General</option>
+                    </select>
+                    <Icon name='caretDownSolid'
+                          color={props.focus ? '#222' : '#333'}
+                          style={{
+                              position: 'absolute',
+                              top: 'calc(50% - 12px)',
+                              right: 0,
+                              cursor: 'pointer',
+                              pointerEvents: 'none'
+                          }}/>
+                </Fragment>
+                }
+            </div>
+        )
+    };
+}
 
 export default injectSheet(styles)(Text)

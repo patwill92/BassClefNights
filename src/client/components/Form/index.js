@@ -62,8 +62,7 @@ class Form extends Component {
     };
 
     onAutofill = (name, value) => {
-        this.setState({[name]: value})
-        console.log(this.state);
+        this.setState({[name]: value});
     };
 
     render() {
@@ -93,7 +92,8 @@ class Form extends Component {
                     </div>
                 }
                 {!this.state.sent &&
-                <div ref={input => this.myBtn = input}><Button text='send' icon='envelope' iconColor='#161616' color={'#161616'} hover={'#fff'} submit/>
+                <div ref={input => this.myBtn = input}><Button text='send' icon='envelope' iconColor='#161616'
+                                                               color={'#161616'} hover={'#fff'} submit/>
                 </div>}
                 {this.state.sent &&
                 <div>
