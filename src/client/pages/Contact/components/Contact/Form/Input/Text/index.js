@@ -87,7 +87,6 @@ const styles = theme => ({
         background: 'none',
         verticalAlign: 'middle',
         fontSize: '1rem',
-        'webkit-tap-highlight-color': 'transparent',
         '-webkit-rtl-ordering': 'logical'
     },
     select: {
