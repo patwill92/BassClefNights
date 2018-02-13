@@ -7,7 +7,7 @@ const styles = theme => ({
         alignItems: 'center',
         borderTop: '2px solid rgba(22,22,22,0.85)',
         position: 'sticky',
-        top: props => props.sticky,
+        top: props => props.sticky.offset,
         zIndex: 2,
         backgroundImage: 'url("images/triangles.png")',
         backgroundColor: '#2c2c2c'
@@ -31,7 +31,7 @@ const styles = theme => ({
 });
 
 const TicketNav = props => {
-    const {classes, type, onClick} = props;
+    const {classes, type, onClick, sticky} = props;
     const getType = myType => {
         if (type === myType) {
             return {
@@ -45,12 +45,26 @@ const TicketNav = props => {
     return (
         <div className={classes.root}>
             <div style={getType(0)}
-                 onClick={() => onClick(0)}
+                 onClick={() => {
+                     if (type !== 0) {
+                         if (sticky.scroll > sticky.max - sticky.offset) {
+                             window.scrollTo(0, sticky.max - sticky.offset);
+                         }
+                         onClick(0);
+                     }
+                 }}
                  className={classes.navItem}>
                 VIP
             </div>
             <div style={getType(1)}
-                 onClick={() => onClick(1)}
+                 onClick={() => {
+                     if (type !== 1) {
+                         onClick(1);
+                         if (sticky.scroll > sticky.max - sticky.offset) {
+                             window.scrollTo(0, sticky.max - sticky.offset);
+                         }
+                     }
+                 }}
                  className={classes.navItem}>
                 general
             </div>

@@ -36,8 +36,8 @@ class Tickets extends Component {
                     <meta property={'og:image'} content={"https://bassclefnights.herokuapp.com/images/blackBack.jpg"}/>
                 </Helmet>
                 <Hero/>
-                <Nav type={this.state.type} onClick={this.changeType} sticky={this.props.scroll.offset}/>
-                <TicketType type={this.state.type} />
+                <Nav type={this.state.type} onClick={this.changeType} sticky={this.props.scroll}/>
+                <TicketType type={this.state.type}/>
                 <Background image='about2.jpeg' overlay={'rgba(255, 255, 255, 0.97)'}/>
             </Fragment>
         )
