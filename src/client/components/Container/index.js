@@ -16,7 +16,7 @@ const styles = theme => ({
     },
     '@media (max-width: 942px)': {
         root: {
-          paddingRight: 0 + ' !important'
+            paddingRight: 0 + ' !important'
         },
         rootChild: {
             padding: '0 15px',
@@ -38,11 +38,11 @@ const mapStateToProps = ({ui}) => {
 @connect(mapStateToProps)
 @injectSheet(styles)
 class Container extends PureComponent {
-    render(){
-        const {classes, children} = this.props;
+    render() {
+        const {classes, children, noPadding} = this.props;
         return (
             <div className={classes.root}>
-                <div className={classes.rootChild}>
+                <div className={classes.rootChild} style={{padding: noPadding ? 0 : undefined, maxWidth: noPadding ? '100%' : undefined}}>
                     {children}
                 </div>
             </div>

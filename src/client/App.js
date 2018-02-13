@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react'
+import React, {PureComponent, Fragment} from 'react'
 import injectSheet from 'react-jss'
 import {renderRoutes} from 'react-router-config'
 import {connect} from 'react-redux'
@@ -19,22 +19,12 @@ const styles = theme => ({
         },
         body: {
             margin: 0,
-            height: '100%',
-            width: '100%',
-            minHeight: '100%',
             position: 'relative',
             backgroundColor: 'rgba(0,0,0,0.0)'
         },
         html: {
             margin: 0
         }
-    },
-    root: {
-        margin: 0,
-        height: '100%',
-        width: '100%',
-        minHeight: '100%',
-        position: 'relative'
     },
     bodyOverlayChild: {
         height: '100vh',
@@ -57,13 +47,13 @@ class App extends PureComponent {
     render() {
         const {classes, route, menu, modal, scroll: {scroll}} = this.props;
         return (
-            <div className={classes.root} id='main'>
+            <Fragment>
                 <Navbar onClick={() => this.props.toggleNav(!menu)}/>
                 {renderRoutes(route.routes)}
                 <Menu scroll={menu ? scroll : null} />
                 <Footer/>
                 {modal && <Modal scroll={scroll}/>}
-            </div>
+            </Fragment>
         )
     }
 }

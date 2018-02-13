@@ -1,10 +1,12 @@
 import React from 'react'
 import injectSheet from 'react-jss'
 import {withRouter} from 'react-router-dom'
+import {connect} from 'react-redux'
 
 import Container from '../../../../components/Container'
 import Title from '../../../../components/TitleContainer'
 import Button from '../../../../components/ClearButton'
+import {scrollPosition} from "../../../../actions";
 
 const styles = theme => ({
     root: {
@@ -83,7 +85,9 @@ const ContactIntro = props => {
                         </div>
                         <Button text='View Packages'
                                 onClick={() => {
-                                    history.push('/');
+                                    window.scrollTo(0, 0);
+                                    props.scrollPosition({opacity: 0, transition: false});
+                                    history.push('/tickets');
                                 }}
                                 color={'#e8e8e8'}
                                 hover={'rgba(22,22,22,0.9)'}
@@ -96,7 +100,9 @@ const ContactIntro = props => {
                         </div>
                         <Button text='Ticket Info'
                                 onClick={() => {
-                                    history.push('/');
+                                    window.scrollTo(0, 0);
+                                    props.scrollPosition({opacity: 0, transition: false});
+                                    history.push('/tickets');
                                 }}
                                 color={'#e8e8e8'}
                                 hover={'rgba(22,22,22,0.9)'}
@@ -114,4 +120,4 @@ const ContactIntro = props => {
     )
 };
 
-export default injectSheet(styles)(withRouter(ContactIntro))
+export default connect(null, {scrollPosition})(withRouter(injectSheet(styles)(ContactIntro)))
