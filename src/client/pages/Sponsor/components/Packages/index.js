@@ -38,7 +38,7 @@ class Packages extends React.PureComponent {
             setTimeout(async () => {
                 let element = await document.getElementById('packages').offsetTop;
                 window.scrollTo(0, element)
-            }, 20);
+            }, 0);
         }
     };
 
