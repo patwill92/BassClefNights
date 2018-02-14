@@ -128,12 +128,11 @@ class NavBar extends PureComponent {
         window.removeEventListener("scroll", this.opacity);
     };
 
-    componentDidMount = () => {
+    componentDidMount = async () => {
         let rootHeight = this.root.clientHeight || this.root2.clientHeight;
-        this.props.scrollPosition({
+        await this.props.scrollPosition({
             scroll: window.pageYOffset,
             shadow: '',
-            opacity: 0,
             offset: rootHeight
         });
         window.addEventListener("scroll", this.getScroll);
@@ -173,7 +172,7 @@ class NavBar extends PureComponent {
                     color: `rgba(${color}, ${color}, ${color}, ${scroll / myMax})`,
                     ...reset
                 });
-            } else if ((scroll / myMax) >= 1.0) {
+            } else if (scroll >= myMax) {
                 this.props.scrollPosition({
                     color: `rgba(${color}, ${color}, ${color}, 1.0)`,
                     backgroundImage: color > 100 ? 'url("images/stripes.png")' : 'url("images/triangles.png")',

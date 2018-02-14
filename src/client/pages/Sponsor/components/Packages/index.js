@@ -1,5 +1,4 @@
 import React, {Fragment} from 'react'
-import {findDOMNode} from 'react-dom'
 import injectSheet from 'react-jss'
 import {connect} from 'react-redux'
 
@@ -36,8 +35,8 @@ const styles = theme => ({
 class Packages extends React.PureComponent {
     componentDidMount = () => {
         if (this.props.scroll.packages) {
-            const packages = findDOMNode(this.refs.packages);
-            window.scrollTo(0, packages.offsetTop - 40);
+            let element = document.getElementById('packages');
+            element.scrollIntoView();
         }
     };
 
@@ -50,8 +49,8 @@ class Packages extends React.PureComponent {
         let {classes} = this.props;
         return (
             <Fragment>
-                <Container ref='packages' backgroundColor={'rgba(22,22,22,0.9)'} image={'triangles.png'}>
-                    <div className={classes.root}>
+                <Container  backgroundColor={'rgba(22,22,22,0.9)'} image={'triangles.png'}>
+                    <div id='packages' ref='packages' className={classes.root}>
                         <div style={{paddingTop: 20}}>
                             <Title text={'sponsor packages'} color={'#e8e8e8'} icon={'badge'} align={'center'}
                                    noPadding/>
