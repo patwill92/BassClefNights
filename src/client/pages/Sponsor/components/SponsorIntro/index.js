@@ -29,7 +29,8 @@ const styles = theme => ({
         fontSize: '2.2em',
         fontWeight: 300,
         margin: 0,
-        textAlign: 'center'
+        textAlign: 'center',
+        padding: '0 15'
     },
     messageContainer: {
         ...theme.flex.rowBetween,
@@ -114,12 +115,18 @@ const SponsorIntro = props => {
                             <img src="/images/EdCalle.jpeg" alt="" className={classes.img}/>
                         </div>
                         <div className={classes.btn}>
-                            <Button text='Contact Us'
-                                    color={'#161616'}
-                                    hover={'#e8e8e8'}
-                                    icon={'envelope'}
-                                    style={{marginTop: 30, display: 'inline-block'}}
-                                    link={'/contact'}/>
+                            <div onClick={() => {
+                                window.scrollTo(0, 0);
+                                props.scrollPosition({opacity: 0, transition: false});
+                            }}
+                                style={{display: 'inline', padding: '10 0'}}>
+                                <Button text='Contact Us'
+                                        color={'#161616'}
+                                        hover={'#e8e8e8'}
+                                        icon={'envelope'}
+                                        style={{marginTop: 30, display: 'inline-block'}}
+                                        link={'/contact'}/>
+                            </div>
                         </div>
                     </div>
                 </div>

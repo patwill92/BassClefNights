@@ -6,6 +6,7 @@ import {Helmet} from 'react-helmet'
 
 import Hero from './components/Hero'
 import SponsorIntro from './components/SponsorIntro'
+import Packages from './components/Packages'
 import Background from '../../components/Background'
 import ImageBanner from './components/ImageBanner'
 import WhySponsor from './components/WhySponsor'
@@ -42,11 +43,12 @@ class Sponsor extends Component {
                 </Helmet>
                 <Hero/>
                 <ImageBanner/>
-                <SponsorIntro/>
+                <SponsorIntro scrollPosition={this.props.scrollPosition}/>
                 <div className={classes.lineBreak} style={{backgroundColor: '#fff', padding: '20px 20%'}}>
                     <LineBreak icon={'square'} color={'#161616'}/>
                 </div>
                 <WhySponsor/>
+                <Packages/>
                 <Background image='about2.jpeg' overlay={'rgba(255, 255, 255, 0.97)'}/>
             </Fragment>
         )

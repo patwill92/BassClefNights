@@ -63,14 +63,8 @@ const styles = theme => ({
 class Hero extends React.PureComponent {
     componentDidMount = () => {
         this.props.scrollPosition({max: this.root.clientHeight});
-        window.addEventListener("resize", this.onResize);
     };
 
-    onResize = () => {
-        this.props.scrollPosition({
-            height: this.root.clientHeight
-        })
-    };
     render() {
         const {classes, image, title, subtitle} = this.props;
         return (

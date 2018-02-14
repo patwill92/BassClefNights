@@ -66,6 +66,9 @@ const styles = theme => ({
         },
         bulletList: {
             padding: 0
+        },
+        introMessage: {
+            fontSize: '1.5rem'
         }
     },
     '@media (max-width: 768px)': {
