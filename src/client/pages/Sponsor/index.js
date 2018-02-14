@@ -24,16 +24,14 @@ const styles = {
 @connect(({ui}) => ({scroll: ui.scroll}), {setNavColor, scrollPosition})
 @injectSheet(styles)
 class Sponsor extends Component {
-    componentDidMount = async () => {
+    componentDidMount = () => {
         this.props.setNavColor(255);
         this.props.scrollPosition({transition: true});
-        setTimeout(async () => {
-            let element = await document.getElementById('packages').offsetTop;
-            window.scrollTo(0, element)
-        }, 4000);
         if (this.props.scroll.packages) {
-            let element = await document.getElementById('packages').offsetTop;
-            window.scrollTo(0, element)
+            setTimeout(async () => {
+                let element = await document.getElementById('packages').offsetTop;
+                window.scrollTo(0, element)
+            }, 1);
         }
     };
 
