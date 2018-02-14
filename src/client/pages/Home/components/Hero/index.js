@@ -147,7 +147,6 @@ class HomeHero extends React.PureComponent {
                                         color={'#e8e8e8'}
                                         hover={'#161616'}/>
                             </div>
-
                         </div>
                     </div>
                 </div>

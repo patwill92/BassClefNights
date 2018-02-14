@@ -85,9 +85,8 @@ const ContactIntro = props => {
                         </div>
                         <Button text='View Packages'
                                 onClick={() => {
-                                    window.scrollTo(0, 0);
-                                    props.scrollPosition({opacity: 0, transition: false});
-                                    history.push('/tickets');
+                                    props.scrollPosition({packages: true});
+                                    history.push('/sponsor');
                                 }}
                                 color={'#e8e8e8'}
                                 hover={'rgba(22,22,22,0.9)'}
