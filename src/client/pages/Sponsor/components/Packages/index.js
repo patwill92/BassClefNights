@@ -33,6 +33,18 @@ const styles = theme => ({
 @connect(({ui}) => ({scroll: ui.scroll}), {scrollPosition})
 @injectSheet(styles)
 class Packages extends React.PureComponent {
+    componentDidMount = () => {
+        if (this.props.scroll.packages) {
+            setTimeout(async () => {
+                let element = await document.getElementById('packages').offsetTop;
+                window.scrollTo(0, element)
+            }, 20);
+        }
+    };
+
+    componentWillUnmount = () => {
+        this.props.scrollPosition({packages: false})
+    };
     render() {
         let list = ticketData.sponsor.subtype;
         let {classes} = this.props;

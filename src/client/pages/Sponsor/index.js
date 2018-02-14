@@ -27,16 +27,6 @@ class Sponsor extends Component {
     componentDidMount = () => {
         this.props.setNavColor(255);
         this.props.scrollPosition({transition: true});
-        if (this.props.scroll.packages) {
-            setTimeout(async () => {
-                let element = await document.getElementById('packages').offsetTop;
-                window.scrollTo(0, element)
-            }, 1);
-        }
-    };
-
-    componentWillUnmount = () => {
-        this.props.scrollPosition({packages: false})
     };
 
     render() {
