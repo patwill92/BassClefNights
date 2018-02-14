@@ -22,7 +22,8 @@ const styles = theme => ({
         letterSpacing: 1.5,
         textTransform: 'uppercase',
         padding: '15 10',
-        backgroundColor: '#2d2d2d'
+        backgroundColor: '#2d2d2d',
+        ...theme.flex.rowBetween
     },
     content: {
         padding: 0,
@@ -74,20 +75,10 @@ const General = props => {
                         <div style={{margin: i > 0 ? '0 0 30 0.5%' : '0 0.5% 30 0'}}
                              className={classes.card}>
                             <div className={classes.header}>
-                                {vip.type} <Icon name={'circleSolid'} color={vip.color}/>
+                                <div>{vip.type} <Icon name={'circleSolid'} color={vip.color}/></div>
+                                <div><strong>${vip.price['1-Day']}</strong></div>
                             </div>
                             <div className={classes.content}>
-                                <div className={classes.priceTitle}>Price</div>
-                                <div className={classes.price}>
-                                    {Object.entries(vip.price).map((price, i) => {
-                                        return (
-                                            <div key={i} className={classes.priceChild}>
-                                                <div>{price[0]}</div>
-                                                <div style={{marginTop: 10}}><strong>${price[1]}</strong></div>
-                                            </div>
-                                        )
-                                    })}
-                                </div>
                                 <div className={classes.priceTitle}>Includes</div>
                                 <div>
                                     {vip.perks.map((perk, i) => {
