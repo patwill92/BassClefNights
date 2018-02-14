@@ -7,6 +7,7 @@ import About from './pages/About'
 import Lineup from './pages/Lineup'
 import Contact from './pages/Contact'
 import Tickets from './pages/Tickets'
+import Sponsor from './pages/Sponsor'
 
 export default [
     {
@@ -32,6 +33,10 @@ export default [
             {
                 ...Tickets,
                 path: '/tickets'
+            },
+            {
+                ...Sponsor,
+                path: '/sponsor'
             }
         ]
     }

@@ -39,9 +39,10 @@ const mapStateToProps = ({ui}) => {
 @injectSheet(styles)
 class Container extends PureComponent {
     render() {
-        const {classes, children, noPadding} = this.props;
+        const {classes, children, noPadding, style} = this.props;
+        let rootClass = style ? classes.root + ' ' + style : classes.root;
         return (
-            <div className={classes.root}>
+            <div className={rootClass}>
                 <div className={classes.rootChild} style={{padding: noPadding ? 0 : undefined, maxWidth: noPadding ? '100%' : undefined}}>
                     {children}
                 </div>

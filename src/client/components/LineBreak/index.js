@@ -26,9 +26,9 @@ const styles = theme => ({
 
 class LineBreak extends React.PureComponent {
     render() {
-        const {classes, icon, color, rotateZ, rotateY, rotateX} = this.props;
+        const {classes, icon, color, rotateZ, rotateY, rotateX, style} = this.props;
         return (
-            <div className={classes.lineContainer}>
+            <div className={classes.lineContainer} style={style && {...style}}>
                 <div className={classes.line} style={{backgroundColor: color}}/>
                 <div className={classes.lineCircle}>
                     <Icon name={icon} color={color} style={{

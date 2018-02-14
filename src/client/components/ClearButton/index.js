@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import injectSheet from 'react-jss'
 
 import Icon from '../Icon'
@@ -13,6 +14,7 @@ const styles = theme => ({
         fontWeight: 300,
         fontSize: '1.0rem',
         textTransform: 'uppercase',
+        textDecoration: 'none',
         padding: '10px',
         transition: 'background-color 500ms, color 500ms',
         cursor: 'pointer',
@@ -45,8 +47,8 @@ class ClearButton extends React.PureComponent {
     };
 
     render() {
-        const {classes, text, style, icon, submit, onClick} = this.props;
-        return (
+        const {classes, text, style, icon, submit, onClick, link} = this.props;
+        return !link ? (
             <button onClick={onClick ? onClick : null}
                     onFocus={() => this.setState({iconColor: this.props.hover})}
                     type={submit ? 'submit' : 'button'}
@@ -54,6 +56,13 @@ class ClearButton extends React.PureComponent {
                 {icon && <Icon name={icon} color={this.state.iconColor} style={{marginRight: 10}}/>}
                 {text}
             </button>
+        ) : (
+            <Link onFocus={() => this.setState({iconColor: this.props.hover})}
+                  to={link}
+                  className={classes.heroBtn} style={style && {...style}}>
+                {icon && <Icon name={icon} color={this.state.iconColor} style={{marginRight: 10}}/>}
+                {text}
+            </Link>
         )
     }
 }
