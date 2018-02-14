@@ -1,4 +1,5 @@
 import {TOGGLE_NAV, START_COUNTDOWN, SCROLL_POSITION, SET_NAV_COLOR, OPEN_MODAL} from "../types";
+import moment from "moment/moment";
 
 export const toggleNav = payload => {
     return {
@@ -35,17 +36,19 @@ export const scrollPosition = payload => {
     }
 };
 
-export const startCountDown = payload => {
-    if (payload.dispatchData) {
-        return {
-            type: START_COUNTDOWN,
-            payload: payload.dispatchData
-        }
-    } else {
-        return {
-            type: START_COUNTDOWN,
-            payload
-        }
+export const startCountDown = () => {
+    let eventDate = new Date(Date.UTC(2018, 10, 15));
+    let currentTime = Date.now();
+    let duration = moment.duration((eventDate - currentTime));
+    let payload = {
+        days: Math.floor(duration.asDays()),
+        hours: duration.hours(),
+        minutes: duration.minutes(),
+        seconds: duration.seconds()
+    };
+    return {
+        type: START_COUNTDOWN,
+        payload
     }
 };
 

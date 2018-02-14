@@ -109,7 +109,7 @@ const styles = theme => ({
     }
 });
 
-class Text extends React.Component {
+class FormControl extends React.Component {
     componentDidMount =() => {
         if(this.props.name === 'name' || this.props.name === 'email') {
             let name = document.getElementById(this.props.name);
@@ -167,4 +167,4 @@ class Text extends React.Component {
     };
 }
 
-export default injectSheet(styles)(Text)
+export default injectSheet(styles)(FormControl)

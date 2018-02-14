@@ -1,24 +1,7 @@
 import React, {Component} from 'react'
 import injectSheet from 'react-jss'
 
-import Text from './Text/index'
-
-let inputStyle = {
-    backgroundColor: 'rgba(0,0,0,0) !important',
-    border: 'none !important',
-    color: '#161616 !important',
-    '&:focus': {
-        border: 'none',
-        outline: 'none',
-        '& $overlay': {
-            top: -40
-        }
-    },
-    lineHeight: '20px',
-    fontSize: 15,
-    fontFamily: "'Montserrat', sans-serif !important"
-
-};
+import FormControl from './FormControl'
 
 const styles = theme => ({
     inputContainer: {
@@ -40,7 +23,7 @@ const styles = theme => ({
     }
 });
 
-class Input extends Component {
+class FormGroup extends Component {
     state = {
         focus: false
     };
@@ -92,7 +75,7 @@ class Input extends Component {
                 <label className={classes.label}
                        style={this.labelFocus(focus, value)}
                        htmlFor={name}>{this.props.placeholder}</label>
-                <Text type={type}
+                <FormControl type={type}
                       focus={this.state.focus}
                       onFocus={this.onFocus}
                       name={name}
@@ -105,4 +88,4 @@ class Input extends Component {
     }
 }
 
-export default injectSheet(styles)(Input)
+export default injectSheet(styles)(FormGroup)
