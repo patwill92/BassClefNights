@@ -138,8 +138,16 @@ class HomeHero extends React.PureComponent {
                         <div className={classes.innerContainer}>
                             <h1 className={classes.heroTitle}>bass clef nights</h1>
                             <LineBreak icon='musicNote' color='#e8e8e8' rotateZ={4}/>
-                            <Button text='Become a sponsor' color={'#e8e8e8'} hover={'#161616'}
-                                    style={{marginTop: 30}}/>
+                            <div style={{display: 'inline-block', marginTop: 30, padding: '10 0'}} onClick={() => {
+                                window.scrollTo(0, 0);
+                                this.props.scrollPosition({opacity: 0, transition: false});
+                            }}>
+                                <Button text='Become a sponsor'
+                                        link={'/sponsor'}
+                                        color={'#e8e8e8'}
+                                        hover={'#161616'}/>
+                            </div>
+
                         </div>
                     </div>
                 </div>
