@@ -26,7 +26,7 @@ class LineBreak extends React.PureComponent {
         const {classes, icon, color, rotateZ, rotateY, rotateX, style} = this.props;
         return (
             <div className={classes.lineContainer} style={style && {...style}}>
-                <Line color={color}/>
+                <Line color={color} origin='right'/>
                 <div className={classes.lineCircle}>
                     <Icon name={icon} color={color} style={{
                         bottom: 2,
@@ -34,7 +34,7 @@ class LineBreak extends React.PureComponent {
                         transform: `rotate3d(${rotateX ? 1 : 0},${rotateY ? 1 : 0},${rotateZ ? 1 : 0}, ${rotateX || rotateY || rotateZ}deg)`
                     }}/>
                 </div>
-                <Line color={color}/>
+                <Line color={color} origin='left'/>
             </div>
         )
     };

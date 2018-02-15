@@ -6,8 +6,10 @@ import AnimationHOC from '../../AnimationHOC'
 const styles = {
     line: {
         padding: '0.5 0',
-        willChange: 'width',
-        transition: 'width 600ms ease-in-out',
+        width: '40%',
+        willChange: 'transform',
+        transformOrigin: props => `${props.origin} center`,
+        transition: 'transform 600ms ease-in-out',
     }
 };
 
@@ -17,7 +19,7 @@ class Line extends React.PureComponent {
     render() {
         const {classes, color, visible} = this.props;
         return <div ref={line => this.props.this.element = line} className={classes.line}
-                    style={{backgroundColor: color, width: visible ? '40%' : 0}}/>
+                    style={{backgroundColor: color, transform: visible ? 'scale(1)' : 'scale(0)'}}/>
     };
 }
 
