@@ -7,17 +7,34 @@ import LineBreak from '../../../../components/LineBreak'
 import Button from '../../../../components/ClearButton'
 import {scrollPosition} from "../../../../actions";
 
-const animation = (name, one, two) => {
+const animation = (name) => {
     return {
         [`@keyframes ${name}`]: {
-            '0%, 20%, 50%, 80%, 100%': `transform: translateY(0)`,
-            '40%': `transform: translateY(-${one}px)`,
-            '60%': `transform: translateY(-${two}px)`
+            '0%': {
+                transform: `scale(1,0)`,
+                transformOrigin: 'top'
+            },
+            '40%': {
+                transform: `scale(1,1)`,
+                transformOrigin: 'top'
+            },
+            '41%': {
+                transform: `scale(1,1)`,
+                transformOrigin: 'bottom'
+            },
+            '81%': {
+                transform: `scale(1,0)`,
+                transformOrigin: 'bottom'
+            },
+            '82%': {
+                transform: `scale(1,0)`,
+                transformOrigin: 'top'
+            }
         }
     }
 };
 
-const bounce = animation('bounce', 10, 20);
+const line = animation('line');
 
 const styles = theme => ({
     root: {
@@ -78,7 +95,27 @@ const styles = theme => ({
         textAlign: 'center',
         display: 'inline-block'
     },
-    ...bounce,
+    lineAnimation: {
+        transition: 'all 1.5s cubic-bezier(.77,0,.175,1)',
+        transform: 'scale(1,0)',
+        transformOrigin: 'top',
+        height: 70,
+        width: 1,
+        backgroundColor: '#e8e8e8',
+        position: 'absolute',
+        bottom: 14,
+        left: 'calc(50% + 4px)',
+        animation: 'line 4s cubic-bezier(.77,0,.175,1) infinite'
+    },
+    lineAnimationSquare: {
+        backgroundColor: '#e8e8e8',
+        position: 'absolute',
+        bottom: 4,
+        left: '50%',
+        height: 9,
+        width: 9
+    },
+    ...line,
     '@media (max-width: 499px)': {
         logo: {
             maxWidth: 140,
@@ -93,6 +130,9 @@ const styles = theme => ({
             top: 13,
             textAlign: 'right',
             display: 'flex'
+        },
+        lineAnimation: {
+            height: 50,
         }
     },
     '@media (max-width: 700px)': {
@@ -117,7 +157,7 @@ const styles = theme => ({
     }
 });
 
-@connect(null, {scrollPosition})
+@connect(({ui}) => ({scroll: ui.scroll}), {scrollPosition})
 @injectSheet(styles)
 class HomeHero extends React.PureComponent {
     componentDidMount = () => {
@@ -125,9 +165,9 @@ class HomeHero extends React.PureComponent {
     };
 
     render() {
-        const {classes} = this.props;
+        const {classes, scroll: {scroll, max}} = this.props;
         return (
-            <div ref={root => this.root = root} className={classes.root}>
+            <div ref={root => this.root = root} className={classes.root} style={{opacity: max && 1 - scroll / max}}>
                 <div className={classes.overlayImg}>
                     <div className={classes.socialContainer}>
                         <a href='https://www.facebook.com'><Icon color='#e8e8e8' name='facebookF' hover/></a>
@@ -150,9 +190,8 @@ class HomeHero extends React.PureComponent {
                         </div>
                     </div>
                 </div>
-                <div className={classes.bounce}>
-                    <Icon name='chevronDoubleDown' color='#e8e8e8' style={{left: -12}}/>
-                </div>
+                <div className={classes.lineAnimation} style={{opacity: max && 1 - scroll / max}}/>
+                <div className={classes.lineAnimationSquare} style={{opacity: max && 1 - scroll / max}}/>
             </div>
         )
     };

@@ -8,7 +8,6 @@ import renderer from './helpers/renderer';
 import {serverStore as createServerStore} from './helpers/store'
 import httpsRedirect from './middleware/secure'
 import emailRoutes from './api/email'
-import {scrollPosition} from "./client/actions";
 
 const app = express();
 
