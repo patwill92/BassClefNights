@@ -46,7 +46,7 @@ const styles = theme => ({
     '@media (min-width: 501px)': {
        root: {
            willChange: 'transform, opacity',
-           transform: props => props.visible ? 'translateY(0%) !important' : 'translateY(5%) !important',
+           transform: props => props.visible ? 'translateY(0%)' : 'translateY(20%)',
            opacity: props => props.visible ? 1 : 0
        }
     },
@@ -56,7 +56,11 @@ const styles = theme => ({
             marginBottom: props => props.i === props.length - 1 ? 0 : '0.5%',
             marginLeft: 0 + ' !important',
             marginRight: 0 + ' !important',
-            minHeight: 300
+            minHeight: 300,
+            transform: props => {
+                let angle = props.dir > 0 ? 'translateY(5%) translateX(5%)' : 'translateY(5%) translateX(-5%)';
+                return props.visible ? 'translateY(0%) translateX(0%)' : angle
+            }
         }
     },
 });
@@ -65,11 +69,9 @@ const styles = theme => ({
 @injectSheet(styles)
 class LineupGrid extends React.Component {
     render() {
-        let {classes, name, dir} = this.props;
-        let angle = dir > 0 ? 'translateY(5%) translateX(5%)' : 'translateY(5%) translateX(-5%)';
+        let {classes, name} = this.props;
         return (
             <div className={classes.root} ref={title => this.props.this.element = title}  style={{
-                transform: this.props.visible ? 'translateY(0%) translateX(0%)' : angle,
                 opacity: this.props.visible ? 1 : 0
             }}>
                 <div className={classes.overlay}>{name}</div>
