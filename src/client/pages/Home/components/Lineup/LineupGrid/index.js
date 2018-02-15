@@ -42,6 +42,14 @@ const styles = theme => ({
             minHeight: 300
         }
     },
+    '@media (min-width: 501px)': {
+       root: {
+           left: '0 !important',
+           right: '0 !important',
+           bottom: props => props.visible ? 0 : '-30px',
+           opacity: props => props.visible ? 1 : 0
+       }
+    },
     '@media (max-width: 500px)': {
         root: {
             flexBasis: '100%',
