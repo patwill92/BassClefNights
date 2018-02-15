@@ -3,6 +3,7 @@ import injectSheet from 'react-jss'
 import PropTypes from "prop-types";
 
 import LineBreak from '../LineBreak/index'
+import AnimationHoc from '../AnimationHOC'
 
 const styles = theme => ({
     root: {
@@ -13,7 +14,9 @@ const styles = theme => ({
         display: 'inline-block',
         marginBottom: 20,
         paddingBottom: 50,
-        paddingTop: 20
+        paddingTop: 20,
+        position: 'relative',
+        transition: 'bottom 600ms ease-in-out, opacity 600ms ease-in-out'
     },
     title: {
         fontFamily: theme.font.primary,
@@ -43,12 +46,18 @@ const styles = theme => ({
     }
 });
 
+@AnimationHoc
+@injectSheet(styles)
 class TitleContainer extends React.PureComponent {
     render() {
         const {classes, text, color, icon, y, x, z, noPadding, noLine, style} = this.props;
         return (
             <Fragment>
-                <div className={classes.root} style={{padding: noPadding && 0}}>
+                <div ref={title => this.props.this.element = title} className={classes.root} style={{
+                    bottom: this.props.visible ? 0 : '-30px',
+                    opacity: this.props.visible ? 1 : 0,
+                    padding: noPadding && 0
+                }}>
                     <h1 className={classes.title} style={style ? {color, ...style} : {color}}>{text}</h1>
                     {!noLine &&
                     <LineBreak icon={icon} color={color} rotateY={y && y} rotateX={x && x} rotateZ={z && z}/>}
@@ -71,4 +80,4 @@ TitleContainer.propTypes = {
     align: PropTypes.string
 };
 
-export default injectSheet(styles)(TitleContainer)
+export default TitleContainer

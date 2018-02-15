@@ -1,9 +1,16 @@
-import {TOGGLE_NAV, START_COUNTDOWN, SCROLL_POSITION, SET_NAV_COLOR, OPEN_MODAL} from "../types";
+import {TOGGLE_NAV, START_COUNTDOWN, SCROLL_POSITION, SET_NAV_COLOR, OPEN_MODAL, BEGIN_ANIMATION} from "../types";
 import moment from "moment/moment";
 
 export const toggleNav = payload => {
     return {
         type: TOGGLE_NAV,
+        payload
+    }
+};
+
+export const beginAnimation = payload => {
+    return {
+        type: BEGIN_ANIMATION,
         payload
     }
 };

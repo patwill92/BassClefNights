@@ -3,5 +3,6 @@ export {
     startCountDown,
     scrollPosition,
     setNavColor,
-    openModal
+    openModal,
+    beginAnimation,
 } from './ui-actions'

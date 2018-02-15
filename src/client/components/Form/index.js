@@ -5,6 +5,7 @@ import axios from 'axios'
 import FormGroup from './FormGroup'
 import Button from '../ClearButton'
 import inputList from './data'
+import AnimationHOC from '../AnimationHOC'
 
 const styles = theme => ({
     form: {
@@ -12,10 +13,14 @@ const styles = theme => ({
         textAlign: 'center',
         maxWidth: 600,
         width: '100%',
-        margin: 'auto'
+        margin: 'auto',
+        position: 'relative',
+        transition: 'all 500ms ease-in-out'
     }
 });
 
+@AnimationHOC
+@injectSheet(styles)
 class Form extends Component {
     state = {
         name: '',
@@ -27,7 +32,7 @@ class Form extends Component {
         formHeight: ''
     };
 
-    componentDidMount = () => {
+    componentDidMount = async () => {
         this.setState({formHeight: this.myForm.clientHeight - this.myBtn.clientHeight})
     };
 
@@ -65,19 +70,29 @@ class Form extends Component {
     };
 
     render() {
-        const {classes} = this.props;
+        const {classes, visible} = this.props;
         let {message, error} = this.state.emailConfirmation;
         return (
-            <form ref={input => this.myForm = input} onSubmit={this.onSubmit} className={classes.form}>
+            <form ref={input => {
+                this.props.this.element = input;
+                this.myForm = input;
+            }}
+                  style={{
+                      bottom: visible ? 0 : '-50px',
+                      opacity: visible ? 1 : 0
+                  }}
+                  onSubmit={this.onSubmit}
+                  className={classes.form}>
                 {!this.state.sent ?
-                    inputList.map(input => {
+                    inputList.map((input, i) => {
                         return <FormGroup type={input.type}
-                                      name={input.name}
-                                      value={this.state[input.name]}
-                                      placeholder={input.ph}
-                                      key={input.name}
-                                      onAutofill={this.onAutofill}
-                                      onChange={this.onChange}/>
+                                          name={input.name}
+                                          value={this.state[input.name]}
+                                          placeholder={input.ph}
+                                          key={input.name}
+                                          i={i + 1}
+                                          onAutofill={this.onAutofill}
+                                          onChange={this.onChange}/>
                     }) :
                     <div style={{
                         maxWidth: 500,
@@ -108,4 +123,4 @@ class Form extends Component {
     }
 }
 
-export default injectSheet(styles)(Form)
+export default Form

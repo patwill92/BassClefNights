@@ -2,6 +2,7 @@ import React from 'react'
 import injectSheet from 'react-jss'
 
 import Icon from '../Icon/index'
+import Line from './Line'
 
 const styles = theme => ({
     lineContainer: {
@@ -17,10 +18,6 @@ const styles = theme => ({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-    },
-    line: {
-        padding: '0.5 0',
-        width: '40%',
     }
 });
 
@@ -29,7 +26,7 @@ class LineBreak extends React.PureComponent {
         const {classes, icon, color, rotateZ, rotateY, rotateX, style} = this.props;
         return (
             <div className={classes.lineContainer} style={style && {...style}}>
-                <div className={classes.line} style={{backgroundColor: color}}/>
+                <Line color={color}/>
                 <div className={classes.lineCircle}>
                     <Icon name={icon} color={color} style={{
                         bottom: 2,
@@ -37,7 +34,7 @@ class LineBreak extends React.PureComponent {
                         transform: `rotate3d(${rotateX ? 1 : 0},${rotateY ? 1 : 0},${rotateZ ? 1 : 0}, ${rotateX || rotateY || rotateZ}deg)`
                     }}/>
                 </div>
-                <div className={classes.line} style={{backgroundColor: color}}/>
+                <Line color={color}/>
             </div>
         )
     };

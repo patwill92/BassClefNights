@@ -1,6 +1,8 @@
 import React from 'react'
 import injectSheet from 'react-jss'
 
+import AnimationHOC from '../../../../../components/AnimationHOC'
+
 const styles = theme => ({
     root: {
         flexBasis: '33%',
@@ -12,7 +14,9 @@ const styles = theme => ({
         alignItems: 'flex-end',
         marginBottom: props => props.i <= 2 ? '0.5%' : 0,
         marginLeft: props => (props.i === 1 || props.i === 4) ? '0.5%' : 0,
-        marginRight: props => (props.i === 1 || props.i === 4) ? '0.5%' : 0
+        marginRight: props => (props.i === 1 || props.i === 4) ? '0.5%' : 0,
+        position: 'relative',
+        transition: 'all 600ms ease-in-out'
     },
     overlay: {
         width: '100%',
@@ -49,13 +53,22 @@ const styles = theme => ({
     },
 });
 
-const LineupGrid = props => {
-    let {classes, name, length} = props;
-    return (
-        <div className={classes.root}>
-            <div className={classes.overlay}>{name}</div>
-        </div>
-    )
-};
+@AnimationHOC
+@injectSheet(styles)
+class LineupGrid extends React.Component {
+    render() {
+        let {classes, name, dir} = this.props;
+        let angle = dir > 0 ? 'left' : 'right';
+        return (
+            <div className={classes.root} ref={title => this.props.this.element = title}  style={{
+                [angle]: this.props.visible ? 0 : '-30px',
+                bottom: this.props.visible ? 0 : '-30px',
+                opacity: this.props.visible ? 1 : 0
+            }}>
+                <div className={classes.overlay}>{name}</div>
+            </div>
+        )
+    };
+}
 
-export default injectSheet(styles)(LineupGrid)
+export default LineupGrid

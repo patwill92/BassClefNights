@@ -1,9 +1,11 @@
-import {TOGGLE_NAV, START_COUNTDOWN, SCROLL_POSITION, SET_NAV_COLOR, OPEN_MODAL} from "../actions/types"
+import {TOGGLE_NAV, START_COUNTDOWN, SCROLL_POSITION, SET_NAV_COLOR, OPEN_MODAL, BEGIN_ANIMATION} from "../actions/types"
 
 export default (state = {}, action) => {
     switch (action.type) {
         case TOGGLE_NAV:
             return {...state, nav: action.payload};
+        case BEGIN_ANIMATION:
+            return {...state, animation: action.payload};
         case SET_NAV_COLOR:
             return {...state, navColor: action.payload};
         case SCROLL_POSITION:

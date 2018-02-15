@@ -31,13 +31,14 @@ const styles = theme => ({
 });
 
 class Contact extends React.PureComponent {
-    render(){
+
+    render() {
         const {classes} = this.props;
         return (
             <Fragment>
                 <div className={classes.root}>
-                    <div className={classes.title} >
-                        <TitleContainer text='questions?' color={'#161616'} icon='musicSax' y={180} />
+                    <div className={classes.title}>
+                        <TitleContainer text='questions?' color={'#161616'} icon='musicSax' y={180}/>
                     </div>
                     <Form/>
                 </div>

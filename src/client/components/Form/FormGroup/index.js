@@ -69,20 +69,19 @@ class FormGroup extends Component {
     render() {
         const {focus} = this.state;
         const {classes, type, name, value, onAutofill} = this.props;
-
         return (
             <div className={classes.inputContainer}>
                 <label className={classes.label}
                        style={this.labelFocus(focus, value)}
                        htmlFor={name}>{this.props.placeholder}</label>
                 <FormControl type={type}
-                      focus={this.state.focus}
-                      onFocus={this.onFocus}
-                      name={name}
-                      value={value}
-                      onAutofill={onAutofill}
-                      onChange={this.onChange}
-                      onBlur={this.onBlur}/>
+                             focus={this.state.focus}
+                             onFocus={this.onFocus}
+                             name={name}
+                             value={value}
+                             onAutofill={onAutofill}
+                             onChange={this.onChange}
+                             onBlur={this.onBlur}/>
             </div>
         )
     }
