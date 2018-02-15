@@ -6,7 +6,8 @@ import AnimationHOC from '../../AnimationHOC'
 const styles = {
     line: {
         padding: '0.5 0',
-        transition: 'width 600ms ease-in-out'
+        willChange: 'width',
+        transition: 'width 600ms ease-in-out',
     }
 };
 

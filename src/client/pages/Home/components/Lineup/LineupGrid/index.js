@@ -15,6 +15,7 @@ const styles = theme => ({
         marginBottom: props => props.i <= 2 ? '0.5%' : 0,
         marginLeft: props => (props.i === 1 || props.i === 4) ? '0.5%' : 0,
         marginRight: props => (props.i === 1 || props.i === 4) ? '0.5%' : 0,
+        willChange: 'bottom, left, right, opacity',
         position: 'relative',
         transition: 'all 600ms ease-in-out'
     },
@@ -44,6 +45,7 @@ const styles = theme => ({
     },
     '@media (min-width: 501px)': {
        root: {
+           willChange: 'bottom, opacity',
            left: '0 !important',
            right: '0 !important',
            bottom: props => props.visible ? 0 : '-30px',
