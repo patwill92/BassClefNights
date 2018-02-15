@@ -15,9 +15,9 @@ const styles = theme => ({
         marginBottom: 20,
         paddingBottom: 50,
         paddingTop: 20,
-        willChange: 'bottom, opacity',
+        willChange: 'transform, opacity',
         position: 'relative',
-        transition: 'bottom 600ms ease-in-out, opacity 600ms ease-in-out'
+        transition: 'transform 600ms ease-in-out, opacity 600ms ease-in-out'
     },
     title: {
         fontFamily: theme.font.primary,
@@ -55,7 +55,7 @@ class TitleContainer extends React.PureComponent {
         return (
             <Fragment>
                 <div ref={title => this.props.this.element = title} className={classes.root} style={{
-                    bottom: this.props.visible ? 0 : '-30px',
+                    transform: this.props.visible ? 'translateY(0%)' : 'translateY(50%)',
                     opacity: this.props.visible ? 1 : 0,
                     padding: noPadding && 0
                 }}>

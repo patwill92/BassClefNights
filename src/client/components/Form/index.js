@@ -14,9 +14,9 @@ const styles = theme => ({
         maxWidth: 600,
         width: '100%',
         margin: 'auto',
-        willChange: 'bottom, opacity',
+        willChange: 'transform, opacity',
         position: 'relative',
-        transition: 'all 500ms ease-in-out'
+        transition: 'transform 500ms ease-in-out, opacity 500ms ease-in-out'
     }
 });
 
@@ -79,7 +79,7 @@ class Form extends Component {
                 this.myForm = input;
             }}
                   style={{
-                      bottom: visible ? 0 : '-50px',
+                      transform: visible ? 'translateY(0%)' : 'translateY(50px)',
                       opacity: visible ? 1 : 0
                   }}
                   onSubmit={this.onSubmit}

@@ -15,9 +15,9 @@ const styles = theme => ({
         marginBottom: props => props.i <= 2 ? '0.5%' : 0,
         marginLeft: props => (props.i === 1 || props.i === 4) ? '0.5%' : 0,
         marginRight: props => (props.i === 1 || props.i === 4) ? '0.5%' : 0,
-        willChange: 'bottom, left, right, opacity',
+        willChange: 'transform, opacity',
         position: 'relative',
-        transition: 'all 600ms ease-in-out'
+        transition: 'transform 600ms ease-in-out, opacity 600ms ease-in-out'
     },
     overlay: {
         width: '100%',
@@ -45,10 +45,8 @@ const styles = theme => ({
     },
     '@media (min-width: 501px)': {
        root: {
-           willChange: 'bottom, opacity',
-           left: '0 !important',
-           right: '0 !important',
-           bottom: props => props.visible ? 0 : '-30px',
+           willChange: 'transform, opacity',
+           transform: props => props.visible ? 'translateY(0%) !important' : 'translateY(5%) !important',
            opacity: props => props.visible ? 1 : 0
        }
     },
@@ -68,11 +66,10 @@ const styles = theme => ({
 class LineupGrid extends React.Component {
     render() {
         let {classes, name, dir} = this.props;
-        let angle = dir > 0 ? 'left' : 'right';
+        let angle = dir > 0 ? 'translateY(5%) translateX(5%)' : 'translateY(5%) translateX(-5%)';
         return (
             <div className={classes.root} ref={title => this.props.this.element = title}  style={{
-                [angle]: this.props.visible ? 0 : '-30px',
-                bottom: this.props.visible ? 0 : '-30px',
+                transform: this.props.visible ? 'translateY(0%) translateX(0%)' : angle,
                 opacity: this.props.visible ? 1 : 0
             }}>
                 <div className={classes.overlay}>{name}</div>
