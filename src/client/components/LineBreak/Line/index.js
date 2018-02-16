@@ -7,7 +7,6 @@ const styles = {
     line: {
         padding: '0.5 0',
         width: '40%',
-        willChange: 'transform',
         transformOrigin: props => `${props.origin} center`,
         transition: 'transform 600ms ease-in-out',
     }

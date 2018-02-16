@@ -14,7 +14,6 @@ const styles = theme => ({
         maxWidth: 600,
         width: '100%',
         margin: 'auto',
-        willChange: 'transform, opacity',
         position: 'relative',
         transition: 'transform 500ms ease-in-out, opacity 500ms ease-in-out'
     }

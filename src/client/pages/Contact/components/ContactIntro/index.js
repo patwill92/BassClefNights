@@ -86,6 +86,7 @@ const ContactIntro = props => {
                         <Button text='View Packages'
                                 onClick={() => {
                                     props.scrollPosition({packages: true});
+                                    window.scrollTo(0,0);
                                     history.push('/sponsor');
                                 }}
                                 color={'#e8e8e8'}

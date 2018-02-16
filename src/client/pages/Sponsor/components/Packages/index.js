@@ -34,12 +34,15 @@ const styles = theme => ({
 @injectSheet(styles)
 class Packages extends React.PureComponent {
     componentDidMount = () => {
+        console.log(this.packages.getBoundingClientRect());
         if (this.props.scroll.packages) {
-            setTimeout(async () => {
-                let element = await document.getElementById('packages').offsetTop;
-                window.scrollTo(0, element)
-            }, 20);
+            this.scrollToPackages(this.packages)
         }
+    };
+
+    scrollToPackages = (element) => {
+        let packages = element.getBoundingClientRect();
+        window.scrollTo(0, packages.top)
     };
 
     componentWillUnmount = () => {
@@ -51,7 +54,7 @@ class Packages extends React.PureComponent {
         return (
             <Fragment>
                 <Container  backgroundColor={'rgba(22,22,22,0.9)'} image={'triangles.png'}>
-                    <div id='packages' ref='packages' className={classes.root}>
+                    <div id='packages' ref={packages => this.packages = packages} className={classes.root}>
                         <div style={{paddingTop: 20}}>
                             <Title text={'sponsor packages'} color={'#e8e8e8'} icon={'badge'} align={'center'}
                                    noPadding/>

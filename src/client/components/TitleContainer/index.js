@@ -15,7 +15,6 @@ const styles = theme => ({
         marginBottom: 20,
         paddingBottom: 50,
         paddingTop: 20,
-        willChange: 'transform, opacity',
         position: 'relative',
         transition: 'transform 600ms ease-in-out, opacity 600ms ease-in-out'
     },
