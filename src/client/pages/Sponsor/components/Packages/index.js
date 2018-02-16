@@ -34,9 +34,10 @@ const styles = theme => ({
 @injectSheet(styles)
 class Packages extends React.PureComponent {
     componentDidMount = () => {
-        console.log(this.packages.getBoundingClientRect());
         if (this.props.scroll.packages) {
-            this.scrollToPackages(this.packages)
+            setTimeout(() => {
+                this.scrollToPackages(this.packages)
+            }, 20)
         }
     };
 
