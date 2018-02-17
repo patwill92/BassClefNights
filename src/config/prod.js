@@ -1,4 +1,3 @@
 export default {
-    MAILGUN_API: process.env.MAILGUN_API,
-    MAILGUN_DOMAIN: process.env.MAILGUN_DOMAIN
+    SENDGRID_API: process.env.SENDGRID_API
 };

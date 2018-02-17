@@ -146,10 +146,10 @@ class FormControl extends React.Component {
                     <select {...myProps}
                             className={classes.inputText + ' ' + classes.select}>
                         <option value=""/>
-                        <option value="founder">Become a Founder</option>
-                        <option value="sponsor">Become a Sponsor</option>
-                        <option value="ticket">Tickets</option>
-                        <option value="general">General</option>
+                        <option value={1}>Become a Founder</option>
+                        <option value={2}>Become a Sponsor</option>
+                        <option value={3}>Tickets</option>
+                        <option value={4}>General</option>
                     </select>
                     <Icon name='caretDownSolid'
                           color={props.focus ? '#222' : '#333'}

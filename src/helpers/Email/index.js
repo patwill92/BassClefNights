@@ -4,6 +4,6 @@ import Title from './Title'
 
 export default props => {
     return (
-        <Title name={props.name}/>
+        <Title name={props.name} inquiry={props.inquiry}/>
     )
 };

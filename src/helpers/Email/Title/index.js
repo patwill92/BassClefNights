@@ -52,6 +52,7 @@ const msgStyle = {
 const fbLogo = 'https://cbssacramento.files.wordpress.com/2016/11/facebook-sized.jpg?w=625&h=352&crop=1';
 
 export default props => {
+    let {inquiry} = props;
     return (
         <Fragment>
             <div style={{minWidth: '100%', padding: '30px 0 30px 0', ...tableStyle}}>
@@ -101,7 +102,7 @@ export default props => {
                     <Section align={'left'}>
                         <td width="100%">
                             <div style={{...msgStyle, padding: '0 20px 0 20px'}}>
-                                Thank you for contacting us, we'll get back to you shortly!
+                                {`Thank you for contacting us about ${inquiry}, we'll get back to you shortly!`}
                             </div>
                         </td>
                     </Section>

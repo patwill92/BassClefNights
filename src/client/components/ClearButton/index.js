@@ -21,7 +21,11 @@ const styles = theme => ({
         '&:active': {
             cursor: 'pointer',
             color: props => props.hover,
-            backgroundColor: props => props.color
+            backgroundColor: props => props.color,
+            outline: 0
+        },
+        '&:focus': {
+            outline: 0
         }
     },
     '@media (min-width: 769px)': {
@@ -50,7 +54,6 @@ class ClearButton extends React.PureComponent {
         const {classes, text, style, icon, submit, onClick, link} = this.props;
         return !link ? (
             <button onClick={onClick ? onClick : null}
-                    onFocus={() => this.setState({iconColor: this.props.hover})}
                     type={submit ? 'submit' : 'button'}
                     className={classes.heroBtn} style={style && {...style}}>
                 {icon && <Icon name={icon} color={this.state.iconColor} style={{marginRight: 10}}/>}
