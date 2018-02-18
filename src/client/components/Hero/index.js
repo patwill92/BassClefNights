@@ -7,7 +7,9 @@ import {scrollPosition} from "../../actions";
 
 const styles = theme => ({
     root: {
-        minHeight: props => props.height
+        minHeight: props => props.fullPage ? props.min : props.height,
+        height: props => props.fullPage && props.height,
+        display: props => props.custom
     },
     child: {
         ...theme.flex.rowCenter,
@@ -37,9 +39,14 @@ const styles = theme => ({
         opacity: 0.8,
         marginRight: 15
     },
+    '@media (max-width: 768px)': {
+        root: {
+            minHeight: props => props.fullPage && props.height
+        }
+    },
     '@media (max-width: 500px)': {
         root: {
-            minHeight: props => props.mobile
+            minHeight: props => props.fullPage ? props.height : props.mobile,
         },
         title: {
             '& *': {
@@ -66,9 +73,10 @@ class Hero extends React.PureComponent {
     };
 
     render() {
-        const {classes, image, title, subtitle} = this.props;
+        const {classes, image, title, subtitle, custom, children} = this.props;
         return (
             <div ref={root => this.root = root} className={classes.root}>
+                {!custom &&
                 <div className={classes.child}>
                     <div style={{display: 'flex', alignItems: 'center'}}>
                         <div>
@@ -79,7 +87,8 @@ class Hero extends React.PureComponent {
                             <Title text={subtitle} noLine color='#161616' noPadding/>
                         </div>
                     </div>
-                </div>
+                </div>}
+                {custom && children}
             </div>
         )
     };

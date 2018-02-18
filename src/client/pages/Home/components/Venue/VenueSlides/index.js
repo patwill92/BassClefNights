@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import injectSheet from 'react-jss';
 
 import Icon from '../../../../../components/Icon'
+import AnimationHOC from '../../../../../components/AnimationHOC'
 
 const animation = (name, property, from, to) => {
     return {
@@ -36,7 +37,8 @@ const styles = theme => ({
         width: props => props.type === 'mobile' && '100%',
         marginLeft: 0,
         marginRight: 0,
-        boxShadow: theme.shadows[10]
+        boxShadow: theme.shadows[10],
+        transition: 'transform 600ms ease-in-out, opacity 600ms ease-in-out'
     },
     overlayMobile: {
         display: 'flex',
@@ -80,6 +82,7 @@ const styles = theme => ({
     }
 });
 
+@AnimationHOC
 @injectSheet(styles)
 export default class VenueSlides extends Component {
     state = {
@@ -114,7 +117,13 @@ export default class VenueSlides extends Component {
         const {activeIndex, previousActiveIndex} = this.state;
         let list = ['venue1', 'venue2', 'venue3', 'venue4'];
         return (
-            <div id='venueSlides' className={classes.venueImages}>
+            <div id='venueSlides'
+                 style={{
+                     transform: this.props.visible ? 'translateY(0%)' : 'translateY(15%)',
+                     opacity: this.props.visible ? 1 : 0
+                 }}
+                 ref={title => this.props.this.element = title}
+                 className={classes.venueImages}>
                 {list.map((img, i) => {
                     let active = activeIndex === i;
                     let previousActive = previousActiveIndex === JSON.stringify(i);
@@ -136,12 +145,15 @@ export default class VenueSlides extends Component {
                 }
                 <div className={classes.overlayMobile}>
                     <div className={classes.arrows}>
-                        <div onClick={ () => this.nextImg(0)} style={{flex: 0}}><Icon name='chevronLeft'
-                                                                                      color='rgba(255,255,255,0.7)'
-                                                                                      style={{cursor: 'pointer'}}/></div>
+                        <div onClick={() => this.nextImg(0)} style={{flex: 0}}><Icon name='chevronLeft'
+                                                                                     color='rgba(255,255,255,0.7)'
+                                                                                     style={{cursor: 'pointer'}}/></div>
                         <div onClick={() => this.nextImg(1)} style={{flex: 0}}><Icon name='chevronRight'
                                                                                      color='rgba(255,255,255,0.7)'
-                                                                                     style={{right: 11, cursor: 'pointer'}}/>
+                                                                                     style={{
+                                                                                         right: 11,
+                                                                                         cursor: 'pointer'
+                                                                                     }}/>
                         </div>
                     </div>
                     <div className={classes.circles}>
@@ -149,7 +161,8 @@ export default class VenueSlides extends Component {
                             let active = activeIndex === i;
                             return (
                                 <div id='circle' key={img + i}>
-                                    <Icon name={active ? 'circleSolid' : 'circle'} color='rgba(255,255,255,0.7)' style={{margin: 20}}/>
+                                    <Icon name={active ? 'circleSolid' : 'circle'} color='rgba(255,255,255,0.7)'
+                                          style={{margin: 20}}/>
                                 </div>
                             )
                         })}

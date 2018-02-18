@@ -17,7 +17,7 @@ export default [
     },
     {
         name: 'Patricia Mesa',
-        image: 'images/patriciaM.jpg'
+        image: 'images/patriciaM.jpeg'
     },
     {
         name: 'Brazil’s Bossa Nova',

@@ -11,7 +11,7 @@ const styles = theme => ({
         color: props => props.color,
         fontFamily: theme.font.secondary,
         letterSpacing: 1,
-        fontWeight: 300,
+        fontWeight: props => props.bold ? 400 :300,
         fontSize: '1.0rem',
         textTransform: 'uppercase',
         textDecoration: 'none',
@@ -62,6 +62,7 @@ class ClearButton extends React.PureComponent {
         ) : (
             <Link onFocus={() => this.setState({iconColor: this.props.hover})}
                   to={link}
+                  onClick={onClick ? onClick : null}
                   className={classes.heroBtn} style={style && {...style}}>
                 {icon && <Icon name={icon} color={this.state.iconColor} style={{marginRight: 10}}/>}
                 {text}

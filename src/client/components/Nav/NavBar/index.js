@@ -33,10 +33,14 @@ const styles = theme => ({
     navItem: {
         textTransform: 'uppercase',
         fontFamily: theme.font.secondary,
-        fontWeight: 300,
+        fontWeight: 400,
         textAlign: 'center',
         margin: '0 20',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        transition: 'transform 300ms ease',
+        '&:hover': {
+            transform: 'scale(1.1)'
+        }
     },
     menu: {
         textTransform: 'uppercase',

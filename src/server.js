@@ -2,7 +2,7 @@ import express from 'express'
 import {matchRoutes} from 'react-router-config'
 import bodyParser from 'body-parser'
 import compression from 'compression'
-//
+
 import routes from './client/Routes'
 import renderer from './helpers/renderer';
 import {serverStore as createServerStore} from './helpers/store'

@@ -3,9 +3,13 @@ import injectSheet from 'react-jss'
 import {connect} from 'react-redux'
 
 import Icon from '../../../../components/Icon'
-import LineBreak from '../../../../components/LineBreak'
 import Button from '../../../../components/ClearButton'
+import Title from '../../../../components/TitleContainer'
+import Hero from '../../../../components/Hero'
+import Container from '../../../../components/Container'
+import Countdown from '../../../../components/Countdown'
 import {scrollPosition} from "../../../../actions";
+import AnimationHoc from "../../../../components/AnimationHOC";
 
 const animation = (name) => {
     return {
@@ -37,39 +41,18 @@ const animation = (name) => {
 const line = animation('line');
 
 const styles = theme => ({
-    root: {
-        height: '100%',
+    heroWrapper: {
         textAlign: 'center',
-        position: 'relative',
-        minHeight: 568
-    },
-    overlayImg: {
-        height: 'inherit',
-        position: 'relative'
-    },
-    logo: {
-        width: 230,
-        height: 'auto',
-        marginBottom: 30
-    },
-    heroContainer: {
-        ...theme.flex.colStart,
-        alignItems: 'center',
-        height: 'inherit',
-        padding: '60 10 200 10',
-        '& *': {
-            color: '#e8e8e8',
-            textAlign: 'center'
+        paddingTop: '20vh',
+        '& #svg-icon': {
+            fontSize: 30
         }
     },
-    heroTitle: {
-        fontFamily: theme.font.primary,
-        textTransform: 'uppercase',
-        letterSpacing: 3,
-        fontSize: '4.0em',
-        fontWeight: 200,
-        marginBottom: '20px',
-        marginTop: 0
+    logo: {
+        width: 130,
+        height: 'auto',
+        margin: '0 auto 20 auto',
+        transition: 'transform 600ms ease-in-out, opacity 600ms ease-in-out'
     },
     socialContainer: {
         ...theme.flex.colBetween,
@@ -82,19 +65,6 @@ const styles = theme => ({
         textAlign: 'center',
         display: 'none'
     },
-    innerContainer: {
-        '& div': {
-            fontSize: 25
-        }
-    },
-    bounce: {
-        animation: 'bounce 2s infinite',
-        fontSize: 20,
-        position: 'absolute',
-        bottom: 6,
-        textAlign: 'center',
-        display: 'inline-block'
-    },
     lineAnimation: {
         transition: 'all 1.5s cubic-bezier(.77,0,.175,1)',
         transform: 'scale(1,0)',
@@ -104,27 +74,32 @@ const styles = theme => ({
         backgroundColor: '#e8e8e8',
         position: 'absolute',
         bottom: 14,
-        left: 'calc(50% + 4px)',
+        left: 'calc(50% - 0.5px)',
         animation: 'line 4s cubic-bezier(.77,0,.175,1) infinite'
     },
     lineAnimationSquare: {
         backgroundColor: '#e8e8e8',
         position: 'absolute',
         bottom: 4,
-        left: '50%',
+        left: 'calc(50% - 4.5px)',
         height: 9,
         width: 9
     },
+    countdown: {
+        fontSize: '35px'
+    },
     ...line,
-    '@media (max-width: 499px)': {
-        logo: {
-            maxWidth: 140,
-            marginBottom: '10px'
+    '@media (max-width: 550px)': {
+        heroWrapper: {
+            '& #svg-icon': {
+                fontSize: 20
+            }
         },
-        heroContainer: {
-            justifyContent: 'flex-start',
-            padding: 0,
-            ...theme.flex.colCenter
+    },
+    '@media (max-width: 500px)': {
+        logo: {
+            width: 100,
+            marginBottom: '10px'
         },
         socialContainer: {
             top: 13,
@@ -136,63 +111,66 @@ const styles = theme => ({
         }
     },
     '@media (max-width: 700px)': {
-        heroTitle: {
-            fontSize: '1.9rem',
-            marginBottom: '10px',
-            fontWeight: 300
+        countdown: {
+            fontSize: '28px !important'
         }
     },
     '@media (min-width: 501px) and (max-width: 768px)': {
         socialContainer: {
             display: 'flex',
             top: 17
-        },
-        heroContainer: {
-            justifyContent: 'center',
-            padding: 0
-        },
-        logo: {
-            maxWidth: '35%'
         }
     }
 });
 
-@connect(({ui}) => ({scroll: ui.scroll}), {scrollPosition})
+@connect(({ui}) => ({scroll: ui.scroll, animation: ui.animation}), {scrollPosition})
+@AnimationHoc
 @injectSheet(styles)
 class HomeHero extends React.PureComponent {
-    componentDidMount = () => {
-        this.props.scrollPosition({max: this.root.clientHeight})
-    };
-
     render() {
         const {classes, scroll: {scroll, max}} = this.props;
+
         return (
-            <div ref={root => this.root = root} className={classes.root} style={{opacity: max && 1 - scroll / max}}>
-                <div className={classes.overlayImg}>
-                    <div className={classes.socialContainer}>
-                        <a href='https://www.facebook.com'><Icon color='#e8e8e8' name='facebookF' hover/></a>
-                        <a href='https://twitter.com/BClatinjazzfest'><Icon color='#e8e8e8' name='twitter' hover/></a>
-                    </div>
-                    <div className={classes.heroContainer}>
-                        <img className={classes.logo} src="images/logoWhite.png" alt="" style={{opacity: 0.9}}/>
-                        <div className={classes.innerContainer}>
-                            <h1 className={classes.heroTitle}>bass clef nights</h1>
-                            <LineBreak icon='musicNote' color='#e8e8e8' rotateZ={4}/>
-                            <div style={{display: 'inline-block', marginTop: 30, padding: '10 0'}} onClick={() => {
-                                window.scrollTo(0, 0);
-                                this.props.scrollPosition({opacity: 0, transition: false});
-                            }}>
-                                <Button text='Become a sponsor'
-                                        link={'/sponsor'}
-                                        color={'#e8e8e8'}
-                                        hover={'#161616'}/>
-                            </div>
-                        </div>
-                    </div>
+            <Container>
+                <div className={classes.socialContainer}>
+                    <a href='https://www.facebook.com'><Icon color='#e8e8e8' name='facebookF' hover/></a>
+                    <a href='https://twitter.com/BClatinjazzfest'><Icon color='#e8e8e8' name='twitter' hover/></a>
                 </div>
+                <Hero height={'100%'}
+                      min={700}
+                      fullPage
+                      custom>
+                    <div className={classes.heroWrapper}>
+                        <img className={classes.logo}
+                             ref={logo => this.props.this.element = logo}
+                             src="images/logoWhiteFilled.png"
+                             alt=""
+                             style={{
+                                 display: 'block',
+                                 transform: this.props.visible ? 'translateY(0%)' : 'translateY(-50%)',
+                                 opacity: this.props.visible ? 0.7 : 0
+                             }}/>
+                        <Title text={'Bass Clef Nights'}
+                               color='rgba(232,232,232, 0.9)'
+                               noPadding
+                               margin={'0 0 10 0'}
+                               icon='musicNote' big/>
+                        <div className={classes.countdown}><Countdown noTitle color={'rgba(232,232,232, 0.9)'}/></div>
+                        <Button text='tickets'
+                                link={'/tickets'}
+                                bold
+                                onClick={() => {
+                                    window.scrollTo(0, 0);
+                                    this.props.scrollPosition({opacity: 0, transition: false});
+                                }}
+                                style={{display: 'inline-block'}}
+                                color={'#e8e8e8'}
+                                hover={'#161616'}/>
+                    </div>
+                </Hero>
                 <div className={classes.lineAnimation} style={{opacity: max && 1 - scroll / max}}/>
                 <div className={classes.lineAnimationSquare} style={{opacity: max && 1 - scroll / max}}/>
-            </div>
+            </Container>
         )
     };
 }

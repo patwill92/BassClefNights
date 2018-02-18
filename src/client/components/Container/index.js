@@ -6,7 +6,8 @@ const styles = theme => ({
     root: {
         width: '100%',
         backgroundColor: props => props.backgroundColor ? props.backgroundColor : 'transparent',
-        backgroundImage: props => props.image ? `url("images/${props.image}")` : null
+        backgroundImage: props => props.image ? `url("images/${props.image}")` : null,
+        position: 'relative'
     },
     rootChild: {
         width: '100%',

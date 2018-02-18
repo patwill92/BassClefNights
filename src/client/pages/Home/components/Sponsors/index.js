@@ -29,7 +29,7 @@ const styles = theme => ({
     },
     img: {
         width: '100%',
-        maxWidth: 150,
+        maxWidth: 175,
         margin: 'auto',
         height: 'auto'
     },
@@ -53,7 +53,7 @@ const styles = theme => ({
             padding: '0 15px'
         },
         img: {
-            maxWidth: 100
+            maxWidth: 150
         }
     }
 });
@@ -61,7 +61,7 @@ const styles = theme => ({
 class Sponsors extends React.PureComponent {
     render() {
         const {classes} = this.props;
-        let sponsors = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        let sponsors = [10, 9, 6, 4, 2, 8, 3, 1, 7];
         return (
             <Fragment>
                 <div className={classes.root}>

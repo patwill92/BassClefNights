@@ -11,5 +11,5 @@ test.html
 playground.js
 /src/helpers/Email
 /src/helpers/emailRender.js
-/src/config/dev.js
+/src/config/development.js
 /src/client/pages/Test

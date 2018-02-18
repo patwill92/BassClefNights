@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import injectSheet from 'react-jss'
 
 import Icon from '../Icon'
-import Countdown from './Countdown'
+import Countdown from '../Countdown'
 import nav from '../data'
 import {scrollPosition} from "../../actions";
 
@@ -80,7 +80,7 @@ class Footer extends React.PureComponent {
                             <img src="images/logoWhiteFilled.png" alt="logo" style={{maxWidth: 50, height: 'auto'}}/>
                             <h3>Bass Clef Nights</h3>
                         </div>
-                        <Countdown/>
+                        <div style={{fontSize: 35}}><Countdown color={'#e8e8e8'}/></div>
                     </div>
                     <div className={classes.nav}>
                         {nav.map(({name, link}) => {

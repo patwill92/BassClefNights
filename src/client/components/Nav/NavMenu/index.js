@@ -73,6 +73,9 @@ const styles = theme => ({
         height: 28,
         width: 34
     },
+    img: {
+      maxWidth: 100
+    },
     navItem: {
         textTransform: 'uppercase',
         fontFamily: theme.font.secondary,
@@ -83,6 +86,9 @@ const styles = theme => ({
         marginBottom: 30
     },
     '@media (max-width: 500px)': {
+        img: {
+          maxWidth: 70
+        },
         iconContainer: {
             top: 7,
             left: 10,
@@ -132,6 +138,7 @@ class NavMenu extends React.PureComponent {
                     }}>
                         <img src="images/logoFilled.png"
                              alt="LOGO"
+                             className={classes.img}
                              onClick={() => {
                                  this.change(0);
                                  this.props.scrollPosition({opacity: 0, transition: false});
@@ -139,7 +146,6 @@ class NavMenu extends React.PureComponent {
                              }}
                              style={{
                                  cursor: 'pointer',
-                                 maxWidth: 100,
                                  height: 'auto',
                                  marginBottom: 15
                              }}/>

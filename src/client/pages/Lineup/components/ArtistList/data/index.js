@@ -28,6 +28,6 @@ export default [
     {
         name: 'Patricia Mesa',
         info: `Bossa Nova is a musical sub-genre derived from samba and with strong American jazz influences. Initially, the term Bossa Nova referred to a way of singing and playing samba but gradually became one of the most important movements in what is known in Brazil as MPB.`,
-        image: 'patriciaM.jpg'
+        image: 'patriciaM.jpeg'
     }
 ]
